@@ -1,0 +1,54 @@
+{
+  "name": "lms-react-app",
+  "version": "1.0.0",
+  "description": "This is a LMS React Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Badri-Narayanan/LMS-React-App.git"
+  },
+  "keywords": [
+    "LMS",
+    "React",
+    "Application"
+  ],
+  "author": "Marln Corporation",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Badri-Narayanan/LMS-React-App/issues"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.1"
+  },
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
