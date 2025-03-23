@@ -1,0 +1,22 @@
+.image {
+    height: 75vh;
+    width: 200vh;
+    margin-top: 50px;
+}
+
+.courses {
+    background-color: #F9F9F9;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    height: 30rem;
+    margin-bottom: 100px;
+}
+
+.courseList.active {
+    display: block;
+}
+
+.courseList {
+    display: none;
+}

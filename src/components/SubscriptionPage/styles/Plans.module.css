@@ -1,0 +1,5 @@
+.plans-available {
+    display:flex;
+    flex-direction: row;
+    margin-left: 32.5vh;
+}

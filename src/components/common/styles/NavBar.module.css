@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: linear-gradient(to right, #fff, #b299ff); 
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: "Mulish", sans-serif;
+  }
+  
+  .company-logo {
+    font-weight: bold;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .navList li {
+    position: relative;
+  }
+
+  .nav-option{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 45px;
+    font-weight: 400;
+  }
+  
+  .dropdownContent {
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    z-index: 5;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 25px;
+  }
+  
+
+  .dropdownColumn {
+    text-align: left;
+    width: auto;
+    margin-right: 40px;
+    padding: 10px;
+  }
+
+  .dropdownColumn p {
+    margin-bottom: 15px;
+    display: flex;
+    min-width: 15rem;
+    justify-content: space-between;
+  }
+
+  
+  .dropdownColumn h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .nav-option:hover + .dropdownContent {
+    opacity: 1;
+  }
+
+  .other-options {
+    display: flex;
+    position: relative;
+  }
+
+
+
+  .button {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #6B73FF, #A197F2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .other-options > div {
+    margin-left: 100px;
+  }
+
+  .other-options .dropdownContent {
+    left: 3rem;
+    padding: 10px;
+    width: 18rem;
+  }
+
+  

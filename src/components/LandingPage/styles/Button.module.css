@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+.button {
+    background-color: black;
+    text-align: center;
+    border-radius: 15rem;
+    width: fit-content;
+    font-family: "Mulish", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.button > span {
+    color: white;
+    margin-right: 10px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.arrow img {
+    height: 40px;
+    width: 40px;
+
+}
+
+.arrow {
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+}
+
+
+
+
+
