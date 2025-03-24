@@ -1,12 +1,18 @@
 import logo from "../../images/companylogo.png";
 import styles from "./styles/NavBar.module.css";
+import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <header>
       <nav className={styles.navbar}>
         <div className={styles["company-logo"]}>
-          <img src={logo} style={{ height: "50px", width: "250px" }} alt="Company Logo"/>
+          <img
+            src={logo}
+            style={{ height: "50px", width: "250px" }}
+            alt="Company Logo"
+          />
         </div>
         <div className={styles["nav-options"]}>
           <ul className={styles.navList}>
@@ -280,116 +286,116 @@ function Navbar() {
               <div className={styles.dropdownContent}>
                 {/* Add your Resources dropdown content here */}
                 <div className={styles.dropdownColumn}>
-                    <h3>Software development</h3>
-                <p>
-                  Databases
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Game development
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Mobile development
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Programming languages
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Web development
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-              </div>
-              <div className={styles.dropdownColumn}>
-                <h3>Security</h3>
-                <p>
-                  Certifications
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Governance, risk & compliance
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Security architecture & engineering
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Security operations
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Security testing
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-              </div>
-              <div className={styles.dropdownColumn}>
-                <h3>IT Ops</h3>
-                <p>
-                  Client Operating systems
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Collaboration platforms
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Configuration management
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Containers
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  IT automation
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Network architecture
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-                <p>
-                  Virtualization
-                  <span class="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </p>
-              </div>
+                  <h3>Software development</h3>
+                  <p>
+                    Databases
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Game development
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Mobile development
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Programming languages
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Web development
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                </div>
+                <div className={styles.dropdownColumn}>
+                  <h3>Security</h3>
+                  <p>
+                    Certifications
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Governance, risk & compliance
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Security architecture & engineering
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Security operations
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Security testing
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                </div>
+                <div className={styles.dropdownColumn}>
+                  <h3>IT Ops</h3>
+                  <p>
+                    Client Operating systems
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Collaboration platforms
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Configuration management
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Containers
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    IT automation
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Network architecture
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    Virtualization
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                </div>
               </div>
             </li>
             <li>
@@ -422,6 +428,17 @@ function Navbar() {
                     <span class="material-symbols-outlined">
                       keyboard_arrow_right
                     </span>
+                  </p>
+                  <p>
+                    <Link
+                      to="/skills-assessment"
+                      className={styles["dropdown-link"]}
+                    >
+                      <h3>Skills Assessment</h3>
+                      <span className="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </Link>
                   </p>
                 </div>
               </div>

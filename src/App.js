@@ -5,6 +5,7 @@ import MainLayout from "./Pages/MainLayout";
 import ErrorPage from "./Pages/ErrorPage";
 import BusinessPricing from "./Pages/BusinessPricing";
 import PublicSectorPricing from "./Pages/PublicSectorPricing";
+import SkillsAssessmentPage from './Pages/SkillsAssessmentPage';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,9 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/individuals/pricing", element: <IndividualPricing /> },
-      {path:"/businesses/pricing", element: <BusinessPricing />},
-      {path:"/industries/public-sector/pricing", element: <PublicSectorPricing />}
+      { path: "/businesses/pricing", element: <BusinessPricing /> },
+      { path: "/industries/public-sector/pricing", element: <PublicSectorPricing /> },
+      { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
     ],
   },
 ]);

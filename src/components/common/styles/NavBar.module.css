@@ -24,17 +24,20 @@
   .navList li {
     position: relative;
   }
-
-  .nav-option{
+  
+  .nav-option {
     display: flex;
     cursor: pointer;
     align-items: center;
     margin-right: 45px;
     font-weight: 400;
+    position: relative;
+    z-index: 10;
   }
   
   .dropdownContent {
     opacity: 0;
+    visibility: hidden;
     position: absolute;
     top: 100%;
     left: -100%;
@@ -47,9 +50,15 @@
     padding: 20px;
     margin-top: 10px;
     border-radius: 25px;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
   
-
+  .navList li:hover .dropdownContent,
+  .dropdownContent:hover {
+    opacity: 1;
+    visibility: visible;
+  }  
+  
   .dropdownColumn {
     text-align: left;
     width: auto;
