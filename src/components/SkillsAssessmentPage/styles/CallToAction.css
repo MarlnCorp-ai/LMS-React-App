@@ -1,0 +1,37 @@
+.call-to-action {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #B198FE 70%, #8d73ec 100%);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .call-to-action h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .call-to-action p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+  }
