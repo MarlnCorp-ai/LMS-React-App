@@ -32,6 +32,8 @@
     "url": "https://github.com/Badri-Narayanan/LMS-React-App/issues"
   },
   "dependencies": {
+    "framer-motion": "^12.6.2",
+    "lucide-react": "^0.484.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-feather": "^2.0.10",

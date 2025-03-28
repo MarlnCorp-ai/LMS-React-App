@@ -10,4 +10,14 @@ const Card = ({ children, className, key}) => {
   );
 };
 
-export default Card;
+// likely temporarily making CardContent as a child component
+const CardContent = ({ children, className }) => {
+  const contentClasses = `${styles['card-content']} ${className || ''}`;
+  return (
+    <div className={contentClasses}>
+      {children}
+    </div>
+  );
+};
+
+export { Card as default, CardContent };
