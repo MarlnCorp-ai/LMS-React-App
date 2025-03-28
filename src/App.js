@@ -8,7 +8,7 @@ import SkillsAssessmentPage from "./Pages/SkillsAssessmentPage";
 import CourseDashboard from "./Pages/Course/CourseDashboard";
 import CourseContent from "./Pages/Course/CourseContent";
 import LearningPaths from "./Pages/LearningPaths";
-
+import MCQ from "./components/Exams/MCQ";
 const router = createHashRouter([
 
   {
@@ -25,7 +25,8 @@ const router = createHashRouter([
       },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
       { path: "/learning-paths", element: <LearningPaths /> },
-
+      { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
+      { path: "/mcq", element: <MCQ /> }
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
