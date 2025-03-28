@@ -25,12 +25,14 @@ function Navbar() {
               </div>
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
-                  <p>
-                    Assess your skills
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                  <Link to="/components/Exams/MCQ">
+                    <p>
+                      Assess your skills
+                      <span className="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
                   <p>
                     <span>Labs</span>
                     <span class="material-symbols-outlined">

@@ -6,6 +6,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import BusinessPricing from "./Pages/BusinessPricing";
 import PublicSectorPricing from "./Pages/PublicSectorPricing";
 import SkillsAssessmentPage from './Pages/SkillsAssessmentPage';
+import MCQ from "./components/Exams/MCQ";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/businesses/pricing", element: <BusinessPricing /> },
       { path: "/industries/public-sector/pricing", element: <PublicSectorPricing /> },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
+      { path: "/mcq", element: <MCQ /> }
     ],
   },
 ]);
