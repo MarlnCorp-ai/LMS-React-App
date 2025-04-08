@@ -7,6 +7,11 @@ import BusinessPricing from "./Pages/BusinessPricing";
 import PublicSectorPricing from "./Pages/PublicSectorPricing";
 import SkillsAssessmentPage from './Pages/SkillsAssessmentPage';
 import MCQ from "./components/Exams/MCQ";
+import LabSearch from "./components/Exams/LabSearch.js";
+import EthicalHacking from "./components/Exams/EthicalHacking.js";
+import NetSecFund from "./components/Exams/NetSecFund.js";
+import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
+import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +24,14 @@ const router = createBrowserRouter([
       { path: "/businesses/pricing", element: <BusinessPricing /> },
       { path: "/industries/public-sector/pricing", element: <PublicSectorPricing /> },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
-      { path: "/mcq", element: <MCQ /> }
+      { path: "/mcq", element: <MCQ /> },
+      { path: "/Search", element: <LabSearch />},
+      { path: "/EthicalHacking", element: <EthicalHacking />},
+      { path: "/NetworkSecurityFundamentals", element: <NetSecFund />},
+      { path: "/CyberCloudEnv", element: <CyberCloudEnv />},
+      { path: "/AdvPenTesting", element: <AdvPenTesting />
+
+      }
     ],
   },
 ]);
