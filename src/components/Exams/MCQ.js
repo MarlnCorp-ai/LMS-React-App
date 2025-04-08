@@ -96,6 +96,10 @@ export default function QuizApplication() {
     if (finished || reviewMode) {
       setCurrentQuestion(index);
       setSelectedOption(detailedResults[index]?.selected || answeredQuestions[index]);
+    } else {
+      // Allow navigation during the quiz too
+      setCurrentQuestion(index);
+      setSelectedOption(answeredQuestions[index]);
     }
   };
 
@@ -105,7 +109,8 @@ export default function QuizApplication() {
     setAnsweredQuestions(newAnsweredQuestions);
 
     if (selectedOption === questions[currentQuestion].answer) {
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => prevScore + questions[currentQuestion].points); 
+      // Update to use question points instead of just adding 1
     }
 
     setDetailedResults([...detailedResults, {
@@ -176,14 +181,24 @@ export default function QuizApplication() {
             </h3>
             <div className="grid grid-cols-3 gap-2">
               {questions.map((_, index) => {
-                let buttonClass = "w-full aspect-square rounded-lg text-center flex items-center justify-center font-bold transition-all duration-300 shadow-md";
+                let buttonClass = "w-full aspect-square rounded-lg text-center flex items-center justify-center font-bold transition-all duration-300 shadow-md cursor-pointer";
                 
                 if (finished || reviewMode) {
-                  buttonClass += " bg-gray-200 text-gray-600";
-                } else {
+                  // In review mode, show answered/current state
                   if (currentQuestion === index) {
                     buttonClass += " bg-blue-600 text-white scale-105";
-                  } else if (answeredQuestions[index]) {
+                  } else if (detailedResults[index]?.isCorrect) {
+                    buttonClass += " bg-green-400 text-white";
+                  } else if (detailedResults[index]) {
+                    buttonClass += " bg-red-400 text-white";
+                  } else {
+                    buttonClass += " bg-gray-200 text-gray-600";
+                  }
+                } else {
+                  // During the quiz
+                  if (currentQuestion === index) {
+                    buttonClass += " bg-blue-600 text-white scale-105";
+                  } else if (answeredQuestions[index] !== null) {
                     buttonClass += " bg-blue-400 text-white";
                   } else {
                     buttonClass += " bg-gray-100 text-gray-600 hover:bg-blue-100 hover:text-blue-600";
@@ -194,6 +209,7 @@ export default function QuizApplication() {
                   <div 
                     key={index} 
                     className={buttonClass}
+                    onClick={() => handleQuestionSelect(index)}
                   >
                     {index + 1}
                   </div>
@@ -230,7 +246,7 @@ export default function QuizApplication() {
                 <div className="flex justify-between">
                   <span className="text-sm text-blue-800">Total Score</span>
                   <span className="font-bold text-blue-800">
-                    {score}/{questions.length}
+                    {score}/{questions.reduce((sum, q) => sum + q.points, 0)}
                   </span>
                 </div>
               </div>
