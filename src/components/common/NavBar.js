@@ -1,4 +1,6 @@
-import logo from "../../images/companylogo.png";
+import companylogo from "../../images/companylogo.png";
+import companyname from "../../images/companyname.png";
+import companyslogan from "../../images/companyslogan.png";
 import styles from "./styles/NavBar.module.css";
 import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,12 +9,12 @@ function Navbar() {
   return (
     <header>
       <nav className={styles.navbar}>
-        <div className={styles["company-logo"]}>
-          <img
-            src={logo}
-            style={{ height: "50px", width: "250px" }}
-            alt="Company Logo"
-          />
+        <div className="flex">
+          <img src={companylogo} alt="Company Logo" className="w-20 h-20"/>
+          <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
+                <p className="text-4xl font-bold">NexusHive</p>
+                <p className="text-[0.9rem] uppercase font-bold">keep learning, keep buzzing</p>
+          </section>
         </div>
         <div className={styles["nav-options"]}>
           <ul className={styles.navList}>
