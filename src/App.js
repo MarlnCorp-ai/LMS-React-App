@@ -6,7 +6,6 @@ import ErrorPage from "./Pages/ErrorPage";
 import OrganizationPricing from "./Pages/Pricing/OrganizationPricing";
 import SkillsAssessmentPage from "./Pages/SkillsAssessmentPage";
 import CourseDashboard from "./Pages/Course/CourseDashboard";
-import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
 import CourseContent from "./Pages/Course/CourseContent";
 const router = createBrowserRouter([
   {
@@ -25,11 +24,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
-  { path: "/courses/1/player", element: <CourseContent /> },
-  {
-    path: "/buy",
-    element: <IndividualCheckout />,
-  },
+  { path: "/courses/1/player", element: <CourseContent /> }
 ]);
 
 function App() {
