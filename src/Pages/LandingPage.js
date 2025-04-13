@@ -11,6 +11,7 @@ import SecondaryBanner from "../components/LandingPage/SecondaryBanner";
 import GettingStarted from "../components/LandingPage/GettingStarted";
 import FAQ from "../components/LandingPage/FAQ";
 import Posters from "../components/LandingPage/Posters";
+import Sage from "../components/common/Sage";
 
 
 function LandingPage() {
@@ -28,9 +29,9 @@ function LandingPage() {
         <section>
           <LearningStructure />
         </section>
-        <section>
+        {/* <section>
           <Courses />
-        </section>
+        </section> */}
         <section>
             <Posters />
         </section>
@@ -52,6 +53,7 @@ function LandingPage() {
         <section>
             <FAQ />
         </section>
+        <Sage />
     </Fragment>
   );
 }

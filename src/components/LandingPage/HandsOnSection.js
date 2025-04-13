@@ -5,7 +5,7 @@ function HandsOnSection() {
   return (
     <div className="flex items-center  gap-36 justify-center mx-auto w-full tracking-wide my-40">
       <aside>
-        <img src={handsOnImage} alt="Tutors" className="h-[20rem] w-[26rem]" />
+        <img src={handsOnImage} alt="Tutors" className="h-[21rem] w-[35rem]" />
       </aside>
       <main className="flex flex-col gap-6">
         <h3 className="text-lg text-[#8C52FF] font-medium">
