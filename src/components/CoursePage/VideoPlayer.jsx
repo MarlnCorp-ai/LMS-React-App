@@ -9,7 +9,7 @@ function formatTime(seconds) {
 function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
 
   const videoRef = useRef(null);
-  const playerRef = useRef(null); // Ref for the main player container
+  const playerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [currentTime, setCurrentTime] = useState(0);
@@ -119,13 +119,10 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
       if (playerRef.current.requestFullscreen) {
         playerRef.current.requestFullscreen();
       } else if (playerRef.current.mozRequestFullScreen) {
-        /* Firefox */
         playerRef.current.mozRequestFullScreen();
       } else if (playerRef.current.webkitRequestFullscreen) {
-        /* Chrome, Safari & Opera */
         playerRef.current.webkitRequestFullscreen();
       } else if (playerRef.current.msRequestFullscreen) {
-        /* IE/Edge */
         playerRef.current.msRequestFullscreen();
       }
       setIsFullscreen(true);
@@ -133,13 +130,10 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
-        /* Firefox */
         document.mozCancelFullScreen();
       } else if (document.webkitExitFullscreen) {
-        /* Chrome, Safari & Opera */
         document.webkitExitFullscreen();
       } else if (document.msExitFullscreen) {
-        /* IE/Edge */
         document.msExitFullscreen();
       }
       setIsFullscreen(false);
@@ -192,7 +186,6 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
         onClick={handlePlayPause}
       />
 
-      {/* Track Bar */}
       <div
         className={`w-${
           isFullscreen ? "full" : `[${playerWidth}]`
@@ -224,14 +217,12 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
         </div>
       </div>
 
-      {/* Controls */}
       <div
         className={`p-4 flex items-center justify-between w-${
           isFullscreen ? "full" : `[${playerWidth}]`
         } absolute -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out`}
       >
         <div className="flex items-center">
-          {/* Play/Pause Button */}
           <button
             onClick={handlePlayPause}
             className="text-white focus:outline-none"
@@ -243,7 +234,6 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
             )}
           </button>
 
-          {/* Skip Back Button */}
           <button
             onClick={handleSkipBackward}
             className="text-white focus:outline-none ml-2"
@@ -251,7 +241,6 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
             <span class="material-symbols-outlined">replay_10</span>
           </button>
 
-          {/* Skip Forward Button */}
           <button
             onClick={handleSkipForward}
             className="text-white focus:outline-none ml-2"
@@ -259,14 +248,12 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
             <span class="material-symbols-outlined">forward_10</span>
           </button>
 
-          {/* Current Time and Duration */}
           <div className="text-gray-300 text-sm ml-4">
             {formatTime(currentTime)} / {formatTime(duration)}
           </div>
         </div>
 
         <div className="flex items-center">
-          {/* Volume Control */}
           <div
             className="relative ml-4"
             onMouseEnter={handleVolumeMouseEnter}
@@ -296,7 +283,6 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
             )}
           </div>
 
-          {/* Playback Speed Control */}
           <div className="ml-4">
             <select
               id="speed"
@@ -313,8 +299,7 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
               <option value="2">2x</option>
             </select>
           </div>
-
-          {/* Fullscreen Button */}
+          
           <button
             onClick={handleFullscreenToggle}
             className="text-white focus:outline-none ml-4"
