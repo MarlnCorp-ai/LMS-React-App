@@ -61,7 +61,7 @@ const ImageSwitcher = () => {
         src={imageSrc}
         alt="Display"
         onTransitionEnd={handleTransitionEnd}
-        className={`w-full h-auto transition-opacity duration-500 w-[72rem] mx-auto ${
+        className={`w-full h-auto transition-opacity duration-500 w-[68rem] mx-auto ${
           fade ? "opacity-0" : "opacity-100"
         }`}
       />

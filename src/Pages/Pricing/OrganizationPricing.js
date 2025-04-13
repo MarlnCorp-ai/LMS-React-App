@@ -1,10 +1,9 @@
-import { Fragment } from "react";
-import Plan from "../components/SubscriptionPage/Plan";
-import ComparePlans from "../components/SubscriptionPage/ComparePlans";
-import { useState } from "react";
-import CountryDropdown from "../components/SubscriptionPage/CountryDropdown";
+import { Fragment, useState } from "react";
+import Plan from "../../components/SubscriptionPage/Plan";
+import ComparePlans from "../../components/SubscriptionPage/ComparePlans";
+import CountryDropdown from "../../components/SubscriptionPage/CountryDropdown";
 
-function PublicSectorPricing() {
+function OrganizationPricing() {
   const [currentCurrency, setCurrency] = useState([1, "$"]);
   const [planChosen, setPlan] = useState("Everything");
   const planInformation = [
@@ -381,4 +380,4 @@ function PublicSectorPricing() {
   );
 }
 
-export default PublicSectorPricing;
+export default OrganizationPricing;

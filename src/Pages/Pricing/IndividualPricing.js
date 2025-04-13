@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import Card from "../components/common/Card";
+import Card from "../../components/common/Card";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import ComparePlans from "../components/SubscriptionPage/ComparePlans";
-import CountryDropdown from "../components/SubscriptionPage/CountryDropdown";
+import ComparePlans from "../../components/SubscriptionPage/ComparePlans";
+import CountryDropdown from "../../components/SubscriptionPage/CountryDropdown";
 
 function calculatePrice(price, currency) {
   price = Math.ceil(price * currency);
