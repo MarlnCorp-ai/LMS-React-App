@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
-import IndividualPricing from "./Pages/IndividualPricing";
+import IndividualPricing from "./Pages/Pricing/IndividualPricing";
 import MainLayout from "./Pages/MainLayout";
 import ErrorPage from "./Pages/ErrorPage";
-import PublicSectorPricing from "./Pages/PublicSectorPricing";
-import SkillsAssessmentPage from './Pages/SkillsAssessmentPage';
-import CourseDashboard from "./Pages/CourseDashboard";
-
+import OrganizationPricing from "./Pages/Pricing/OrganizationPricing";
+import SkillsAssessmentPage from "./Pages/SkillsAssessmentPage";
+import CourseDashboard from "./Pages/Course/CourseDashboard";
+import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
+import CourseContent from "./Pages/Course/CourseContent";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,11 +16,19 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/individuals/pricing", element: <IndividualPricing /> },
-      { path: "/businesses/pricing", element: <PublicSectorPricing /> },
-      { path: "/industries/public-sector/pricing", element: <PublicSectorPricing /> },
-      { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
-      { path: "/courses", element: <CourseDashboard />}
+      { path: "/businesses/pricing", element: <OrganizationPricing /> },
+      {
+        path: "/industries/public-sector/pricing",
+        element: <OrganizationPricing />,
+      },
+      { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
     ],
+  },
+  { path: "/courses", element: <CourseDashboard /> },
+  { path: "/courses/1/player", element: <CourseContent /> },
+  {
+    path: "/buy",
+    element: <IndividualCheckout />,
   },
 ]);
 
