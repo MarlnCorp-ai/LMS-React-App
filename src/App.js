@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import IndividualPricing from "./Pages/Pricing/IndividualPricing";
 import MainLayout from "./Pages/MainLayout";
@@ -9,7 +9,8 @@ import CourseDashboard from "./Pages/Course/CourseDashboard";
 import CourseContent from "./Pages/Course/CourseContent";
 import LearningPaths from "./Pages/LearningPaths";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
+
   {
     path: "/",
     element: <MainLayout />,
