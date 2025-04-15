@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/LMS-React-App/static/css/main.f53a29b7.css",
-    "main.js": "/LMS-React-App/static/js/main.0e3c3145.js",
+    "main.js": "/LMS-React-App/static/js/main.0df8081d.js",
     "static/media/demo-video.mp4": "/LMS-React-App/static/media/demo-video.ac8b5cb0bfec8a45742d.mp4",
     "static/media/HandsOn.png": "/LMS-React-App/static/media/HandsOn.7385e817ff015015313a.png",
     "static/media/Job3.png": "/LMS-React-App/static/media/Job3.5fca3c2f9e29867c4501.png",
@@ -43,10 +43,10 @@
     "static/media/googleplay.png": "/LMS-React-App/static/media/googleplay.1cf1fb1ca686a7e26326.png",
     "index.html": "/LMS-React-App/index.html",
     "main.f53a29b7.css.map": "/LMS-React-App/static/css/main.f53a29b7.css.map",
-    "main.0e3c3145.js.map": "/LMS-React-App/static/js/main.0e3c3145.js.map"
+    "main.0df8081d.js.map": "/LMS-React-App/static/js/main.0df8081d.js.map"
   },
   "entrypoints": [
     "static/css/main.f53a29b7.css",
-    "static/js/main.0e3c3145.js"
+    "static/js/main.0df8081d.js"
   ]
 }
