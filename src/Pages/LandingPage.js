@@ -9,6 +9,9 @@ import TechSkillsSection from "../components/LandingPage/TechSkillsSection";
 import HandsOnSection from "../components/LandingPage/HandsOnSection";
 import SecondaryBanner from "../components/LandingPage/SecondaryBanner";
 import GettingStarted from "../components/LandingPage/GettingStarted";
+import FAQ from "../components/LandingPage/FAQ";
+import Posters from "../components/LandingPage/Posters";
+import Sage from "../components/common/Sage";
 
 
 function LandingPage() {
@@ -26,8 +29,11 @@ function LandingPage() {
         <section>
           <LearningStructure />
         </section>
-        <section>
+        {/* <section>
           <Courses />
+        </section> */}
+        <section>
+            <Posters />
         </section>
         <section>
           <UserGroupsSection />
@@ -44,6 +50,10 @@ function LandingPage() {
         <section>
           <GettingStarted />
         </section>
+        <section>
+            <FAQ />
+        </section>
+        <Sage />
     </Fragment>
   );
 }

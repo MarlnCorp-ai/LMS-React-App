@@ -2,7 +2,11 @@
 const config = {
   content: ["./public/index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            "purple-grad" : "#b299ff"
+        }
+    },
   },
   plugins: [],
 };

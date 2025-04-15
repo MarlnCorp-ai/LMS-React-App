@@ -23,7 +23,7 @@ function PageFooter() {
           <h3 className={styles.heading}>Get in touch with us</h3>
           <div className={styles.contact}>
             <FaEnvelope className={styles.icon} />
-            <a href="mailto:hello@marlncorp.com">hello@marlncorp.com</a>
+            <a href="mailto:hello@marlncorp.com">Contact@marlncorp.ai</a>
           </div>
           <div className={styles.contact}>
             <FaPhone className={styles.icon} />

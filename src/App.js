@@ -1,10 +1,9 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
-import IndividualPricing from "./Pages/IndividualPricing";
+import IndividualPricing from "./Pages/Pricing/IndividualPricing";
 import MainLayout from "./Pages/MainLayout";
 import ErrorPage from "./Pages/ErrorPage";
-import BusinessPricing from "./Pages/BusinessPricing";
-import PublicSectorPricing from "./Pages/PublicSectorPricing";
+import OrganizationPricing from "./Pages/Pricing/OrganizationPricing";
 import SkillsAssessmentPage from './Pages/SkillsAssessmentPage';
 import UniversityTab from './Pages/UniversityTab';
 import CourseDetail from './Pages/CourseDetail';
@@ -21,8 +20,12 @@ import CourseDetailsDigitalMaterial from "./Pages/CourseDetailsFolder/CourseDeta
 import CourseDetailsAEFISTools from "./Pages/CourseDetailsFolder/CourseDetailsAEFIS";
 import CourseDetailsSurvey from "./Pages/CourseDetailsFolder/CourseDetailsSurvey";
 import CourseDetailsLibraryResources from "./Pages/CourseDetailsFolder/CourseDetailsLibrary";
+import CourseDashboard from "./Pages/Course/CourseDashboard";
+import CourseContent from "./Pages/Course/CourseContent";
+import LearningPaths from "./Pages/LearningPaths";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
+
   {
     path: "/",
     element: <MainLayout />,
@@ -30,10 +33,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/individuals/pricing", element: <IndividualPricing /> },
-      { path: "/businesses/pricing", element: <BusinessPricing /> },
-      { path: "/industries/public-sector/pricing", element: <PublicSectorPricing /> },
+      { path: "/businesses/pricing", element: <OrganizationPricing /> },
+      {
+        path: "/industries/public-sector/pricing",
+        element: <OrganizationPricing />,
+      },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
-      
+      { path: "/learning-paths", element: <LearningPaths /> },
     ],
   },
       { path: "/my-university", element: <UniversityTab/>},
@@ -56,6 +62,9 @@ const router = createBrowserRouter([
           { path: "library", element: <CourseDetailsLibraryResources /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
         ],
        },
+  { path: "/courses", element: <CourseDashboard /> },
+  { path: "/courses/1/player", element: <CourseContent /> }
+
 ]);
 
 function App() {

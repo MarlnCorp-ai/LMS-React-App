@@ -1,103 +1,72 @@
 import { useState } from "react";
-import courses from "../../images/LandingPage/Courses.png";
-import styles from "./styles/Courses.module.css";
 import courseList1 from "../../images/LandingPage/courselist1.png";
 import courseList3 from "../../images/LandingPage/courselist3.png";
 import courseList4 from "../../images/LandingPage/courselist4.png";
 import courseList2 from "../../images/LandingPage/courselist2.png";
 
+const ImageSwitcher = () => {
+  const [imageSrc, setImageSrc] = useState(courseList1);
+  const [labelChosen, setLabel] = useState("Business skills");
+  const [fade, setFade] = useState(false);
+  const [pendingImage, setPendingImage] = useState(courseList1);
 
-function Courses() {
-  const [categoryChosen, setCategory] = useState("Business skills");
-
-  const onClickHandler = ({ target }) => {
-    const value = target.textContent.trim();
-    setCategory(value);
+  const handleOptionClick = (label, newImage) => {
+    if(label === labelChosen) return;
+    setLabel(label);
+    setPendingImage(newImage);
+    setFade(true);
   };
 
-  const categoryClass = styles.category;
-  const courseListClass = styles.courseList;
+  const handleTransitionEnd = () => {
+    if (fade && pendingImage) {
+      setImageSrc(pendingImage);
+      setFade(false);
+      setPendingImage(null);
+    }
+  };
+
+  const courseOptions = [
+    {
+      label: "Business skills",
+      content: courseList1,
+    },
+    {
+      label: "Compliance",
+      content: courseList2,
+    },
+    {
+      label: "Safety",
+      content: courseList3,
+    },
+    {
+      label: "Technology",
+      content: courseList4,
+    },
+  ];
+
   return (
-    <div className={styles.courses}>
-      <div>
-        <div
-          className={`${categoryClass} ${
-            categoryChosen === "Business skills" ? "active" : ""
-          }`}
-          onClick={onClickHandler}
-        >
-          Business skills
+    <div className="bg-[#F9F9F9] h-[40rem] my-40 flex flex-col items-center py-8 gap-12">
+        <div className="bg-white p-3 rounded-full flex gap-8">
+            {courseOptions.map(({label, content}, idx) => (
+                <button
+                key={idx}
+                onClick={() => handleOptionClick(label, content)}
+                className={`p-4 text-black font-semibold rounded-full hover:bg-[#e8dbff] hover:text-[#8c52ff] ${ labelChosen === label && "bg-black text-white"}`}
+              >
+                {label}
+              </button>
+            ))}
         </div>
-        <div
-          className={`${categoryClass} ${
-            categoryChosen === "Compliance" ? "active" : ""
-          }`}
-          onClick={onClickHandler}
-        >
-          Compliance
-        </div>
-        <div
-          className={`${categoryClass} ${
-            categoryChosen === "Safety" ? "active" : ""
-          }`}
-          onClick={onClickHandler}
-        >
-          Safety
-        </div>
-        <div
-          className={`${categoryClass} ${
-            categoryChosen === "Technology" ? "active" : ""
-          }`}
-          onClick={onClickHandler}
-        >
-          Technology
-        </div>
-      </div>
-      <div>
-        <div>
-          <img
-            src={courseList1}
-            alt="Course List 1"
-            className={`${courseListClass} ${
-              categoryChosen === "Business skills" ? "active" : ""
-            }`}
-          />
-        </div>
-        <div>
-          <img
-            src={courseList2}
-            alt="Course List 2"
-            className={`${courseListClass} ${
-              categoryChosen === "Compliance" ? "active" : ""
-            }`}
-          />
-        </div>
-        <div>
-          <img
-            src={courseList3}
-            alt="Course List 3"
-            className={`${courseListClass} ${
-              categoryChosen === "Safety" ? "active" : ""
-            }`}
-          />
-        </div>
-        <div>
-          <img
-            src={courseList4}
-            alt="Course List 4"
-            className={`${courseListClass} ${
-              categoryChosen === "Technology" ? "active" : ""
-            }`}
-          />
-        </div>
-      </div>
+      <img
+        src={imageSrc}
+        alt="Display"
+        onTransitionEnd={handleTransitionEnd}
+        className={`w-full h-auto transition-opacity duration-500 w-[68rem] mx-auto ${
+          fade ? "opacity-0" : "opacity-100"
+        }`}
+      />
     </div>
   );
-}
+};
 
-function temp()
-{
-    return <img src={courses} alt="Courses" className={styles.image}/>;
-}
-
-export default temp;
+export default ImageSwitcher;
