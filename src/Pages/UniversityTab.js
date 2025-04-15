@@ -17,7 +17,7 @@ const UniversityTab = () => {
     <div className="flex font-sans h-screen relative">
       <LeftSidebar onSelect={handleTabSelect} activeIndex={activeTabIndex} />
       
-      {/* Drawer example -  drawer content based on activeTabIndex */}
+      {/* Drawer  -  drawer content based on activeTabIndex */}
       <CourseDrawer isOpen={activeTabIndex === 1} onClose={() => setActiveTabIndex(null)} />
 
       <div className="flex-1 p-6 bg-gray-50 min-h-screen">
