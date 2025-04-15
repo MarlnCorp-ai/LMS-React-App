@@ -45,14 +45,20 @@ const CourseDetails = () => {
           {/* <li className="hover:underline cursor-pointer">Assignments</li> */}
           <li><Link to={`/courses/${courseId}/quizzes`} className="hover:underline">Quizzes</Link></li>
           {/* <li className="hover:underline cursor-pointer">Quizzes</li> */}
-          <li className="hover:underline cursor-pointer">Discussions</li>
+          <li><Link to={`/courses/${courseId}/discussions`} className="hover:underline">Discussions</Link></li>
+          {/* <li className="hover:underline cursor-pointer">Discussions</li> */}
           <li className="hover:underline cursor-pointer">Grades</li>
-          <li className="hover:underline cursor-pointer">People</li>
-          <li className="hover:underline cursor-pointer">Digital Materials</li>
-          <li className="hover:underline cursor-pointer">AEFIS Tools</li>
-          <li className="hover:underline cursor-pointer">Search</li>
-          <li className="hover:underline cursor-pointer">Course Survey</li>
-          <li className="hover:underline cursor-pointer">Library Resources</li>
+          <li><Link to={`/courses/${courseId}/people`} className="hover:underline">People</Link></li>
+          {/* <li className="hover:underline cursor-pointer">People</li> */}
+          <li><Link to={`/courses/${courseId}/digital`} className="hover:underline">Digital Materials</Link></li>
+          {/* <li className="hover:underline cursor-pointer">Digital Materials</li> */}
+          <li><Link to={`/courses/${courseId}/aefistools`} className="hover:underline">AEFIS Tools</Link></li>
+          {/* <li className="hover:underline cursor-pointer">AEFIS Tools</li> */}
+          {/* <li className="hover:underline cursor-pointer">Search</li> */}
+          <li><Link to={`/courses/${courseId}/survey`} className="hover:underline">Course Survey</Link></li>
+          {/* <li className="hover:underline cursor-pointer">Course Survey</li> */}
+          <li><Link to={`/courses/${courseId}/library`} className="hover:underline">Library Resources</Link></li>
+          {/* <li className="hover:underline cursor-pointer">Library Resources</li> */}
         </ul>
       </aside>
 

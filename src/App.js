@@ -15,6 +15,12 @@ import CourseZoom from './Pages/CourseDetailsFolder/CourseDetailsZoom'
 import CourseAttendance from "./Pages/CourseDetailsFolder/CourseDetailsAttendance";
 import CourseAssignments from "./Pages/CourseDetailsFolder/CourseDetailsAssignments";
 import CourseQuizzes from "./Pages/CourseDetailsFolder/CourseDetailsQuizzes";
+import CourseDetailsDiscussions from "./Pages/CourseDetailsFolder/CourseDetailsDiscussions";
+import CourseDetailsPeople from "./Pages/CourseDetailsFolder/CourseDetailsPeople";
+import CourseDetailsDigitalMaterial from "./Pages/CourseDetailsFolder/CourseDetailsDigitalMaterials";
+import CourseDetailsAEFISTools from "./Pages/CourseDetailsFolder/CourseDetailsAEFIS";
+import CourseDetailsSurvey from "./Pages/CourseDetailsFolder/CourseDetailsSurvey";
+import CourseDetailsLibraryResources from "./Pages/CourseDetailsFolder/CourseDetailsLibrary";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +48,12 @@ const router = createBrowserRouter([
           { path: "attendance", element: <CourseAttendance /> },  // this becomes /courses/:courseId/attendance  CourseAssignments
           { path: "assignment", element: <CourseAssignments /> },  // this becomes /courses/:courseId/assignment  CourseAssignments
           { path: "quizzes", element: <CourseQuizzes /> },  // this becomes /courses/:courseId/assignment  CourseAssignments
+          { path: "discussions", element: <CourseDetailsDiscussions /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
+          { path: "people", element: <CourseDetailsPeople /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
+          { path: "digital", element: <CourseDetailsDigitalMaterial /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
+          { path: "aefistools", element: <CourseDetailsAEFISTools /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
+          { path: "survey", element: <CourseDetailsSurvey /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
+          { path: "library", element: <CourseDetailsLibraryResources /> },  // this becomes /courses/:courseId/discussions  CourseAssignments
         ],
        },
 ]);
