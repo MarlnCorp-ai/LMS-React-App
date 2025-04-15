@@ -7,6 +7,8 @@ import OrganizationPricing from "./Pages/Pricing/OrganizationPricing";
 import SkillsAssessmentPage from "./Pages/SkillsAssessmentPage";
 import CourseDashboard from "./Pages/Course/CourseDashboard";
 import CourseContent from "./Pages/Course/CourseContent";
+import LearningPaths from "./Pages/LearningPaths";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
         element: <OrganizationPricing />,
       },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
+      { path: "/learning-paths", element: <LearningPaths /> },
+
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
