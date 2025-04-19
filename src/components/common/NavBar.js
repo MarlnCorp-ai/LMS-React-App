@@ -454,6 +454,39 @@ function Navbar() {
                   keyboard_arrow_down
                 </span>
               </div>
+              <div className={styles.dropdownContent}>
+                <div className={styles.dropdownColumn}>
+                  <p>
+                  <Link
+                      to="/about"
+                      // className={styles["dropdown-link"]}
+                    >
+                    About                  
+                  </Link>
+                  <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    <span>Careers</span>
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    <span>Contact Us</span>
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
+                    <span>Support</span>
+                    <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                </div>
+              </div>
 
               <div className={styles.dropdownContent}>
                 {/* Add your Services dropdown content here */}
