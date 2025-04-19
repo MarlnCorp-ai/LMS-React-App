@@ -14,7 +14,9 @@ import EthicalHacking from "./components/Exams/EthicalHacking.js";
 import NetSecFund from "./components/Exams/NetSecFund.js";
 import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
 import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
-import { RegisterPage } from "./Pages/RegisterPage";
+import RegisterPage from "./Pages/RegisterPage";
+import AboutUs from "./components/company/aboutUs";
+
 const router = createHashRouter([
   {
     path: "/",
@@ -29,6 +31,7 @@ const router = createHashRouter([
         element: <OrganizationPricing />,
       },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
+      { path: "/about", element: <AboutUs /> },
       { path: "/learning-paths", element: <LearningPaths /> },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
       { path: "/mcq", element: <MCQ /> },
