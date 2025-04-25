@@ -1,4 +1,8 @@
 import React from "react";
+import pic1 from "../../images/about/img1.jpeg";
+import pic2 from "../../images/about/img2.jpeg"
+import pic3 from "../../images/about/img3.jpeg";
+import pic4 from "../../images/about/img4.jpeg";
 
 const NewsCard = ({ source, title, date }) => (
   <div className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
@@ -19,7 +23,6 @@ const ClaimCard = ({ icon, alt, description }) => (
 );
 
 const AboutUs = () => {
-  
   const newsArticles = [
     {
       source: "Business Insider",
@@ -52,26 +55,96 @@ const AboutUs = () => {
       date: "Apr 17, 2025",
     },
   ];
+
   return (
-    
     <div className="bg-white text-gray-800">
-      
-      <section className="bg-[#1a1c2c] text-white py-20 text-center px-6">
-  <div>
-    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 max-w-3xl mx-auto leading-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">
-      Transforming Learning Experiences with AI-powered Innovation
-    </h1>
-    <p className="text-lg sm:text-xl max-w-2xl mx-auto text-gray-300">
-      NexusHive by Marln Corp — where intelligent automation meets intuitive design for enterprise learning.
-      Empowering organizations with smart, scalable, and innovative solutions.
+
+<section
+      className="relative bg-cover bg-center bg-no-repeat py-20 text-center px-6"
+      style={{ backgroundImage: `url(${pic4
+
+
+
+
+
+
+        
+      })` }}
+    >
+
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      <div className="relative z-10 text-white">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 max-w-3xl mx-auto leading-tight">
+          Transforming Learning Experiences with AI-powered Innovation
+        </h1>
+        <p className="text-lg sm:text-xl max-w-2xl mx-auto text-white">
+          NexusHive by Marln Corp — where intelligent automation meets intuitive design for enterprise learning.
+          Empowering organizations with smart, scalable, and innovative solutions.
+        </p>
+        <div className="mt-8">
+          <a
+            href="#cta"
+            className="inline-block bg-pink-600 text-white font-semibold px-8 py-4 rounded-full hover:bg-pink-700 transition duration-300 transform hover:scale-105"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 py-20 px-6 max-w-7xl mx-auto">
+  <div className="space-y-4">
+    <h2 className="text-black text-xl font-semibold">Our Mission</h2> 
+    <h3 className="text-3xl font-bold">Empowering organizations through next-gen learning</h3>
+    <p>
+      NexusHive is an AI-powered Learning Management System (LMS) developed by Marln Corp Consulting, a
+      women-owned IT consulting firm based in the San Francisco Bay Area. Designed to transform digital
+      learning experiences, NexusHive combines intelligent automation with user-friendly design to streamline
+      training, engagement, and knowledge delivery across organizations.
     </p>
-    <div className="mt-8">
-      <a
-        href="#cta"
-        className="inline-block bg-pink-600 text-white font-semibold px-8 py-4 rounded-full hover:bg-pink-700 transition duration-300 transform hover:scale-105"
-      >
-        Get Started
-      </a>
+  </div>
+  <div>
+    <img
+      src={pic1}
+      alt="AI Learning Illustration"
+      className="rounded-xl shadow-lg"
+    />
+  </div>
+</section>
+
+
+<section className="bg-white text-gray-800 py-20 px-6">
+  <div className="text-center mb-16">
+    <h2 className="text-3xl font-bold">NexusHive at a Glance</h2>
+  </div>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center max-w-7xl mx-auto">
+    <div className="bg-indigo-100 text-indigo-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">1,000+</h3>
+      <p className="text-sm">corporate users onboarded</p>
+    </div>
+    <div className="bg-blue-100 text-blue-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">95%</h3>
+      <p className="text-sm">satisfaction rate from learners</p>
+    </div>
+    <div className="bg-cyan-100 text-cyan-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">20+</h3>
+      <p className="text-sm">industries served</p>
+    </div>
+    <div className="bg-sky-100 text-sky-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">4</h3>
+      <p className="text-sm">global delivery hubs</p>
+    </div>
+    <div className="bg-emerald-100 text-emerald-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">300+</h3>
+      <p className="text-sm">active enterprise learners daily</p>
+    </div>
+    <div className="bg-pink-100 text-pink-600 p-8 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
+      <h3 className="text-3xl font-bold">100%</h3>
+      <p className="text-sm">client retention last year</p>
     </div>
   </div>
 </section>
@@ -79,61 +152,9 @@ const AboutUs = () => {
 
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10 py-20 px-6 max-w-7xl mx-auto">
-        <div className="space-y-4">
-          <h2 className="text-pink-600 font-semibold">Our Mission</h2>
-          <h3 className="text-3xl font-bold">Empowering organizations through next-gen learning</h3>
-          <p>
-            NexusHive is an AI-powered Learning Management System (LMS) developed by Marln Corp Consulting, a
-            women-owned IT consulting firm based in the San Francisco Bay Area. Designed to transform digital
-            learning experiences, NexusHive combines intelligent automation with user-friendly design to streamline
-            training, engagement, and knowledge delivery across organizations.
-          </p>
-        </div>
         <div>
           <img
-            src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1000&q=80"
-            alt="AI Learning Illustration"
-            className="rounded-xl shadow-lg"
-          />
-        </div>
-      </section>
-
-      <section className="bg-[#151030] text-white py-20 px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">NexusHive at a Glance</h2>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center max-w-6xl mx-auto">
-          <div>
-            <h3 className="text-red-400 text-2xl font-bold">1,000+</h3>
-            <p className="text-sm">corporate users onboarded</p>
-          </div>
-          <div>
-            <h3 className="text-blue-400 text-2xl font-bold">95%</h3>
-            <p className="text-sm">satisfaction rate from learners</p>
-          </div>
-          <div>
-            <h3 className="text-cyan-400 text-2xl font-bold">20+</h3>
-            <p className="text-sm">industries served</p>
-          </div>
-          <div>
-            <h3 className="text-sky-400 text-2xl font-bold">4</h3>
-            <p className="text-sm">global delivery hubs</p>
-          </div>
-          <div>
-            <h3 className="text-emerald-400 text-2xl font-bold">300+</h3>
-            <p className="text-sm">active enterprise learners daily</p>
-          </div>
-          <div>
-            <h3 className="text-pink-400 text-2xl font-bold">100%</h3>
-            <p className="text-sm">client retention last year</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 py-20 px-6 max-w-7xl mx-auto">
-        <div>
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            src={pic2}
             alt="Consulting Team"
             className="rounded-xl shadow-lg"
           />
@@ -186,59 +207,29 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <section className="bg-[#1b1c44] text-white py-20 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-10">Claims to Fame</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-          <ClaimCard
-            icon="https://img.icons8.com/color/48/fortune-cookie.png"
-            alt="Fortune 100"
-            description="Named a 2020 Fortune 100 Best Companies to Work For®"
-          />
-          <ClaimCard
-            icon="https://img.icons8.com/color/48/computer-support.png"
-            alt="Tech Workplace"
-            description="Ranked No. 10 on FORTUNE's Best Workplaces in Technology 2020 List"
-          />
-          <ClaimCard
-            icon="https://img.icons8.com/color/48/woman-profile.png"
-            alt="Best for Women"
-            description="Named a 2020 Best Workplace for Women by Great Place to Work® and FORTUNE"
-          />
-          <ClaimCard
-            icon="https://img.icons8.com/color/48/family.png"
-            alt="Best for Parents"
-            description="Named a 2020 Best Workplace for Parents by Great Place to Work®"
-          />
-          <ClaimCard
-            icon="https://img.icons8.com/color/48/millennial.png"
-            alt="Best for Millennials"
-            description="Named a 2020 Best Workplace for Millennials by Great Place to Work® and FORTUNE"
-          />
-        </div>
-        <div className="mt-10">
-          <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full transition">
-            View all our awards
-          </button>
-        </div>
-      </section>
 
-      <section className="bg-white text-gray-800 py-20 px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">In the News</h2>
-          <p className="text-sm text-gray-500">Recent press releases, news coverage, and more.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {newsArticles.map((article, idx) => (
-            <NewsCard key={idx} {...article} />
-          ))}
-        </div>
-        <div className="text-center mt-10">
-          <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full transition">
-            Visit the newsroom
-          </button>
-        </div>
-      </section>
-      
+   
+
+
+<section className="bg-[#f7f9fc] text-gray-800 py-20 px-6">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold mb-4 text-gray-900">In the News</h2>
+    <p className="text-sm text-gray-600">Recent press releases, news coverage, and more.</p>
+  </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {newsArticles.map((article, idx) => (
+      <div key={idx} className="transition-transform transform hover:scale-105 hover:shadow-xl">
+        <NewsCard {...article} />
+      </div>
+    ))}
+  </div>
+  <div className="text-center mt-10">
+    <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-full transition duration-300 transform hover:scale-105">
+      Visit the newsroom
+    </button>
+  </div>
+</section>
+
     </div>
   );
 };
