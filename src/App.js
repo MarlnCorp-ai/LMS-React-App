@@ -10,9 +10,14 @@ import CourseContent from "./Pages/Course/CourseContent";
 import LearningPaths from "./Pages/LearningPaths";
 import AboutUs from "./components/company/aboutUs";
 import TeamProfile from "./components/company/TeamProfile";
+import MCQ from "./components/Exams/MCQ";
+import LabSearch from "./components/Exams/LabSearch.js";
+import EthicalHacking from "./components/Exams/EthicalHacking.js";
+import NetSecFund from "./components/Exams/NetSecFund.js";
+import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
+import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
 
 const router = createHashRouter([
-
   {
     path: "/",
     element: <MainLayout />,
@@ -29,7 +34,15 @@ const router = createHashRouter([
       { path: "/about", element: <AboutUs /> },
       { path: "/team", element: <TeamProfile /> },
       { path: "/learning-paths", element: <LearningPaths /> },
+      { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
+      { path: "/mcq", element: <MCQ /> },
+      { path: "/Search", element: <LabSearch />},
+      { path: "/EthicalHacking", element: <EthicalHacking />},
+      { path: "/NetworkSecurityFundamentals", element: <NetSecFund />},
+      { path: "/CyberCloudEnv", element: <CyberCloudEnv />},
+      { path: "/AdvPenTesting", element: <AdvPenTesting />
 
+      }
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
