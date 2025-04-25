@@ -9,6 +9,7 @@ import CourseDashboard from "./Pages/Course/CourseDashboard";
 import CourseContent from "./Pages/Course/CourseContent";
 import LearningPaths from "./Pages/LearningPaths";
 import AboutUs from "./components/company/aboutUs";
+import TeamProfile from "./components/company/TeamProfile";
 
 const router = createHashRouter([
 
@@ -26,6 +27,7 @@ const router = createHashRouter([
       },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
       { path: "/about", element: <AboutUs /> },
+      { path: "/team", element: <TeamProfile /> },
       { path: "/learning-paths", element: <LearningPaths /> },
 
     ],

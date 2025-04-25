@@ -466,6 +466,17 @@ function Navbar() {
                     </span>
                   </p>
                   <p>
+                  <Link
+                      to="/team"
+                      // className={styles["dropdown-link"]}
+                    >
+                    Team Profile                  
+                  </Link>
+                  <span class="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </p>
+                  <p>
                     <span>Careers</span>
                     <span class="material-symbols-outlined">
                       keyboard_arrow_right
