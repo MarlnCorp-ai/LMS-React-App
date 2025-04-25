@@ -16,6 +16,7 @@ import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
 import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
 import RegisterPage from "./Pages/RegisterPage";
 import AboutUs from "./components/company/aboutUs";
+import TeamProfile from "./components/company/TeamProfile";
 
 const router = createHashRouter([
   {
@@ -32,6 +33,7 @@ const router = createHashRouter([
       },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
       { path: "/about", element: <AboutUs /> },
+      { path: "/team", element: <TeamProfile /> },
       { path: "/learning-paths", element: <LearningPaths /> },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
       { path: "/mcq", element: <MCQ /> },
