@@ -14,6 +14,7 @@ import EthicalHacking from "./components/Exams/EthicalHacking.js";
 import NetSecFund from "./components/Exams/NetSecFund.js";
 import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
 import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
+import { RegisterPage } from "./Pages/RegisterPage";
 const router = createHashRouter([
   {
     path: "/",
@@ -35,9 +36,9 @@ const router = createHashRouter([
       { path: "/EthicalHacking", element: <EthicalHacking />},
       { path: "/NetworkSecurityFundamentals", element: <NetSecFund />},
       { path: "/CyberCloudEnv", element: <CyberCloudEnv />},
-      { path: "/AdvPenTesting", element: <AdvPenTesting />
-
-      }
+      { path: "/AdvPenTesting", element: <AdvPenTesting />},
+      { path: "/register", element: <RegisterPage />},
+      
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
