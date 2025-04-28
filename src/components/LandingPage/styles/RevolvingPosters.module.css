@@ -35,8 +35,8 @@
   .image-container img {
     display: inline-block;
     margin-right: 50px;
-    height: 105px;
-    width: 150px;
+    height: 120px;
+    width: 180px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 1px 1px 1px 1px rgb(200, 200, 200, 0.6);
@@ -45,9 +45,9 @@
   
   @keyframes scrollImages {
     0% {
-        transform: translateX(100%);
+        transform: translateX(5%);
       }
       100% {
-        transform: translateX(-40%); 
+        transform: translateX(-100%); 
       }
   }

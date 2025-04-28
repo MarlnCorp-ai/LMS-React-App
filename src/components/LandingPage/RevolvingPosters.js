@@ -12,6 +12,15 @@ import python_logo from "../../images/LandingPage/python logo.jpg";
 import snowflake from "../../images/LandingPage/snowflake.png";
 import aws_partner from "../../images/LandingPage/AWS-partner.png";
 import databricks_partner from "../../images/LandingPage/Databricks-partner.png";
+import googleCloud from "../../images/LandingPage/logos/1.png";
+import comptiaA from "../../images/LandingPage/logos/2.png";
+import comptiaCASP from "../../images/LandingPage/logos/3.png";
+import comptiaCloud from "../../images/LandingPage/logos/4.png";
+import ibm from "../../images/LandingPage/logos/5.png";
+import kubernetes from "../../images/LandingPage/logos/6.png";
+import azureDevOps from "../../images/LandingPage/logos/7.png";
+import DevOps from "../../images/LandingPage/logos/8.png";
+import github from "../../images/LandingPage/logos/9.png";
 
 function RevolvingPosters() {
 
@@ -38,7 +47,44 @@ function RevolvingPosters() {
     {
         source: python_logo,
         altText: "Python Certification"
-    }];
+    },
+    {
+        source: googleCloud,
+        altText: "Google Cloud"
+    },
+    {
+        source: comptiaA,
+        altText: "CompTIA A+"
+    },
+    {
+        source: comptiaCASP,
+        altText: "CompTIA CASP+"
+    },
+    {
+        source: comptiaCloud,
+        altText: "CompTIA Cloud+"
+    },
+    {
+        source: ibm,
+        altText: "IBM"
+    },
+    {
+        source: kubernetes,
+        altText: "Kubernetes"
+    },
+    {
+        source: azureDevOps,
+        altText: "Azure DevOps"
+    },
+    {
+        source: DevOps,
+        altText: "DevOps"
+    },
+    {
+        source: github,
+        altText: "GitHub"
+    }
+];
 
     const partners = [{
         source: automation_anywhere,
@@ -59,11 +105,8 @@ function RevolvingPosters() {
     {
         source: aws_partner,
         altText: "AWS"
-    },
-    {
-        source: databricks_partner,
-        altText: "Databricks"
-    }];
+    }
+];
 
   return (
     <Fragment>
