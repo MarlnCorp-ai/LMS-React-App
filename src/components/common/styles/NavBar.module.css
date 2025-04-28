@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 12px;
-    background: linear-gradient(to right, #fff, #b299ff); 
+    background: linear-gradient(to right, #fff, #DCC1F7); 
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     position: relative;
     height: 110px;
@@ -97,7 +97,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, #6B73FF, #A197F2);
+    background: linear-gradient(135deg, #a297f269, #A197F2);
     border: none;
     border-radius: 8px;
     cursor: pointer;

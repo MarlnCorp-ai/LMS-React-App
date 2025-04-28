@@ -11,13 +11,13 @@ function MainBanner() {
             <p className="text-lg">Enhance productivity with interactive learning tailored to your business needs.</p>
             <Button>Book a demo</Button>
         </section>
-        <section className="flex flex-col items-center mx-auto justify-center">
+        {/* <section className="flex flex-col items-center mx-auto justify-center">
             <div className="flex gap-12">
                 <img src={job1} alt="Job 1" className="h-[25rem]"/>
                 <img src={job2} alt="Job 2" className="h-[25rem]"/>
             </div>
             <img src={job3} alt="Job 3" className="h-[25rem]"/>
-        </section>
+        </section> */}
   </div>
 }
 
