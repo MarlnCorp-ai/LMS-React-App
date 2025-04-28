@@ -69,7 +69,7 @@ function SideBar() {
         ]
     ];
   return (
-    <aside className="flex flex-col justify-between items-center h-screen p-4 bg-gradient-to-b from-[#DBC1F2] to-purple-grad rounded-r-lg shadow-lg shadow-yellow-900">
+    <aside className="flex flex-col justify-between items-center w-80 h-screen p-4 rounded-r-lg shadow-lg">
       <section>
         <header className="flex ">
           <img src={companylogo} alt="Company Logo" className="w-16 h-16" />
