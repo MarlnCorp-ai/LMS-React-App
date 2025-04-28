@@ -177,7 +177,7 @@ function SideBar() {
     },
   ];
   return (
-    <div className="flex flex-col gap-2 fixed right-0 top-0 w-[30rem] h-screen divide-y divide-black bg-purple-200">
+    <div className="flex flex-col gap-2 fixed right-0 top-0 w-[30rem] h-screen divide-y divide-black bg-white shadow-lg">
       <header className="flex flex-col gap-12 px-8 py-6">
         <section className="flex justify-between">
           <span class="material-symbols-outlined">keyboard_tab</span>
