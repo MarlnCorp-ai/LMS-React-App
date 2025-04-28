@@ -18,6 +18,13 @@ import RegisterPage from "./Pages/RegisterPage";
 import AboutUs from "./components/company/aboutUs";
 import TeamProfile from "./components/company/TeamProfile";
 
+import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
+import Payment from "./Pages/Checkout/Payment";
+import Certifications from "./Pages/Certifications";
+import PythonLabPage from "./Pages/Lab/pythonLabPage";
+import Home from "./Pages/Lab/Home";
+import SageAIPage from "./Pages/SageAIPage";
+import CoursePage from "./Pages/Course/CoursePage";
 const router = createHashRouter([
   {
     path: "/",
@@ -47,7 +54,14 @@ const router = createHashRouter([
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
-  { path: "/courses/1/player", element: <CourseContent /> }
+  { path: "/courses/1/player", element: <CourseContent /> },
+  { path: "/courses/1", element: <CoursePage />},
+  { path: "/buy", element: <IndividualCheckout /> },
+  { path: "/payment", element: <Payment /> },
+  { path: "/certifications", element: <Certifications /> },
+  { path: "/lab", element: <Home /> },
+  { path: "/lab/workspace", element: <PythonLabPage /> },
+  { path: "/sage", element: <SageAIPage /> },
 ]);
 
 function App() {
