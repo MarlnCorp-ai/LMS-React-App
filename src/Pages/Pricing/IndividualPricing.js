@@ -46,7 +46,7 @@ function generatePrimaryPlan(
           <p className="text-[#8C52FF] text-sm font-medium mb-2">
             <span>🛍️</span>50% off first year
           </p>
-          <Link to={`/buy?currency=${symbol}&amount=${price}`}>
+          <Link to={`/buy?currency=${symbol}&amount=${price}&role=individual`}>
             <button className="text-white bg-purple-grad rounded-full w-full h-9 font-light text-sm">
               Buy now
             </button>
@@ -129,7 +129,7 @@ function generateSecondaryPlan(
         <p className="text-[#8C52FF] text-sm font-medium mb-2">
           <span className="mr-1">🛍️</span>50% off first year
         </p>
-        <Link to={`/buy?currency=${symbol}&amount=${price}`}>
+        <Link to={`/buy?currency=${symbol}&amount=${price}&role=individual`}>
           <button className="text-white bg-purple-grad rounded-full w-full h-9 font-light text-sm">
             Buy now
           </button>

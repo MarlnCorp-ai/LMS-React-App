@@ -11,109 +11,11 @@ import progress1 from "../../images/CheckoutPage/progress-1.png";
 import progress2 from "../../images/CheckoutPage/progress-2.png";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
-
-function getStage(step, progress) {
-  return progress === step
-    ? "active"
-    : progress > step
-    ? "completed"
-    : "inactive";
-}
-
-function CheckoutPage() {
-  // let [activeProgress, setProgress] = useState(1);
-
-  // const handleProgress = step => {
-  //     setProgress(step);
-  // }
-  // const stages = ["Account", "Payment", "Review"]
-
-  let [image1, setImage1] = useState(accountdetails1);
-  let [image2, setImage2] = useState(payment1);
-  let [image3, setImage3] = useState(progress1);
-
-  const handleImage1 = () => {
-    setImage1((state) =>
-      state === accountdetails1 ? accountdetails2 : accountdetails1
-    );
-    setImage3(progress1);
-  };
-
-  const handleImage2 = () => {
-    setImage2((state) => (state === payment1 ? payment2 : payment1));
-    setImage3(progress2);
-  };
-
-  return (
-    <Fragment>
-      <header>
-        <div className="flex">
-          <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
-          <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
-            <p className="text-4xl font-bold">NexusHive</p>
-            <p className="text-[0.9rem] uppercase font-bold">
-              keep learning, keep buzzing
-            </p>
-          </section>
-        </div>
-      </header>
-      {/* <main>
-        <header>
-            <Progress step={activeProgress}/>
-        </header>
-        <main>
-            <AccountDetails stage={1} progress={getStage(1, activeProgress)} handleProgress={handleProgress} role="individual" />
-            <Payment stage={2} progress={getStage(2, activeProgress)} handleProgress={handleProgress} />
-            <Review stage={3} progress={getStage(3, activeProgress)} handleProgress={handleProgress} role="individual"/>
-        </main>
-        <aside>
-            <Summary />
-        </aside>
-      </main> */}
-
-      <main className="flex flex-col gap-4 items-center">
-        <img src={image3} alt="Progress" />
-        <main className="flex gap-12 my-16 items-start justify-center">
-          <section className="flex flex-col gap-8">
-            <img
-              src={image1}
-              alt="Account details"
-              onClick={handleImage1}
-              className="rounded-md"
-            />
-            <img
-              src={image2}
-              alt="Payment"
-              onClick={handleImage2}
-              className="rounded-md"
-            />
-            <img
-              src={review1}
-              alt="Review and confirm"
-              className="rounded-md"
-            />
-          </section>
-          <img src={summary} alt="Summary" className="rounded-md" />
-        </main>
-      </main>
-      <footer className="flex gap-8 text-[#6B6C6D] text-sm ml-80">
-        <p>
-          Copyright &copy; 2024-2025 Marln Corporation LLC. All rights reserved.
-        </p>
-        <Link to="">
-          <p className="underline">Privacy Policy</p>
-        </Link>
-        <Link to="">
-          <p className="underline">Terms of Use</p>
-        </Link>
-      </footer>
-    </Fragment>
-  );
-}
 
 function DelayedLink({ step, children }) {
   if (step < 3) return <Link>{children}</Link>;
@@ -130,6 +32,8 @@ export default function Checkout() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [company, setCompany] = useState("");
 
   const [cardNumber, setCardNumber] = useState("");
@@ -139,11 +43,13 @@ export default function Checkout() {
 
   // ERROR MESSAGES
   const [errors, setErrors] = useState({});
+  const { register, registeredUsers } = useAuth();
 
   const query = useQuery();
 
   const currency = query.get("currency") || "$";
   const amount = query.get("amount") || "100";
+  const role = query.get("role") || "individual";
 
   // DYNAMIC PROGRESS (1 -> 3)
   const totalSteps = 3;
@@ -169,9 +75,47 @@ export default function Checkout() {
       tempErrors.email = "Email is required";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email.trim())) {
       tempErrors.email = "Email is invalid";
+    } else {
+      const emailAddress = email.trim();
+      const emailExists = registeredUsers.some(
+        (user) => user.email.toLowerCase() === emailAddress
+      );
+      if (emailExists) {
+        tempErrors.email = "Email ID already exists!";
+      }
     }
 
-    // company is optional; no validation needed
+    if (!password.trim()) {
+      tempErrors.password = "Password is required";
+    } else if (password.trim().length < 8) {
+      tempErrors.password = "Password must be at least 8 characters";
+    } else if (!/[A-Z]/.test(password)) {
+      tempErrors.password =
+        "Password must contain at least one uppercase letter";
+    } else if (!/[a-z]/.test(password)) {
+      tempErrors.password =
+        "Password must contain at least one lowercase letter";
+    } else if (!/[0-9]/.test(password)) {
+      tempErrors.password = "Password must contain at least one number";
+    } else if (!/[!@#$%^&*]/.test(password)) {
+      tempErrors.password =
+        "Password must contain at least one special character";
+    }
+
+    if (!confirmPassword.trim()) {
+      tempErrors.confirmPassword = "Confirm Password is required";
+    } else if (confirmPassword !== password) {
+      tempErrors.confirmPassword = "Passwords do not match";
+    }
+
+    if (role === "business") {
+      const companyName = company.trim();
+      if (!companyName) tempErrors.company = "Company Name is required";
+      else if (companyName.length < 2)
+        tempErrors.company = "Company Name must be at least 2 characters";
+      else if (companyName.length > 50)
+        tempErrors.company = "Company Name must be less than 50 characters";
+    }
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -206,6 +150,15 @@ export default function Checkout() {
     return Object.keys(tempErrors).length === 0;
   };
 
+  const handleUserRegistration = () => {
+    if (currentStep < 3) return;
+    const user = { email, firstName, lastName, role, password };
+    const isRegistered = register(user);
+    if (!isRegistered) {
+      setErrors((prev) => ({ ...prev, login: "Invalid email or password!" }));
+    }
+  };
+
   // STEP HANDLERS
   const handleNext = () => {
     if (currentStep === 1) {
@@ -220,6 +173,7 @@ export default function Checkout() {
       }
     } else {
       // Step 3 => place order or finalize
+      handleUserRegistration();
       navigate("/payment");
       // ... any final submit logic
     }
@@ -232,7 +186,19 @@ export default function Checkout() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-100 p-4 flex flex-col">
+    <div className="w-full min-h-screen bg-gray-100 p-4 flex flex-col relative">
+      {errors.login && (
+        <div className="fixed top-4 inset-x-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2 z-50">
+          <span className="font-medium">{errors.login}</span>
+          <button
+            onClick={() => setErrors((prev) => ({ ...prev, login: undefined }))}
+            className="ml-4 text-white hover:text-gray-200 focus:outline-none"
+            aria-label="Dismiss error"
+          >
+            ✕
+          </button>
+        </div>
+      )}
       <header>
         <div className="flex">
           <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
@@ -339,7 +305,8 @@ export default function Checkout() {
                   {/* COMPANY (OPTIONAL) */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Company Name (Optional)
+                      Company Name{" "}
+                      {role !== "business" && <span>(Optional)</span>}
                     </label>
                     <input
                       type="text"
@@ -348,6 +315,43 @@ export default function Checkout() {
                       className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
                       placeholder="Company or Organization"
                     />
+                    {errors.company && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.company}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Password
+                    </label>
+                    <input
+                      type="text"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                    />
+                    {errors.password && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.password}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
+                    />
+                    {errors.confirmPassword && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.confirmPassword}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -543,8 +547,9 @@ export default function Checkout() {
                 className={`w-full text-white py-2 rounded-md text-sm ${
                   currentStep < 3
                     ? "bg-gray-400"
-                    : " bg-purple-grad hover:bg-blue-700 transition-colors"
+                    : " bg-purple-grad hover:bg-purple-700 transition-colors"
                 }`}
+                onClick={handleUserRegistration}
               >
                 Proceed to Payment
               </button>
@@ -553,7 +558,7 @@ export default function Checkout() {
         </div>
       </main>
       <footer className="flex gap-8 text-gray-500 text-sm border-t-2 pt-4 w-1/2 self-center fixed bottom-8">
-        <p>Copyright © 2004-2025 Pluralsight LLC. All rights reserved.</p>
+        <p>Copyright © 2024-{new Date().getFullYear()} Marln LMS. All rights reserved.</p>
         <Link className="hover:text-purple-grad">Privacy Policy</Link>
         <Link className="hover:text-purple-grad">Terms of Use</Link>
       </footer>
