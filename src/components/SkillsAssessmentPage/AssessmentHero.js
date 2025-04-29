@@ -10,12 +10,8 @@ const AssessmentHero = () => {
           <h1>Measure tech skills with confidence</h1>
           <p>Validate skills for hiring, upskilling and building world-class teams with role-based assessments designed by industry experts.</p>
           <div className="hero-buttons">
-            <Button text="Try a free assessment" primary={true} />
-            <Button text="Request demo" primary={false} />
+            <Button text="Try a free assessment" primary={true} >Test your skills</Button>
           </div>
-        </div>
-        <div className="hero-image">
-          <img src="/images/assessment-dashboard.png" alt="Skills assessment dashboard" />
         </div>
       </div>
     </section>

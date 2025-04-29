@@ -16,7 +16,7 @@ const container = {
 const LearningPaths = () => (
   <>
     <Header />
-    <main className="bg-gray-50 py-10">
+    <main className="bg-gray-100/20 py-10 h-screen">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-6">Paths</h2>
         <motion.div

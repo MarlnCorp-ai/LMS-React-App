@@ -21,7 +21,7 @@ const Header = () => {
       <nav className="border-b">
         <div className="max-w-7xl mx-auto px-4 py-2 flex gap-6 overflow-x-auto">
           {navItems.map((item, idx) => (
-            <button key={idx} className="text-sm text-gray-600 hover:text-pink-600 whitespace-nowrap">
+            <button key={idx} className="text-gray-600 hover:text-purple-300 whitespace-nowrap">
               {item}
             </button>
           ))}
