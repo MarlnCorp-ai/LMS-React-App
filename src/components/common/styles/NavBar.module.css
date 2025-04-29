@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 12px;
-    background: linear-gradient(to right, #fff, #DCC1F7); 
+    background: linear-gradient(to right, #fff); 
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     position: relative;
     height: 110px;
@@ -88,39 +88,12 @@
     position: relative;
   }
 
-
-
-  .button {
-    display: flex;
-    align-items: center;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #a297f269, #A197F2);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .button:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-
   .other-options > div {
     margin-left: 100px;
   }
 
   .other-options .dropdownContent {
-    left: 3rem;
+    left: 31rem;
     padding: 10px;
     width: 18rem;
   }

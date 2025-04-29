@@ -73,7 +73,6 @@ function Posters() {
       </header>
       <main className="flex flex-col gap-32 items-center">
         {posters.map((poster, idx) => Poster({ ...poster, idx }))}
-        <img src={poster4} alt="Poster4" />
         <img src={poster5} alt="Poster5" className="w-[65%]" />
       </main>
     </div>
