@@ -15,6 +15,41 @@ function SideBar() {
         link: "/courses",
       },
       {
+        name: "Business",
+        icon: "business",
+        link: "/business"
+    },
+    {
+        name: "Cloud",
+        icon: "cloud",
+        link: ""
+    },
+    {
+        name: "Data",
+        icon: "storage",
+        link: "/data"
+    },
+    {
+        name: "Generative AI",
+        icon: "smart_toy",
+        link: "/genai"
+    },
+    {
+        name: "IT Ops",
+        icon: "settings",
+        link: ""
+    },
+    {
+        name: "Security",
+        icon: "security",
+        link: ""
+    },
+    {
+        name: "Software Dev",
+        icon: "code",
+        link: "/softwaredev"
+    },
+      {
         name: "Browse",
         icon: "browse",
         link: "/courses",
