@@ -22,7 +22,7 @@ import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
 import Payment from "./Pages/Checkout/Payment";
 import Certifications from "./Pages/Certifications";
 import PythonLabPage from "./Pages/Lab/pythonLabPage";
-import Home from "./Pages/Lab/Home";
+import LabPage from "./Pages/Lab/LabPage.jsx";
 import SageAIPage from "./Pages/SageAIPage";
 import CoursePage from "./Pages/Course/CoursePage";
 const router = createHashRouter([
@@ -42,7 +42,6 @@ const router = createHashRouter([
       { path: "/about", element: <AboutUs /> },
       { path: "/team", element: <TeamProfile /> },
       { path: "/learning-paths", element: <LearningPaths /> },
-      { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
       { path: "/mcq", element: <MCQ /> },
       { path: "/Search", element: <LabSearch />},
       { path: "/EthicalHacking", element: <EthicalHacking />},
@@ -50,7 +49,7 @@ const router = createHashRouter([
       { path: "/CyberCloudEnv", element: <CyberCloudEnv />},
       { path: "/AdvPenTesting", element: <AdvPenTesting />},
       { path: "/register", element: <RegisterPage />},
-      
+      { path: "/lab", element: <LabPage /> }
     ],
   },
   { path: "/courses", element: <CourseDashboard /> },
@@ -59,7 +58,6 @@ const router = createHashRouter([
   { path: "/buy", element: <IndividualCheckout /> },
   { path: "/payment", element: <Payment /> },
   { path: "/certifications", element: <Certifications /> },
-  { path: "/lab", element: <Home /> },
   { path: "/lab/workspace", element: <PythonLabPage /> },
   { path: "/sage", element: <SageAIPage /> },
 ]);
