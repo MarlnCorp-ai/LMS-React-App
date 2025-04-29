@@ -6,6 +6,10 @@ import ErrorPage from "./Pages/ErrorPage";
 import OrganizationPricing from "./Pages/Pricing/OrganizationPricing";
 import SkillsAssessmentPage from "./Pages/SkillsAssessmentPage";
 import CourseDashboard from "./Pages/Course/CourseDashboard";
+import Business from "./Pages/Course/Business"; 
+import Data from "./Pages/Course/Data"; 
+import GenAI from "./Pages/Course/GenAI"; 
+import SoftwareDev from "./Pages/Course/SoftwareDev";
 import CourseContent from "./Pages/Course/CourseContent";
 import LearningPaths from "./Pages/LearningPaths";
 import MCQ from "./components/Exams/MCQ";
@@ -72,6 +76,10 @@ const router = createHashRouter([
       { path: "NetworkSecurityFundamentals", element: <NetSecFund /> },
       { path: "CyberCloudEnv", element: <CyberCloudEnv /> },
       { path: "AdvPenTesting", element: <AdvPenTesting /> },
+      { path: "/business", element: <Business /> },
+      { path: "/data", element: <Data /> },
+      { path: "/genai", element: <GenAI /> },
+      { path: "/softwaredev", element: <SoftwareDev /> },
     ],
   },
 ]);
