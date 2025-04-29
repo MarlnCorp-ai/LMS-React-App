@@ -1,31 +1,30 @@
 .assessment-hero {
-    background: linear-gradient(135deg, #B198FE 70%, #8d73ec 100%);
     color: white;
-    padding: 80px 0;
-  }
-  
-  .hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    height: 20rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
+
   
   .hero-content {
-    flex: 1;
-    max-width: 550px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
   }
   
   .hero-content h1 {
-    font-size: 3rem;
+    font-size: 56px;
+    font-weight: bold;
     margin-bottom: 20px;
     line-height: 1.2;
   }
   
   .hero-content p {
-    font-size: 1.2rem;
+    font-size: 20px;
     margin-bottom: 30px;
     line-height: 1.6;
   }
@@ -49,12 +48,10 @@
   }
   
   @media (max-width: 992px) {
-    .hero-container {
-      flex-direction: column;
-      text-align: center;
-    }
     
     .hero-content {
+        flex-direction: column;
+      text-align: center;
       margin-bottom: 40px;
     }
     

@@ -20,10 +20,10 @@ function LandingPage() {
         <section>
           <MainBanner />
         </section>
-        <section>
+        {/* <section>
           <RevolvingPosters />
-        </section>
-        <section>
+        </section> */}
+        <section className="mt-40">
           <Tutors />
         </section>
         <section>

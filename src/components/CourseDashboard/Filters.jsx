@@ -1,4 +1,4 @@
-function Filters() {
+function Filters({handleFilter}) {
   const filterOptions = [
     {
       label: "Libraries",
@@ -41,7 +41,7 @@ function Filters() {
       <header className="pb-2 text-base font-medium">{option.label}</header>
       <main className="pt-2 flex flex-col gap-2 text-gray-600">{option.subOptions.map((subOption, subIdx) => (
           <section key={`${index}-${subIdx}`}>
-              <input type="checkbox" name={subOption} className="mr-2"/>
+              <input type="checkbox" name={subOption} className="mr-2" category={option.label} onChange={handleFilter}/>
               <label htmlFor={subOption}>{subOption}</label>
           </section>    
       ))}</main>

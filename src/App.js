@@ -14,11 +14,23 @@ import EthicalHacking from "./components/Exams/EthicalHacking.js";
 import NetSecFund from "./components/Exams/NetSecFund.js";
 import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
 import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
-import  RegisterPage  from "./Pages/RegisterPage.js";
 import LoginPage from "./components/corporate/login.js"
 import TeamDashboard from "./components/corporate/ManagerDashboard.js";
 import Dashboard from "./components/corporate/Dashboard.js"
 import MyCourses from "./components/corporate/MyCourse.js"
+import RegisterPage from "./Pages/RegisterPage";
+import AboutUs from "./components/company/aboutUs";
+import TeamProfile from "./components/company/TeamProfile";
+import LoginPage from "./Pages/LoginPage";
+import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
+import Payment from "./Pages/Checkout/Payment";
+import Certifications from "./Pages/Certifications";
+import PythonLabPage from "./Pages/Lab/pythonLabPage";
+import LabPage from "./Pages/Lab/LabPage.jsx";
+import SageAIPage from "./Pages/SageAIPage";
+import CoursePage from "./Pages/Course/CoursePage";
+import PrivateRoute from "./components/common/PrivateRoute";
+
 const router = createHashRouter([
   {
     path: "/",
@@ -26,13 +38,14 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
     
     children: [
-      { path: "/", element: <LandingPage /> },
-      { path: "/individuals/pricing", element: <IndividualPricing /> },
-      { path: "/businesses/pricing", element: <OrganizationPricing /> },
+      { index: true, element: <LandingPage /> },
+      { path: "individuals/pricing", element: <IndividualPricing /> },
+      { path: "businesses/pricing", element: <OrganizationPricing /> },
       {
-        path: "/industries/public-sector/pricing",
+        path: "industries/public-sector/pricing",
         element: <OrganizationPricing />,
       },
+
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> },
       { path: "/learning-paths", element: <LearningPaths /> },
       { path: "/skills-assessment", element: <SkillsAssessmentPage /> }, 
@@ -51,7 +64,40 @@ const router = createHashRouter([
   },
   { path: "/courses", element: <CourseDashboard /> },
   { path: "/courses/1/player", element: <CourseContent /> },
-  
+      { path: "register", element: <RegisterPage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "about", element: <AboutUs /> },
+      { path: "team", element: <TeamProfile /> },
+      {
+        element: <PrivateRoute />,
+        children: [
+          { path: "skills-assessment", element: <SkillsAssessmentPage /> },
+          { path: "learning-paths", element: <LearningPaths /> },
+          { path: "Search", element: <LabSearch /> },
+          { path: "lab", element: <LabPage /> },
+        ],
+      },
+    ],
+  },
+
+  { path: "/buy", element: <IndividualCheckout /> },
+  { path: "/payment", element: <Payment /> },
+  {
+    element: <PrivateRoute />,
+    children: [
+      { path: "/courses", element: <CourseDashboard /> },
+      { path: "/courses/1/player", element: <CourseContent /> },
+      { path: "/courses/1", element: <CoursePage /> },
+      { path: "/certifications", element: <Certifications /> },
+      { path: "/lab/workspace", element: <PythonLabPage /> },
+      { path: "/sage", element: <SageAIPage /> },
+      { path: "mcq", element: <MCQ /> },
+      { path: "EthicalHacking", element: <EthicalHacking /> },
+      { path: "NetworkSecurityFundamentals", element: <NetSecFund /> },
+      { path: "CyberCloudEnv", element: <CyberCloudEnv /> },
+      { path: "AdvPenTesting", element: <AdvPenTesting /> },
+    ],
+  },
 ]);
 
 function App() {

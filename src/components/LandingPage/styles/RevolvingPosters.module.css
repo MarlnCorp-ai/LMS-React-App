@@ -1,53 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-.revolving-posters {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    margin-bottom: 100px;
-    background-color: rgb(244, 247, 250, 0.9);
-    width: 100%;
-    padding-top: 1.5rem;
-}
-
-.revolving-posters header
-{
+.revolvingPosters {
+    background: rgba(244,247,250,0.9);
+    padding: 2rem 0;
     text-align: center;
-    font-size: 16px;
-    margin-bottom: 50px;
-    font-family: "Mulish", sans-serif;
+    font-family: 'Mulish', sans-serif;
+  }
+  
+  .revolvingPosters header h2 {
+    font-size: 1.125rem;
     font-weight: 200;
-}
-
-.image-container {
-    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .slider {
+    display: flex;
+    gap: clamp(1rem, 5vw, 2rem);
     overflow: hidden;
-    white-space: nowrap;
+    /* animate the whole strip */
+    animation: scroll 20s linear infinite;
   }
-
-  .image-scroll-wrapper {
-    display: inline-block; 
-    animation: scrollImages 50s linear infinite; 
-    width: 100%;
-    margin-bottom: 20px;
+  .slider:hover {
+    animation-play-state: paused;
   }
   
-  .image-container img {
-    display: inline-block;
-    margin-right: 50px;
-    height: 105px;
-    width: 150px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px rgb(200, 200, 200, 0.6);
-    background-color: white
+  /* each poster */
+  .slider img {
+    flex: 0 0 auto;
+    max-width: 180px;
+    height: auto;
+    border-radius: 0.5rem;
+    background: #fff;
+    padding: 0.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .slider img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
   
-  @keyframes scrollImages {
-    0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-40%); 
-      }
+  /* keyframes scroll: move exactly one full set's width */
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
   }
+  

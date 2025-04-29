@@ -7,8 +7,7 @@ import R from "../images/R.jpg";
 
 const CreateAccountPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col">
-     
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col"> 
 
      <header className="w-full bg-white py-4 px-6 flex justify-between items-center shadow-md">
      <div className="flex items-center justify-center mb-3">
@@ -24,6 +23,7 @@ const CreateAccountPage = () => {
         </Link>
       </header>
 
+
       <main className="flex-grow flex flex-col items-center justify-center px-4 py-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-purple-800">
           Get Started with Nexus Hive
@@ -33,7 +33,7 @@ const CreateAccountPage = () => {
           
           <div className="bg-white text-black rounded-xl shadow-md p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
             <img
-              src={{OIP}}
+              src={OIP}
               alt="For Individuals"
               className="rounded-md w-full h-40 object-cover mb-4"
               onError={(e) => {
@@ -46,7 +46,7 @@ const CreateAccountPage = () => {
               Explore opportunities, grow your skills, and build confidence with hands-on coding and personalized learning.
             </p>
             <Link
-              to="/register/individual"
+              to="/individuals/pricing"
               className="block text-center bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-md font-medium transition"
             >
               View Individual Plan
@@ -55,7 +55,7 @@ const CreateAccountPage = () => {
 
           <div className="bg-white text-black rounded-xl shadow-md p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
             <img
-              src={{R}}
+              src={R}
               alt="For Organizations"
               className="rounded-md w-full h-40 object-cover mb-4"
               onError={(e) => {
@@ -68,7 +68,7 @@ const CreateAccountPage = () => {
               Empower your teams with technical upskilling, collaborative tools, and real-world learning experiences.
             </p>
             <Link
-              to="/register/org"
+              to="/businesses/pricing"
               className="block text-center bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-md font-medium transition"
             >
               View Team Plan

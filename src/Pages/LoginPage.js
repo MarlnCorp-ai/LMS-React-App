@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const { login } = useAuth();
+    const navigate = useNavigate();
+
 
   const validate = () => {
     const newErrors = {};
@@ -28,12 +32,31 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // TODO: Handle successful sign-in
+
       alert("Login successful (mock)");
     }
   };
 
   const handleInputChange = (e, type) => {
+
+      if (!login({ email, password })){
+        setErrors(prev => ({ ...prev, login: "Invalid email or password!" }));
+      }else {
+        navigate("/courses");
+      }
+
+    }
+  };
+
+  const closeLoginError = () => {
+    setErrors((prev) => {
+      const { login, ...rest } = prev;
+      return rest;
+    });
+  }
+
+  const handleInputChange = (e, type) => {
+    closeLoginError();
     const { value } = e.target;
     if (type === "email") {
       setEmail(value);
@@ -50,6 +73,7 @@ const LoginPage = () => {
 
   return (
     // <div className="min-h-screen bg-gradient-to-br from-[#f4f0fa] to-[#e5d9f2] text-black flex flex-col items-center justify-center px-4 py-6">
+
 <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col items-center justify-center px-4 py-6">
 
       <div className="absolute top-0 left-0 w-full flex flex-col items-center justify-center py-2">
@@ -66,6 +90,27 @@ const LoginPage = () => {
 
       {/* Sign in to your account text below hr */}
       <h2 className="text-3xl font-bold text-center text-purple-900 mb-8 mt-24">Sign in to your account</h2>
+
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col items-center justify-center px-4 py-6">
+      {errors.login && (
+        <div className="absolute top-32 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
+          <span className="font-medium">{errors.login}</span>
+          <button
+            onClick={closeLoginError}
+            className="ml-4 text-white hover:text-gray-200 focus:outline-none"
+            aria-label="Dismiss error"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+      
+
+      {/* Sign in to your account text below hr */}
+      <h2 className="text-3xl font-bold text-center text-purple-900 mb-8 mt-24">
+        Sign in to your account
+      </h2>
+
 
       {/* Login Form */}
       <form
@@ -116,11 +161,12 @@ const LoginPage = () => {
 
         {/* Links for forgot password and SSO */}
         <div className="text-sm text-purple-600 flex justify-between mt-4">
-          <a href="#" className="hover:underline flex items-center gap-1">
+          <a href="#" className="hover:underline flex items-center gap-3">
             <span className="text-xs text-purple-600">🔒</span> Forgot password?
           </a>
-          <a href="#" className="hover:underline flex items-center gap-1">
-            <span className="text-xs text-purple-600">🔑</span> Sign in with company or school (SSO)
+          <a href="#" className="hover:underline flex items-center gap-3">
+            <span className="text-xs text-purple-600">🔑</span> Sign in with
+            company or school (SSO)
           </a>
         </div>
 
@@ -163,11 +209,15 @@ const LoginPage = () => {
 
       {/* Footer */}
       <footer className="mt-10 text-sm text-gray-500 text-center">
-        © 2025 - {new Date().getFullYear()} Marln LMS. All rights reserved.
+        © 2024 - {new Date().getFullYear()} Marln LMS. All rights reserved.
         <div className="mt-2 space-x-2">
-          <a href="#" className="hover:underline">Terms of Use</a>
+          <a href="#" className="hover:underline">
+            Terms of Use
+          </a>
           <span>|</span>
-          <a href="#" className="hover:underline">Privacy Policy</a>
+          <a href="#" className="hover:underline">
+            Privacy Policy
+          </a>
         </div>
       </footer>
     </div>

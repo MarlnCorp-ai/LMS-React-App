@@ -1,0 +1,13 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle cx="22.5" cy="22.5" r="21.5" fill="#1A4D8F" stroke="#0A3A73" stroke-width="2"/>
+
+  <!-- Inner Analytics Bars -->
+  <rect x="12" y="25" width="4" height="12" fill="#F1511B"/>
+  <rect x="20" y="19" width="4" height="18" fill="#80CC28"/>
+  <rect x="28" y="15" width="4" height="22" fill="#00ADEF"/>
+  <rect x="36" y="11" width="4" height="26" fill="#FBBC09"/>
+
+  <!-- CAP Text -->
+  <text x="14" y="38" fill="white" font-size="8" font-family="Arial, sans-serif" font-weight="bold">CAP</text>
+</svg>

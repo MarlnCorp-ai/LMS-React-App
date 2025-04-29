@@ -46,9 +46,11 @@ function generatePrimaryPlan(
           <p className="text-[#8C52FF] text-sm font-medium mb-2">
             <span>🛍️</span>50% off first year
           </p>
-          <button className="text-white bg-[#8C52FF] rounded-full w-full h-9 font-light text-sm">
-            Buy now
-          </button>
+          <Link to={`/buy?currency=${symbol}&amount=${price}&role=individual`}>
+            <button className="text-white bg-purple-grad rounded-full w-full h-9 font-light text-sm">
+              Buy now
+            </button>
+          </Link>
         </main>
         <footer className="flex gap-4 text-sm font-semibold tracking-wide underline">
           <Link to="">
@@ -127,9 +129,11 @@ function generateSecondaryPlan(
         <p className="text-[#8C52FF] text-sm font-medium mb-2">
           <span className="mr-1">🛍️</span>50% off first year
         </p>
-        <button className="text-white bg-[#8C52FF] rounded-full w-full h-9 font-light text-sm">
-          Buy now
-        </button>
+        <Link to={`/buy?currency=${symbol}&amount=${price}&role=individual`}>
+          <button className="text-white bg-purple-grad rounded-full w-full h-9 font-light text-sm">
+            Buy now
+          </button>
+        </Link>
       </main>
       <footer className="flex gap-4 text-sm font-semibold tracking-wide underline">
         <Link to="">
@@ -256,7 +260,7 @@ function IndividualPricing() {
     "AI+",
     "Cloud+",
     "Data+",
-    "Security+"
+    "Security+",
   ];
 
   const handlePlanUpdate = ({ target }) => {
@@ -310,7 +314,7 @@ function IndividualPricing() {
           </h1>
           <section className=" w-3/4 flex justify-around">
             <aside className="">
-                <CountryDropdown handleCurrencyUpdate={handleCurrencyUpdate} />
+              <CountryDropdown handleCurrencyUpdate={handleCurrencyUpdate} />
             </aside>
             <p className="tracking-wider">
               Develop tech teams, build job-ready confidence. and accelerate
@@ -340,7 +344,11 @@ function IndividualPricing() {
           </div>
         </section>
         <section className="w-[62rem] h-[24rem] flex flex-col justify-start p-6 gap-8 bg-gradient-to-b from-purple-grad to-white rounded-3xl mx-auto mb-20 p-4 shadow shadow-2xl shadow-purple-300">
-          <ComparePlans planComparisonInfo={planComparisonInfo} handlePlanUpdate={handlePlanUpdate} planOptions={planOptions}/>
+          <ComparePlans
+            planComparisonInfo={planComparisonInfo}
+            handlePlanUpdate={handlePlanUpdate}
+            planOptions={planOptions}
+          />
         </section>
       </main>
     </Fragment>
