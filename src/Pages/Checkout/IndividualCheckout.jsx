@@ -9,12 +9,12 @@ import review1 from "../../images/CheckoutPage/review-1.png";
 import summary from "../../images/CheckoutPage/summary.png";
 import progress1 from "../../images/CheckoutPage/progress-1.png";
 import progress2 from "../../images/CheckoutPage/progress-2.png";
-import { useLocation } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
-  };
+  return new URLSearchParams(useLocation().search);
+};
 
 function getStage(step, progress) {
   return progress === step
@@ -76,16 +76,29 @@ function CheckoutPage() {
       </main> */}
 
       <main className="flex flex-col gap-4 items-center">
-        <img src={image3} alt="Progress"/>
+        <img src={image3} alt="Progress" />
         <main className="flex gap-12 my-16 items-start justify-center">
-        <section className="flex flex-col gap-8">
-          <img src={image1} alt="Account details" onClick={handleImage1} className="rounded-md"/>
-          <img src={image2} alt="Payment" onClick={handleImage2} className="rounded-md"/>
-          <img src={review1} alt="Review and confirm" className="rounded-md"/>
-        </section>
-        <img src={summary} alt="Summary" className="rounded-md"/>
+          <section className="flex flex-col gap-8">
+            <img
+              src={image1}
+              alt="Account details"
+              onClick={handleImage1}
+              className="rounded-md"
+            />
+            <img
+              src={image2}
+              alt="Payment"
+              onClick={handleImage2}
+              className="rounded-md"
+            />
+            <img
+              src={review1}
+              alt="Review and confirm"
+              className="rounded-md"
+            />
+          </section>
+          <img src={summary} alt="Summary" className="rounded-md" />
         </main>
-        
       </main>
       <footer className="flex gap-8 text-[#6B6C6D] text-sm ml-80">
         <p>
@@ -102,37 +115,35 @@ function CheckoutPage() {
   );
 }
 
-function DelayedLink({step, children})
-{
-    if(step < 3) return <Link>{children}</Link>;
+function DelayedLink({ step, children }) {
+  if (step < 3) return <Link>{children}</Link>;
 
-    return <Link to="/payment">{children}</Link>
+  return <Link to="/payment">{children}</Link>;
 }
-
-
 
 export default function Checkout() {
   // STEP STATE
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
 
   // FORM DATA
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [company, setCompany] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
 
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
-  const [cardName, setCardName] = useState('');
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [cardName, setCardName] = useState("");
 
   // ERROR MESSAGES
   const [errors, setErrors] = useState({});
 
   const query = useQuery();
-  
-  const currency = query.get('currency');
-  const amount = query.get('amount');
+
+  const currency = query.get("currency") || "$";
+  const amount = query.get("amount") || "100";
 
   // DYNAMIC PROGRESS (1 -> 3)
   const totalSteps = 3;
@@ -143,23 +154,21 @@ export default function Checkout() {
     let tempErrors = {};
 
     if (!firstName.trim()) {
-      tempErrors.firstName = 'First Name is required';
+      tempErrors.firstName = "First Name is required";
     } else if (firstName.trim().length < 2) {
-      tempErrors.firstName = 'First Name must be at least 2 characters';
+      tempErrors.firstName = "First Name must be at least 2 characters";
     }
 
     if (!lastName.trim()) {
-      tempErrors.lastName = 'Last Name is required';
+      tempErrors.lastName = "Last Name is required";
     } else if (lastName.trim().length < 2) {
-      tempErrors.lastName = 'Last Name must be at least 2 characters';
+      tempErrors.lastName = "Last Name must be at least 2 characters";
     }
 
     if (!email.trim()) {
-      tempErrors.email = 'Email is required';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email.trim())
-    ) {
-      tempErrors.email = 'Email is invalid';
+      tempErrors.email = "Email is required";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email.trim())) {
+      tempErrors.email = "Email is invalid";
     }
 
     // company is optional; no validation needed
@@ -172,25 +181,25 @@ export default function Checkout() {
     let tempErrors = {};
 
     if (!cardNumber.trim()) {
-      tempErrors.cardNumber = 'Card Number is required';
-    } else if (cardNumber.replace(/\s+/g, '').length < 16) {
-      tempErrors.cardNumber = 'Card Number must be at least 16 digits';
+      tempErrors.cardNumber = "Card Number is required";
+    } else if (cardNumber.replace(/\s+/g, "").length < 16) {
+      tempErrors.cardNumber = "Card Number must be at least 16 digits";
     }
 
     if (!expiryDate.trim()) {
-      tempErrors.expiryDate = 'Expiry Date is required';
+      tempErrors.expiryDate = "Expiry Date is required";
     } else if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate.trim())) {
-      tempErrors.expiryDate = 'Use format MM/YY';
+      tempErrors.expiryDate = "Use format MM/YY";
     }
 
     if (!cvv.trim()) {
-      tempErrors.cvv = 'CVV is required';
+      tempErrors.cvv = "CVV is required";
     } else if (!/^\d{3,4}$/.test(cvv.trim())) {
-      tempErrors.cvv = 'CVV must be 3 or 4 digits';
+      tempErrors.cvv = "CVV must be 3 or 4 digits";
     }
 
     if (!cardName.trim()) {
-      tempErrors.cardName = 'Name on Card is required';
+      tempErrors.cardName = "Name on Card is required";
     }
 
     setErrors(tempErrors);
@@ -211,7 +220,7 @@ export default function Checkout() {
       }
     } else {
       // Step 3 => place order or finalize
-      alert('Order placed successfully!');
+      navigate("/payment");
       // ... any final submit logic
     }
   };
@@ -223,13 +232,24 @@ export default function Checkout() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="w-full min-h-screen bg-gray-100 p-4 flex flex-col">
+      <header>
+        <div className="flex">
+          <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
+          <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
+            <p className="text-4xl font-bold">NexusHive</p>
+            <p className="text-[0.9rem] uppercase font-bold">
+              keep learning, keep buzzing
+            </p>
+          </section>
+        </div>
+      </header>
+      <main className="max-w-6xl self-center w-full">
         {/* PROGRESS BAR */}
-        <div className="flex items-center mb-6">
+        <div className="flex items-center mb-6 max-w-xl mx-auto">
           <div className="flex-1 h-2 bg-gray-300 rounded-full relative">
             <div
-              className="absolute h-2 rounded-full bg-blue-600 transition-all duration-300"
+              className="absolute h-2 rounded-full bg-purple-grad transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             ></div>
           </div>
@@ -245,7 +265,7 @@ export default function Checkout() {
             {/* STEP 1: ACCOUNT DETAILS */}
             <section
               className={`bg-white p-4 rounded-md shadow transition-all duration-300 ${
-                currentStep >= 1 ? 'opacity-100' : 'opacity-40'
+                currentStep >= 1 ? "opacity-100" : "opacity-40"
               }`}
             >
               {/* Header (always visible) */}
@@ -253,12 +273,14 @@ export default function Checkout() {
                 <span
                   className={`inline-block w-8 h-8 flex justify-center items-center text-white rounded-full mr-2 ${
                     currentStep === 1
-                      ? 'bg-blue-600'
+                      ? "bg-purple-grad"
                       : currentStep > 1
-                      ? 'bg-green-600'
-                      : 'bg-gray-400'
+                      ? "bg-purple-700"
+                      : "bg-gray-400"
                   }`}
-                >1</span>
+                >
+                  1
+                </span>
                 Account Details
               </h2>
               {currentStep === 1 && (
@@ -334,19 +356,21 @@ export default function Checkout() {
             {/* STEP 2: PAYMENT */}
             <section
               className={`bg-white p-4 rounded-md shadow transition-all duration-300 ${
-                currentStep >= 2 ? 'opacity-100' : 'opacity-40'
+                currentStep >= 2 ? "opacity-100" : "opacity-40"
               }`}
             >
               <h2 className="text-lg font-semibold mb-2 flex items-center">
                 <span
                   className={`inline-block w-8 h-8 flex justify-center items-center text-white rounded-full mr-2 ${
                     currentStep === 2
-                      ? 'bg-blue-600'
+                      ? "bg-purple-grad"
                       : currentStep > 2
-                      ? 'bg-green-600'
-                      : 'bg-gray-400'
+                      ? "bg-purple-700"
+                      : "bg-gray-400"
                   }`}
-                >2</span>
+                >
+                  2
+                </span>
                 Payment
               </h2>
               {currentStep === 2 && (
@@ -400,9 +424,7 @@ export default function Checkout() {
                       placeholder="3 or 4 digits"
                     />
                     {errors.cvv && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.cvv}
-                      </p>
+                      <p className="text-red-500 text-xs mt-1">{errors.cvv}</p>
                     )}
                   </div>
                   {/* NAME ON CARD */}
@@ -430,15 +452,17 @@ export default function Checkout() {
             {/* STEP 3: REVIEW & SUBMIT */}
             <section
               className={`bg-white p-4 rounded-md shadow transition-all duration-300 ${
-                currentStep >= 3 ? 'opacity-100' : 'opacity-40'
+                currentStep >= 3 ? "opacity-100" : "opacity-40"
               }`}
             >
               <h2 className="text-lg font-semibold mb-2 flex items-center">
                 <span
                   className={`inline-block w-8 h-8 flex justify-center items-center text-white rounded-full mr-2 ${
-                    currentStep === 3 ? 'bg-blue-600' : 'bg-gray-400'
+                    currentStep === 3 ? "bg-purple-grad" : "bg-gray-400"
                   }`}
-                >3</span>
+                >
+                  3
+                </span>
                 Review & Submit
               </h2>
               {currentStep === 3 && (
@@ -456,14 +480,14 @@ export default function Checkout() {
                   )}
                   <hr className="my-2" />
                   <div>
-                    <strong>Card Number:</strong> ending in{' '}
-                    {cardNumber.slice(-4) || '****'}
+                    <strong>Card Number:</strong> ending in{" "}
+                    {cardNumber.slice(-4) || "****"}
                   </div>
                   <div>
                     <strong>Name on Card:</strong> {cardName}
                   </div>
                   <div>
-                    <strong>Expiry Date:</strong> {expiryDate || 'MM/YY'}
+                    <strong>Expiry Date:</strong> {expiryDate || "MM/YY"}
                   </div>
                 </div>
               )}
@@ -475,7 +499,7 @@ export default function Checkout() {
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 transition-colors"
+                  className="bg-purple-grad text-white py-2 px-4 rounded hover:bg-purple-700 transition-colors"
                 >
                   Back
                 </button>
@@ -485,9 +509,9 @@ export default function Checkout() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                className="bg-purple-grad text-white py-2 px-4 rounded hover:bg-purple-700 transition-colors"
               >
-                {currentStep < 3 ? 'Next' : 'Place Order'}
+                {currentStep < 3 ? "Next" : "Place Order"}
               </button>
             </div>
           </div>
@@ -498,7 +522,9 @@ export default function Checkout() {
             <div className="border-b border-gray-200 pb-4 mb-4 space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-700">Subtotal</span>
-                <span className="font-medium">{currency} {amount}</span>
+                <span className="font-medium">
+                  {currency} {amount}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-700">Tax</span>
@@ -507,23 +533,32 @@ export default function Checkout() {
             </div>
             <div className="flex justify-between text-base font-semibold mb-4">
               <span>Total</span>
-              <span>{currency} {Number(amount.replace(/,/g, '')) + 8.35}</span>
+              <span>
+                {currency} {Number(amount.replace(/,/g, "")) + 8.35}
+              </span>
             </div>
             <DelayedLink step={currentStep}>
-            <button
-              type="button"
-              className={`w-full text-white py-2 rounded-md text-sm ${currentStep < 3 ? "bg-gray-400" : " bg-blue-600 hover:bg-blue-700 transition-colors"}`}
-            >
-              Proceed to Payment
-            </button>
+              <button
+                type="button"
+                className={`w-full text-white py-2 rounded-md text-sm ${
+                  currentStep < 3
+                    ? "bg-gray-400"
+                    : " bg-purple-grad hover:bg-blue-700 transition-colors"
+                }`}
+              >
+                Proceed to Payment
+              </button>
             </DelayedLink>
           </aside>
         </div>
-      </div>
+      </main>
+      <footer className="flex gap-8 text-gray-500 text-sm border-t-2 pt-4 w-1/2 self-center fixed bottom-8">
+        <p>Copyright © 2004-2025 Pluralsight LLC. All rights reserved.</p>
+        <Link className="hover:text-purple-grad">Privacy Policy</Link>
+        <Link className="hover:text-purple-grad">Terms of Use</Link>
+      </footer>
     </div>
   );
 }
-
-
 
 // export default CheckoutPage;

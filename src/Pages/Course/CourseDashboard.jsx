@@ -173,10 +173,10 @@ function CourseDashboard() {
 
   return (
     <div className="relative ">
-      <aside className="fixed top-0 left-0">
+      <aside className="fixed top-0 left-0 bg-white">
         <SideBar />
       </aside>
-      <main className="flex flex-col justify-between content-center bg-[#F4F7FA] h-full w-full gap-32 pb-12">
+      <main className="flex flex-col justify-between content-center bg-gray-200/20 h-full w-full gap-32 pb-12">
         <header className="w-full mt-28">
           <h1 className="text-center font-bold font-sans text-3xl max-w-[32rem] mx-auto leading-8">
             Thousands of courses authored by our network of industry experts
