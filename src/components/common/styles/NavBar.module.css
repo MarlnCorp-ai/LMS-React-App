@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     width: auto;
-    z-index: 5;
+    z-index: 10;
     padding: 20px;
     margin-top: 10px;
     border-radius: 25px;
@@ -84,6 +84,7 @@
   }
 
   .other-options {
+    max-width: 850px;
     display: flex;
     position: relative;
   }

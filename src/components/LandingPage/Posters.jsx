@@ -25,10 +25,10 @@ function Poster({
     <div className="flex gap-52 justify-center items-center">
       {bannerPosition === "before" && image}
       <div className="flex flex-col gap-8 w-96">
-        <h2 className="text-xl font-semibold">{heading}</h2>
-        <p className="text-sm text-gray-700 text-justify">{content}</p>
+        <h2 className="text-3xl font-semibold">{heading}</h2>
+        <p className="text-lg text-gray-700 text-justify">{content}</p>
         {children}
-        <Link to={link} className="text-sm font-bold flex items-center gap-2">
+        <Link to={link} className="text-lg font-bold flex items-center gap-2">
           Learn More{" "}
           <span class="material-symbols-outlined">arrow_forward</span>
         </Link>
@@ -68,8 +68,8 @@ function Posters() {
   return (
     <div className="my-40">
       <header className="mb-40 text-center flex flex-col gap-8">
-        <h2 className="text-3xl font-semibold">Empowering Teams Through Training</h2>
-        <p>Foster a culture of continuous learning in your organization by implementing a strategic and effective employee training program.</p>
+        <h2 className="text-6xl font-semibold">Empowering Teams Through Training</h2>
+        <p className="text-2xl ">Foster a culture of continuous learning in your organization by implementing a strategic and effective employee training program.</p>
       </header>
       <main className="flex flex-col gap-32 items-center">
         {posters.map((poster, idx) => Poster({ ...poster, idx }))}
