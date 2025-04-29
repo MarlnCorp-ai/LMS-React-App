@@ -85,7 +85,7 @@ function SideBar() {
                 <section className="flex flex-col gap-4 py-2" key={idx}>
                     {options.map(({name, icon, link}, key) => (
                         <Link to={link} key={key} >
-                            <div className="flex gap-1 hover:bg-purple-700 rounded p-1 hover:text-gray-100">
+                            <div className="flex gap-1 hover:bg-purple-grad rounded p-1 hover:text-gray-100">
                             <span class="material-symbols-outlined">{icon}</span> {name}
                             </div>
                         </Link>

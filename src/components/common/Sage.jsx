@@ -1,5 +1,5 @@
 import { useState } from "react";
-import companylogo from "../../images/companylogo.png";
+import logo from "../../images/Sage/logo.png";
 
 import SageChat from "../Sage/SageChat";
 
@@ -20,10 +20,10 @@ function Sage() {
         <SageChat />
       </div>
       <div
-        className="w-16 h-16 rounded-full bg-purple-grad flex items-center justify-center border-2 border-black"
+        className="w-16 h-16"
         onClick={clickHandler}
       >
-        <img src={companylogo} alt="company logo" className="w-12" />
+        <img src={logo} alt="company logo" className="w-12" />
       </div>
     </div>
   );
