@@ -33,6 +33,9 @@ const CorporateLoginPage = () => {
       const dummyEmail1= 'nk.das0099@gmail.com';
       const dummyPassword1 = 'nitu';
 
+      const dummyEmail12= 'admin@gmail.com';
+      const dummyPassword2 = 'admin';
+
       if (email === dummyEmail && password === dummyPassword) {
         if (rememberMe) {
           localStorage.setItem('rememberedEmail', email);
@@ -44,7 +47,13 @@ const CorporateLoginPage = () => {
           localStorage.setItem('rememberedEmail', email);
         }
         navigate('/learner');
-      }else {
+      }if (email === dummyEmail12 && password === dummyPassword2) {
+        if (rememberMe) {
+          localStorage.setItem('rememberedEmail', email);
+        }
+        navigate('/AdminDashboard');
+      }
+      else {
         setError('Invalid email or password');
       }
     } catch (err) {
