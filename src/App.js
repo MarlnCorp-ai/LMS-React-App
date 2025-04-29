@@ -21,7 +21,6 @@ import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
 import RegisterPage from "./Pages/RegisterPage";
 import AboutUs from "./components/company/aboutUs";
 import TeamProfile from "./components/company/TeamProfile";
-import LoginPage from "./Pages/LoginPage";
 import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
 import Payment from "./Pages/Checkout/Payment";
 import Certifications from "./Pages/Certifications";
