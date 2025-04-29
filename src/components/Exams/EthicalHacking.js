@@ -12,6 +12,7 @@ import {
   Info,
   Star,
 } from "react-feather";
+import { Link } from "react-router-dom";
 
 export default function QuizApplication() {
   const [questions] = useState([
@@ -745,6 +746,12 @@ export default function QuizApplication() {
                   </p>
                 </div>
               ))}
+              <div className="flex flex-col items-center mt-20 gap-4">
+                <h3 className="text-3xl font-bold">You are at Intermediate Level.</h3>
+                <div className="text-xl font-semibold">
+                    Next Step: <Link to="/courses?search=python"><button className="bg-blue-500 p-3 text-white rounded-md active:shadow-lg active:-translate-y-1 active:-translate-x-1">Python Learning Path</button></Link>
+                </div>
+              </div>
             </div>
           )}
         </div>

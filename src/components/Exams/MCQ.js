@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Clock, 
-  CheckCircle, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  CheckCircle,
   BarChart2,
   XCircle,
   Book,
   FileText,
   Archive,
   Info,
-  Star
+  Star,
 } from "react-feather";
+import { Link } from "react-router-dom";
 
 export default function QuizApplication() {
   const [questions] = useState([
@@ -23,7 +24,7 @@ export default function QuizApplication() {
       explanation: "2 + 2 always equals 4.",
       difficulty: "Easy",
       topic: "Basic Arithmetic",
-      points: 1
+      points: 1,
     },
     {
       id: 2,
@@ -33,7 +34,7 @@ export default function QuizApplication() {
       explanation: "Paris is the capital of France.",
       difficulty: "Medium",
       topic: "Geography",
-      points: 2
+      points: 2,
     },
     {
       id: 3,
@@ -43,7 +44,7 @@ export default function QuizApplication() {
       explanation: "Jupiter is the largest planet in the solar system.",
       difficulty: "Medium",
       topic: "Astronomy",
-      points: 2
+      points: 2,
     },
     {
       id: 4,
@@ -53,7 +54,7 @@ export default function QuizApplication() {
       explanation: "The Mona Lisa was painted by Leonardo da Vinci.",
       difficulty: "Hard",
       topic: "Art History",
-      points: 3
+      points: 3,
     },
     {
       id: 5,
@@ -63,7 +64,7 @@ export default function QuizApplication() {
       explanation: "Au is the chemical symbol for gold.",
       difficulty: "Hard",
       topic: "Chemistry",
-      points: 3
+      points: 3,
     },
   ]);
 
@@ -71,11 +72,13 @@ export default function QuizApplication() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [answeredQuestions, setAnsweredQuestions] = useState(new Array(questions.length).fill(null));
+  const [answeredQuestions, setAnsweredQuestions] = useState(
+    new Array(questions.length).fill(null)
+  );
   const [detailedResults, setDetailedResults] = useState([]);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
-  const [sidebarTab, setSidebarTab] = useState('overview');
+  const [sidebarTab, setSidebarTab] = useState("overview");
 
   const [timeRemaining, setTimeRemaining] = useState(15 * 60);
   const [timerActive, setTimerActive] = useState(true);
@@ -95,7 +98,9 @@ export default function QuizApplication() {
   const handleQuestionSelect = (index) => {
     if (finished || reviewMode) {
       setCurrentQuestion(index);
-      setSelectedOption(detailedResults[index]?.selected || answeredQuestions[index]);
+      setSelectedOption(
+        detailedResults[index]?.selected || answeredQuestions[index]
+      );
     } else {
       // Allow navigation during the quiz too
       setCurrentQuestion(index);
@@ -109,20 +114,23 @@ export default function QuizApplication() {
     setAnsweredQuestions(newAnsweredQuestions);
 
     if (selectedOption === questions[currentQuestion].answer) {
-      setScore((prevScore) => prevScore + questions[currentQuestion].points); 
+      setScore((prevScore) => prevScore + questions[currentQuestion].points);
       // Update to use question points instead of just adding 1
     }
 
-    setDetailedResults([...detailedResults, {
-      question: questions[currentQuestion].text,
-      selected: selectedOption,
-      correct: questions[currentQuestion].answer,
-      explanation: questions[currentQuestion].explanation,
-      difficulty: questions[currentQuestion].difficulty,
-      topic: questions[currentQuestion].topic,
-      points: questions[currentQuestion].points,
-      isCorrect: selectedOption === questions[currentQuestion].answer
-    }]);
+    setDetailedResults([
+      ...detailedResults,
+      {
+        question: questions[currentQuestion].text,
+        selected: selectedOption,
+        correct: questions[currentQuestion].answer,
+        explanation: questions[currentQuestion].explanation,
+        difficulty: questions[currentQuestion].difficulty,
+        topic: questions[currentQuestion].topic,
+        points: questions[currentQuestion].points,
+        isCorrect: selectedOption === questions[currentQuestion].answer,
+      },
+    ]);
 
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
@@ -134,19 +142,21 @@ export default function QuizApplication() {
   };
 
   const calculateProgress = () => {
-    const answeredCount = answeredQuestions.filter(answer => answer !== null).length;
+    const answeredCount = answeredQuestions.filter(
+      (answer) => answer !== null
+    ).length;
     return (answeredCount / questions.length) * 100;
   };
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
   const renderSidebarContent = () => {
-    switch(sidebarTab) {
-      case 'overview':
+    switch (sidebarTab) {
+      case "overview":
         return (
           <div className="p-4 space-y-4">
             <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded">
@@ -156,7 +166,10 @@ export default function QuizApplication() {
               </h3>
               <ul className="mt-2 text-sm text-blue-700">
                 <li>Total Questions: {questions.length}</li>
-                <li>Total Points: {questions.reduce((sum, q) => sum + q.points, 0)}</li>
+                <li>
+                  Total Points:{" "}
+                  {questions.reduce((sum, q) => sum + q.points, 0)}
+                </li>
                 <li>Time Limit: 15 minutes</li>
               </ul>
             </div>
@@ -172,7 +185,7 @@ export default function QuizApplication() {
             </div>
           </div>
         );
-      case 'topics':
+      case "topics":
         return (
           <div className="p-4">
             <h3 className="font-semibold mb-3 text-gray-700 flex items-center">
@@ -181,8 +194,9 @@ export default function QuizApplication() {
             </h3>
             <div className="grid grid-cols-3 gap-2">
               {questions.map((_, index) => {
-                let buttonClass = "w-full aspect-square rounded-lg text-center flex items-center justify-center font-bold transition-all duration-300 shadow-md cursor-pointer";
-                
+                let buttonClass =
+                  "w-full aspect-square rounded-lg text-center flex items-center justify-center font-bold transition-all duration-300 shadow-md cursor-pointer";
+
                 if (finished || reviewMode) {
                   // In review mode, show answered/current state
                   if (currentQuestion === index) {
@@ -201,13 +215,14 @@ export default function QuizApplication() {
                   } else if (answeredQuestions[index] !== null) {
                     buttonClass += " bg-blue-400 text-white";
                   } else {
-                    buttonClass += " bg-gray-100 text-gray-600 hover:bg-blue-100 hover:text-blue-600";
+                    buttonClass +=
+                      " bg-gray-100 text-gray-600 hover:bg-blue-100 hover:text-blue-600";
                   }
                 }
-                
+
                 return (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className={buttonClass}
                     onClick={() => handleQuestionSelect(index)}
                   >
@@ -218,7 +233,7 @@ export default function QuizApplication() {
             </div>
           </div>
         );
-      case 'results':
+      case "results":
         return (
           <div className="p-4">
             <h3 className="font-semibold mb-3 text-gray-700 flex items-center">
@@ -228,17 +243,23 @@ export default function QuizApplication() {
             <div className="space-y-2">
               <div className="bg-green-50 p-2 rounded">
                 <div className="flex justify-between">
-                  <span className="text-sm text-green-800">Correct Answers</span>
+                  <span className="text-sm text-green-800">
+                    Correct Answers
+                  </span>
                   <span className="font-bold text-green-800">
-                    {detailedResults.filter(r => r.isCorrect).length}/{questions.length}
+                    {detailedResults.filter((r) => r.isCorrect).length}/
+                    {questions.length}
                   </span>
                 </div>
               </div>
               <div className="bg-red-50 p-2 rounded">
                 <div className="flex justify-between">
-                  <span className="text-sm text-red-800">Incorrect Answers</span>
+                  <span className="text-sm text-red-800">
+                    Incorrect Answers
+                  </span>
                   <span className="font-bold text-red-800">
-                    {detailedResults.filter(r => !r.isCorrect).length}/{questions.length}
+                    {detailedResults.filter((r) => !r.isCorrect).length}/
+                    {questions.length}
                   </span>
                 </div>
               </div>
@@ -261,15 +282,19 @@ export default function QuizApplication() {
   return (
     <div className="min-h-screen bg-gray-50 p-8 flex font-sans">
       {/* Sidebar */}
-      <div className={`bg-white shadow-lg border-r rounded-lg transition-all duration-300 flex flex-col ${isSidebarCollapsed ? "w-16" : "w-64"}`}>
+      <div
+        className={`bg-white shadow-lg border-r rounded-lg transition-all duration-300 flex flex-col ${
+          isSidebarCollapsed ? "w-16" : "w-64"
+        }`}
+      >
         <div className="p-4 flex justify-between items-center">
-          <button 
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
+          <button
+            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             className="text-gray-600 hover:text-blue-600 transition-colors"
           >
             {isSidebarCollapsed ? <ChevronRight /> : <ChevronLeft />}
           </button>
-          
+
           {!isSidebarCollapsed && (
             <div className="flex items-center text-gray-700">
               <Clock className="mr-2 text-blue-500" size={20} />
@@ -281,17 +306,17 @@ export default function QuizApplication() {
         {!isSidebarCollapsed && (
           <div className="flex border-b">
             {[
-              { icon: Info, tab: 'overview' },
-              { icon: Book, tab: 'topics' },
-              { icon: Archive, tab: 'results' }
+              { icon: Info, tab: "overview" },
+              { icon: Book, tab: "topics" },
+              { icon: Archive, tab: "results" },
             ].map((item) => (
               <button
                 key={item.tab}
                 onClick={() => setSidebarTab(item.tab)}
                 className={`flex-1 p-3 transition-colors ${
-                  sidebarTab === item.tab 
-                    ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-500' 
-                    : 'text-gray-500 hover:bg-gray-100'
+                  sidebarTab === item.tab
+                    ? "bg-blue-50 text-blue-600 border-b-2 border-blue-500"
+                    : "text-gray-500 hover:bg-gray-100"
                 }`}
               >
                 <item.icon size={20} className="mx-auto" />
@@ -304,7 +329,7 @@ export default function QuizApplication() {
           {!isSidebarCollapsed && renderSidebarContent()}
         </div>
       </div>
-      
+
       {/* Main Content */}
       <div className="flex-1 max-w-3xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
         <div className="p-6">
@@ -312,11 +337,13 @@ export default function QuizApplication() {
           <div className="mb-4 space-y-2">
             <div className="flex justify-between items-center">
               <span className="text-gray-600">Progress</span>
-              <span className="text-gray-600">{calculateProgress().toFixed(0)}%</span>
+              <span className="text-gray-600">
+                {calculateProgress().toFixed(0)}%
+              </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div 
-                className="bg-blue-600 h-2.5 rounded-full transition-all duration-500" 
+              <div
+                className="bg-blue-600 h-2.5 rounded-full transition-all duration-500"
                 style={{ width: `${calculateProgress()}%` }}
               ></div>
             </div>
@@ -325,11 +352,11 @@ export default function QuizApplication() {
           {/* Review Mode button */}
           {finished && (
             <div className="flex justify-end mb-4">
-              <button 
-                onClick={() => setReviewMode(!reviewMode)} 
+              <button
+                onClick={() => setReviewMode(!reviewMode)}
                 className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
               >
-                <BarChart2 size={20} className="mr-2" /> 
+                <BarChart2 size={20} className="mr-2" />
                 {reviewMode ? "Exit Review" : "Review Test"}
               </button>
             </div>
@@ -344,78 +371,121 @@ export default function QuizApplication() {
               <p className="text-lg text-gray-700 mb-6">
                 {questions[currentQuestion].text}
               </p>
-              
+
               <div className="space-y-4">
                 {questions[currentQuestion].options.map((option) => {
-                  let buttonClass = "w-full py-3 rounded-lg text-lg border transition-all";
-                  
+                  let buttonClass =
+                    "w-full py-3 rounded-lg text-lg border transition-all";
+
                   if (reviewMode) {
                     if (option === questions[currentQuestion].answer) {
-                      buttonClass += " bg-green-100 border-green-300 text-green-800";
+                      buttonClass +=
+                        " bg-green-100 border-green-300 text-green-800";
                     }
-                    if (option === selectedOption && option !== questions[currentQuestion].answer) {
+                    if (
+                      option === selectedOption &&
+                      option !== questions[currentQuestion].answer
+                    ) {
                       buttonClass += " bg-red-100 border-red-300 text-red-800";
                     }
                   } else {
-                    buttonClass += selectedOption === option 
-                      ? " bg-blue-500 text-white" 
-                      : " bg-gray-100 hover:bg-gray-200 text-gray-800";
+                    buttonClass +=
+                      selectedOption === option
+                        ? " bg-blue-500 text-white"
+                        : " bg-gray-100 hover:bg-gray-200 text-gray-800";
                   }
-                  
+
                   return (
-                    <button 
-                      key={option} 
-                      onClick={() => !reviewMode && setSelectedOption(option)} 
+                    <button
+                      key={option}
+                      onClick={() => !reviewMode && setSelectedOption(option)}
                       disabled={reviewMode}
                       className={buttonClass}
                     >
                       {option}
-                      {reviewMode && option === questions[currentQuestion].answer && (
-                        <CheckCircle className="inline ml-2 text-green-600" size={20} />
-                      )}
-                      {reviewMode && option === selectedOption && option !== questions[currentQuestion].answer && (
-                        <XCircle className="inline ml-2 text-red-600" size={20} />
-                      )}
+                      {reviewMode &&
+                        option === questions[currentQuestion].answer && (
+                          <CheckCircle
+                            className="inline ml-2 text-green-600"
+                            size={20}
+                          />
+                        )}
+                      {reviewMode &&
+                        option === selectedOption &&
+                        option !== questions[currentQuestion].answer && (
+                          <XCircle
+                            className="inline ml-2 text-red-600"
+                            size={20}
+                          />
+                        )}
                     </button>
                   );
                 })}
               </div>
-              
+
               {!reviewMode && (
-                <button 
-                  onClick={handleNext} 
-                  disabled={!selectedOption} 
+                <button
+                  onClick={handleNext}
+                  disabled={!selectedOption}
                   className="w-full mt-6 py-3 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-600 disabled:bg-gray-300 transition-all"
                 >
-                  {currentQuestion + 1 === questions.length ? "Finish Test" : "Next Question"}
+                  {currentQuestion + 1 === questions.length
+                    ? "Finish Test"
+                    : "Next Question"}
                 </button>
               )}
             </div>
           ) : (
             <div>
-              <h2 className="text-2xl font-bold mb-6 text-gray-800">Detailed Results</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                Detailed Results
+              </h2>
               {detailedResults.map((result, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`mb-4 p-4 rounded-lg border-l-4 ${
-                    result.isCorrect 
-                      ? 'bg-green-50 border-green-500' 
-                      : 'bg-red-50 border-red-500'
+                    result.isCorrect
+                      ? "bg-green-50 border-green-500"
+                      : "bg-red-50 border-red-500"
                   }`}
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <p className="font-semibold text-gray-800">Q{index + 1}: {result.question}</p>
+                    <p className="font-semibold text-gray-800">
+                      Q{index + 1}: {result.question}
+                    </p>
                     {result.isCorrect ? (
                       <CheckCircle className="text-green-600" size={20} />
                     ) : (
                       <XCircle className="text-red-600" size={20} />
                     )}
                   </div>
-                  <p><strong>Your Answer: </strong>{result.selected}</p>
-                  <p><strong>Correct Answer: </strong>{result.correct}</p>
-                  <p><strong>Explanation: </strong>{result.explanation}</p>
+                  <p>
+                    <strong>Your Answer: </strong>
+                    {result.selected}
+                  </p>
+                  <p>
+                    <strong>Correct Answer: </strong>
+                    {result.correct}
+                  </p>
+                  <p>
+                    <strong>Explanation: </strong>
+                    {result.explanation}
+                  </p>
                 </div>
               ))}
+              <div className="flex flex-col items-center mt-20 gap-4">
+                <h3 className="text-3xl font-bold">
+                  You are at Intermediate Level.
+                </h3>
+                <div className="text-xl font-semibold">
+                  Next Step:{" "}
+                  <Link to="/courses?search=python">
+                    <button className="bg-blue-500 p-3 text-white rounded-md active:shadow-lg active:-translate-y-1 active:translate-x-1">
+                      Python Learning Path
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
         </div>

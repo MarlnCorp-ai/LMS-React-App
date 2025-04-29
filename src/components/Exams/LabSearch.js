@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import beginner from "../../images/Badges/beginner.png";
+import intermediate from "../../images/Badges/intermediate.png";
+import advanced from "../../images/Badges/advanced.png";
 
 const MainBanner = () => (
-  <div className="bg-gradient-to-r from-white to-[#b299ff] text-black py-16">
+  <div className="bg-purple-grad text-white h-80 flex items-center">
     <div className="container mx-auto px-4 text-center">
       <h1 className="text-4xl font-bold mb-4">Master Cybersecurity Skills</h1>
       <p className="text-xl mb-8">
         Build your cybersecurity expertise with hands-on tests from industry
         experts
       </p>
-      <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
-        Start Learning
-      </button>
+      <Link to="/mcq">
+        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg">
+          Start Learning
+        </button>
+      </Link>
     </div>
   </div>
 );
@@ -30,8 +36,9 @@ const CybersecurityBrowsePage = () => {
       duration: "5h 15m",
       rating: 4.8,
       updated: "Mar 15, 2025",
-      image: "/api/placeholder/250/140",
+      image: beginner,
       passScore: 80,
+      link: "/EthicalHacking",
     },
     {
       id: 2,
@@ -41,8 +48,9 @@ const CybersecurityBrowsePage = () => {
       duration: "1h",
       rating: 4.9,
       updated: "Feb 22, 2025",
-      image: "/api/placeholder/250/140",
+      image: intermediate,
       passScore: 80,
+      link: "/NetworkSecurityFundamentals",
     },
     {
       id: 3,
@@ -52,8 +60,9 @@ const CybersecurityBrowsePage = () => {
       duration: "1h 45m",
       rating: 4.7,
       updated: "Jan 10, 2025",
-      image: "/api/placeholder/250/140",
+      image: advanced,
       passScore: 80,
+      link: "/NetworkSecurityFundamentals",
     },
     {
       id: 4,
@@ -63,8 +72,9 @@ const CybersecurityBrowsePage = () => {
       duration: "30m",
       rating: 4.6,
       updated: "Mar 8, 2025",
-      image: "/api/placeholder/250/140",
+      image: intermediate,
       passScore: 70,
+      link: "/CyberCloudEnv",
     },
     {
       id: 5,
@@ -74,8 +84,9 @@ const CybersecurityBrowsePage = () => {
       duration: "1h 10m",
       rating: 4.8,
       updated: "Feb 5, 2025",
-      image: "/api/placeholder/250/140",
+      image: advanced,
       passScore: 80,
+      link: "/AdvPenTesting",
     },
     {
       id: 6,
@@ -85,8 +96,9 @@ const CybersecurityBrowsePage = () => {
       duration: "15m",
       rating: 4.5,
       updated: "Mar 18, 2025",
-      image: "/api/placeholder/250/140",
+      image: intermediate,
       passScore: 80,
+      link: "/NetworkSecurityFundamentals",
     },
   ];
 
@@ -101,34 +113,17 @@ const CybersecurityBrowsePage = () => {
       <MainBanner />
 
       {/* Search Bar */}
-      <div className="bg-gray-800 py-6">
-        <div className="container mx-auto px-4">
-          <div className="relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-3 px-4 pr-12 rounded"
-              placeholder="Search for cybersecurity tests, certifications, labs..."
-            />
-            <button className="absolute right-3 top-3 text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </button>
-          </div>
-        </div>
+      <div className="mt-20 mx-auto bg-white rounded-full flex flex-row gap-4 w-[70rem] h-12 justify-start border border-gray-300">
+        <span className="material-symbols-outlined content-center ml-7">
+          search
+        </span>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-[90%] focus:outline-transparent h-8 my-auto placeholder-gray-500 placeholder:font-bold text-base text-gray-500 font-bold tracking-wide"
+          placeholder="Search"
+        />
       </div>
 
       {/* Content */}
@@ -326,7 +321,7 @@ const CybersecurityBrowsePage = () => {
                   <img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-40 object-cover"
+                    className="mx-auto mt-4 h-40 object-cover"
                   />
                   <div className="p-4">
                     <h3 className="font-bold text-lg mb-1 line-clamp-2">
@@ -374,7 +369,13 @@ const CybersecurityBrowsePage = () => {
                       </span>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-2 bg-purple-600 w-20 flex justify-center p-1 text-white rounded active:shadow-lg active:-translate-y-1 active:translate-x-1">
+                      <Link to={course.link}>
+                        <button>Take test</button>
+                      </Link>
+                    </div>
+
+                    <div className="mt-2">
                       <span className="text-gray-600 text-sm">
                         Passing Score: {course.passScore}%
                       </span>
