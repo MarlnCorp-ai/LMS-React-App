@@ -10,11 +10,11 @@ function Module({ topic, duration, materials, number }) {
   return (
     <div key={number}>
       <header
-        className="flex justify-between bg-white px-8 py-3 border-2 border-gray-300"
+        className="flex justify-between bg-white px-8 py-3 border-y border-gray-200/70"
         onClick={handleState}
       >
         <section className="flex gap-8">
-          <section className="w-10 h-10 border-2 rounded-full flex items-center justify-center bg-purple-grad">
+          <section className="w-10 h-10 border-2  rounded-full flex items-center justify-center bg-purple-grad">
             {number + 1}
           </section>
           <section>
@@ -29,7 +29,7 @@ function Module({ topic, duration, materials, number }) {
           <span class="material-symbols-outlined">keyboard_arrow_down</span>
         )}
       </header>
-      <main className={`${currState === "inactive" ? "hidden" : ""} bg-gray-300`}>
+      <main className={`${currState === "inactive" ? "hidden" : ""} bg-gray-200/30`}>
         {materials.map(({topic, duration}, idx) => (
           <section key={idx} className="flex ml-5 items-center">
             <span class="material-symbols-outlined">videocam</span>

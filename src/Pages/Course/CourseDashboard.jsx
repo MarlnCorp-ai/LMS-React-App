@@ -5,59 +5,89 @@ import Results from "../../components/CourseDashboard/Results";
 import SideBar from "../../components/common/SideBar";
 import Sage from "../../components/common/Sage";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import banner from "../../images/Banners/Banner.png";
 
 function CourseDashboard() {
+  const { user, registeredUsers } = useAuth();
+
   const courseContents = [
     {
       type: "Course",
-      topic: "Leveraging Parallel Streams for Fast Data Processing in Java 8",
+      topic: "Essential Data Concepts in Python",
       author: "Jose Paumard",
       libraries: ["Core Tech"],
       stats: {
-        level: "Intermediate",
+        level: "Beginner",
         duration: "2h 12m 57s",
-        publishedDate: "30 Jun 2022",
-        rating: "⭐️⭐️⭐️⭐️⭐️ (51)",
-        ratingInNumber: 5
+        publishedDate: "10 Apr 2025",
+        rating: "★★★★★ (51)",
+        ratingInNumber: 5,
       },
     },
     {
       type: "Course",
-      topic: "Using GitOps to Automate Kubernetes Deployments with Flux 2",
+      topic: "Python Data Structures",
       author: "Nigel Brown",
       libraries: ["Core Tech"],
       stats: {
-        level: "Advanced",
+        level: "Intermediate",
         duration: "2h 53m 39s",
-        publishedDate: "23 Sep 2022",
-        rating: "⭐️⭐️⭐️⭐️⭐️ (24)",
-        ratingInNumber: 5
+        publishedDate: "23 Sep 2024",
+        rating: "★★★★★ (24)",
+        ratingInNumber: 5,
       },
     },
     {
       type: "Course",
-      topic: "Optimizing Apache Spark on Databricks",
+      topic: "Python Programming Fundamentals",
       author: "Janani Ravi",
       libraries: ["Cloud", "Data"],
       stats: {
-        level: "Beginner",
+        level: "Advanced",
         duration: "2h 32m",
-        publishedDate: "03 Nov 2021",
-        rating: "⭐️⭐️⭐️⭐️ (27)",
-        ratingInNumber: 4
+        publishedDate: "03 Nov 2024",
+        rating: "★★★★☆ (27)",
+        ratingInNumber: 4,
       },
     },
     {
       type: "Course",
-      topic: "Emotional Intelligence for the Remote Worker",
+      topic: "Security Monitoring Fundamentals",
       author: "Heather Ackmann",
-      libraries: ["Core Tech"],
+      libraries: ["Security", "Core Tech"],
+      stats: {
+        level: "Beginner",
+        duration: "1h 15m 47s",
+        publishedDate: "19 Feb 2025",
+        rating: "★★★★☆ (30)",
+        ratingInNumber: 4,
+      },
+    },
+    {
+      type: "Course",
+      topic: "Cisco CyberOps Security Fundamentals",
+      author: "Heather Ackmann",
+      libraries: ["Security", "Core Tech"],
+      stats: {
+        level: "Intermediate",
+        duration: "1h 15m 47s",
+        publishedDate: "20 Mar 2025",
+        rating: "★★★★☆ (30)",
+        ratingInNumber: 4,
+      },
+    },
+    {
+      type: "Course",
+      topic: "Cisco CyberOps Network Threat Analysis",
+      author: "Heather Ackmann",
+      libraries: ["Security", "Core Tech"],
       stats: {
         level: "Advanced",
         duration: "1h 15m 47s",
-        publishedDate: "19 Feb 2021",
-        rating: "⭐️⭐️⭐️⭐️ (30)",
-        ratingInNumber: 4
+        publishedDate: "10 Apr 2025",
+        rating: "★★★★☆ (30)",
+        ratingInNumber: 4,
       },
     },
     {
@@ -68,9 +98,9 @@ function CourseDashboard() {
       stats: {
         level: "Intermediate",
         duration: "1h 12m",
-        publishedDate: "21 Mar 2022",
-        rating: "⭐️⭐️⭐️⭐️⭐️",
-        ratingInNumber: 5
+        publishedDate: "21 Mar 2025",
+        rating: "★★★★★",
+        ratingInNumber: 5,
       },
     },
     {
@@ -81,9 +111,9 @@ function CourseDashboard() {
       stats: {
         level: "Intermediate",
         duration: "1h 0m",
-        publishedDate: "23 Jun 2022",
-        rating: "⭐️⭐️⭐️⭐️⭐️ (133)",
-        ratingInNumber: 5
+        publishedDate: "23 Jan 2025",
+        rating: "★★★★★ (133)",
+        ratingInNumber: 5,
       },
     },
     {
@@ -95,9 +125,9 @@ function CourseDashboard() {
       stats: {
         level: "Intermediate",
         duration: "1h 0m",
-        publishedDate: "21 Mar 2024",
-        rating: "⭐️⭐️⭐️⭐️⭐️",
-        ratingInNumber: 5
+        publishedDate: "21 Nov 2024",
+        rating: "★★★★★",
+        ratingInNumber: 5,
       },
     },
     {
@@ -108,9 +138,9 @@ function CourseDashboard() {
       stats: {
         level: "Beginner",
         duration: "30m",
-        publishedDate: "21 Mar 2022",
-        rating: "⭐️⭐️⭐️⭐️",
-        ratingInNumber: 4
+        publishedDate: "21 Dec 2024",
+        rating: "★★★★☆",
+        ratingInNumber: 4,
       },
     },
   ];
@@ -143,31 +173,39 @@ function CourseDashboard() {
     const category = event.target.getAttribute("category").trim();
     let value = event.target.name.trim();
 
-    if(category === "Rating")
-    {
-        value = parseFloat(value.split(" ")[1]);
+    if (category === "Rating") {
+      value = parseFloat(value.split(" ")[1]);
     }
 
-    switch(category)
-    {
-        case "Libraries":
-            setCourseOptions(options => options.filter(option => option.libraries.includes(value)));
-            break;
-        case "Categories":
-            setCourseOptions(options => options.filter(option => option.libraries.includes(value)));
-            break;
-        case "Content Type":
-            setCourseOptions(options => options.filter(option => option.type === value));
-            break;
-        case "Rating":
-            setCourseOptions(options => options.filter(option => option.ratingInNumber >= value));
-            break;
-        case "Skill level":
-            setCourseOptions(options => options.filter(option => option.stats.level === value));
-            break;
-        default:
-            setCourseOptions(courseContents);
-            break;
+    switch (category) {
+      case "Libraries":
+        setCourseOptions((options) =>
+          options.filter((option) => option.libraries.includes(value))
+        );
+        break;
+      case "Categories":
+        setCourseOptions((options) =>
+          options.filter((option) => option.libraries.includes(value))
+        );
+        break;
+      case "Content Type":
+        setCourseOptions((options) =>
+          options.filter((option) => option.type === value)
+        );
+        break;
+      case "Rating":
+        setCourseOptions((options) =>
+          options.filter((option) => option.ratingInNumber >= value)
+        );
+        break;
+      case "Skill level":
+        setCourseOptions((options) =>
+          options.filter((option) => option.stats.level === value)
+        );
+        break;
+      default:
+        setCourseOptions(courseContents);
+        break;
     }
   };
 
@@ -177,17 +215,17 @@ function CourseDashboard() {
         <SideBar />
       </aside>
       <main className="flex flex-col justify-between content-center bg-gray-200/20 h-full w-full gap-32 pb-12">
-        <header className="w-full mt-28">
-          <h1 className="text-center font-bold font-sans text-3xl max-w-[32rem] mx-auto leading-8">
-            Thousands of courses authored by our network of industry experts
+        <header className="w-full h-96 flex items-center text-white pl-40 bg-cover" style={{ backgroundImage: `url('${banner}')` }}>
+          <h1 className="text-center font-bold font-sans text-5xl max-w-[45rem] mx-auto leading-12">
+            Multiple courses authored by our network of industry experts
           </h1>
         </header>
-        <div className="flex flex-col gap-8 w-full items-center">
+        <div className="flex flex-col gap-8 w-full items-center ml-40">
           <SearchBar handleInputChange={getDelayedInputHandler()} />
           <div className="flex flex-col gap-6 w-full items-center">
             <Results noOfResults={8} />
             <div className="flex flex-row gap-12">
-              <Filters handleFilter={handleFilter}/>
+              <Filters handleFilter={handleFilter} />
               <Courses courseOptions={courseOptions} />
             </div>
           </div>

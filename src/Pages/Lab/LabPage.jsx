@@ -1,4 +1,3 @@
-import labBanner from "../../images/Banners/Lab-Banner.png";
 import { Link } from "react-router-dom";
 
 const cards = [
@@ -12,16 +11,9 @@ export default function LabPage() {
   return (
     <div className="min-h-screen mb-60">
       {/* Header hero */}
-      <div className="bg-purple-grad h-72 w-full">
-
-      </div>
-      <div className="mx-auto pl-56 py-12">
-        <nav className="text-lg">Home</nav>
+      <div className="bg-purple-banner h-96 w-full py-16 pl-56 text-white">
         <h1 className="mt-2 text-[56px] font-bold">NexusHive LAB</h1>
-        <h2 className="mt-1 text-[20px] font-semibold">
-          What is Nexushive Hands-on Learning?
-        </h2>
-        <p className="mt-2 text-gray-500 max-w-2xl text-[20px]">
+        <p className="mt-2 max-w-2xl text-[20px]">
           Learn by doing through our unique, hands-on learning experiences.
           You’ll be able to access real-world, live environments and
           technologies to build, practice, and apply new technology skills.
@@ -40,7 +32,7 @@ export default function LabPage() {
       </div> */}
 
       {/* Tab */}
-      <div className="container mx-auto px-6 mt-8">
+      <div className="container mx-auto px-6 mt-40">
         <span className="inline-block bg-purple-300 text-white text-sm font-semibold px-4 py-2 rounded-full">
           Nexushive Lab
         </span>

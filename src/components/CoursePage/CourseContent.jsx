@@ -244,7 +244,7 @@ function TableOfContents() {
             Expand All
           </button>
         </div>
-        <main>
+        <main className="flex flex-col">
         {modules.map((module, idx) => (
           <Module {...module} number={idx} />
         ))}
