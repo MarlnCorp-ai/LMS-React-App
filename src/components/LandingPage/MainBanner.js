@@ -22,19 +22,19 @@ function MainBanner() {
             </div>
             <img src={job3} alt="Job 3" className="h-[25rem]"/>
         </section> */}
-      <section className="flex h-full">
-        <div className="flex items-end mb-28">
+      <section className="flex h-full gap-28">
+        <div className="flex items-end mb-20">
+          <img
+            src={banner2}
+            alt="Main Banner-1"
+            className="h-80 rounded-lg shadow-xl border-4 border-gray-300/60"
+          />
+        </div>
+        <div className="mr-12 mt-12">
           <img
             src={banner1}
             alt="Main Banner-1"
-            className="h-60 rounded-lg"
-          />
-        </div>
-        <div className="mr-12 mt-28">
-          <img
-            src={banner2}
-            alt="Main Banner-2"
-            className="h-60 rounded-lg"
+            className="h-80 rounded-lg shadow-xl border-4 border-gray-300/60"
           />
         </div>
       </section>

@@ -1,22 +1,35 @@
 import companylogo from "../../images/companylogo.png";
 import styles from "./styles/NavBar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const location = useLocation();
+  const currPath = location.pathname;
+
+  const handleAuth = () => {
+    if (user) {
+        logout();
+    } 
+  };
+
   return (
     <header>
       <nav className={styles.navbar}>
-        <div className="flex">
-          <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
-          <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
-            <p className="text-4xl font-bold">NexusHive</p>
-            <p className="text-[0.9rem] uppercase font-bold">
-              keep learning, keep buzzing
-            </p>
-          </section>
-        </div>
+        <Link to="/">
+          <div className="flex">
+            <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
+            <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
+              <p className="text-4xl font-bold">NexusHive</p>
+              <p className="text-[0.9rem] uppercase font-bold">
+                keep learning, keep buzzing
+              </p>
+            </section>
+          </div>
+        </Link>
         <div className={styles["nav-options"]}>
           <ul className={styles.navList}>
             <li>
@@ -316,12 +329,14 @@ function Navbar() {
                 {/* Add your Resources dropdown content here */}
                 <div className={styles.dropdownColumn}>
                   <h3 className="font-semibold">Software development</h3>
-                  <p>
-                    Databases
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                  <Link to="/courses">
+                    <p>
+                      Databases
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
                   <p>
                     Game development
                     <span class="material-symbols-outlined">
@@ -471,24 +486,24 @@ function Navbar() {
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
                   <p>
-                  <Link
+                    <Link
                       to="/about"
                       // className={styles["dropdown-link"]}
                     >
-                    About                  
-                  </Link>
-                  <span class="material-symbols-outlined">
+                      About
+                    </Link>
+                    <span class="material-symbols-outlined">
                       keyboard_arrow_right
                     </span>
                   </p>
                   <p>
-                  <Link
+                    <Link
                       to="/team"
                       // className={styles["dropdown-link"]}
                     >
-                    Team Profile                  
-                  </Link>
-                  <span class="material-symbols-outlined">
+                      Team Profile
+                    </Link>
+                    <span class="material-symbols-outlined">
                       keyboard_arrow_right
                     </span>
                   </p>
@@ -512,16 +527,13 @@ function Navbar() {
                   </p>
                 </div>
               </div>
-
-              <div className={styles.dropdownContent}>
-                {/* Add your Services dropdown content here */}
-              </div>
             </li>
           </ul>
         </div>
-        <div className="flex gap-4">
-          <button
-            className="flex items-center 
+        <div className="flex">
+          { currPath !== "/login" && <Link to="/login">
+            <button
+              className="flex items-center 
          px-6 py-3 
          font-semibold text-white 
          bg-[linear-gradient(135deg,#E5D1F9,#C4B0F0)] 
@@ -530,11 +542,13 @@ function Navbar() {
          cursor-pointer 
          transition-transform transition-shadow duration-200 ease-in-out 
          hover:-translate-y-[2px] hover:shadow-[0_6px_10px_rgba(0,0,0,0.15)] 
-         active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)]"
-          >
-            Login
-          </button>
-          <div className="relative" onClick={() => setOpen(!open)}>
+         active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)] mr-4"
+              onClick={handleAuth}
+            >
+              {user ? "Logout" : "Login"}
+            </button>
+          </Link>}
+          { !user && <div className="relative" onClick={() => setOpen(!open)}>
             {/* Trigger */}
 
             <button
@@ -557,7 +571,7 @@ function Navbar() {
 
             {/* Dropdown */}
             {open && (
-              <div className="flex flex-col w-60 absolute -left-20 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg py-4">
+              <div className="flex flex-col w-60 absolute -left-20 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg py-4 z-10">
                 <Link
                   to="/individuals/pricing"
                   className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -587,7 +601,7 @@ function Navbar() {
                 </Link>
               </div>
             )}
-          </div>
+          </div>}
         </div>
       </nav>
     </header>

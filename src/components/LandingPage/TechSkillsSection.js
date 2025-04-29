@@ -35,10 +35,10 @@ function TechSkillsSection()
     ];
     return <div className="bg-[#F4F7FA] w-full h-96 flex gap-1 justify-center items-center mt-44">
         {content.map(({icon, heading, content, link, idx}) => (
-            <Card key={idx} className="flex flex-col items-start gap-6 w-[17rem] h-72 p-4">
+            <Card key={idx} className="flex flex-col items-start gap-6 w-[17rem] h-[21rem] p-4">
                 <img src={icon} alt={heading} className="rounded-lg w-10"/>
                 <h2 className="text-2xl font-medium">{heading}</h2>
-                <p className="text-justify text-gray-500/75 text-sm pr-2">{content}</p>
+                <p className="text-justify text-gray-600/80 pr-2">{content}</p>
                 <Link to="" className="text-[#8C52FF] font-medium"><span className="mr-1">{link}</span><span>&gt;</span></Link>
             </Card>  
         ))}
