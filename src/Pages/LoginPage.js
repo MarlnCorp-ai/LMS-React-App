@@ -11,7 +11,6 @@ const LoginPage = () => {
   const { login } = useAuth();
     const navigate = useNavigate();
 
-
   const validate = () => {
     const newErrors = {};
 
@@ -32,13 +31,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-
-      alert("Login successful (mock)");
-    }
-  };
-
-  const handleInputChange = (e, type) => {
-
+      // TODO: Handle successful sign-in
       if (!login({ email, password })){
         setErrors(prev => ({ ...prev, login: "Invalid email or password!" }));
       }else {
@@ -73,24 +66,6 @@ const LoginPage = () => {
 
   return (
     // <div className="min-h-screen bg-gradient-to-br from-[#f4f0fa] to-[#e5d9f2] text-black flex flex-col items-center justify-center px-4 py-6">
-
-<div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col items-center justify-center px-4 py-6">
-
-      <div className="absolute top-0 left-0 w-full flex flex-col items-center justify-center py-2">
-        <div className="flex items-center justify-center mb-3">
-          <img
-            src="/nexus.png" // Logo
-            alt="Nexus Hive"
-            className="w-10 h-auto mr-2" // Smaller logo
-          />
-          <h1 className="text-xl font-bold text-purple-700 tracking-wide">Nexus Hive</h1>
-        </div>
-        <hr className="w-3/4 mt-4 border-t-2 border-gray-300" /> {/* Longer hr */}
-      </div>
-
-      {/* Sign in to your account text below hr */}
-      <h2 className="text-3xl font-bold text-center text-purple-900 mb-8 mt-24">Sign in to your account</h2>
-
     <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col items-center justify-center px-4 py-6">
       {errors.login && (
         <div className="absolute top-32 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
@@ -110,7 +85,6 @@ const LoginPage = () => {
       <h2 className="text-3xl font-bold text-center text-purple-900 mb-8 mt-24">
         Sign in to your account
       </h2>
-
 
       {/* Login Form */}
       <form

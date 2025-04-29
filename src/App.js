@@ -14,7 +14,7 @@ import EthicalHacking from "./components/Exams/EthicalHacking.js";
 import NetSecFund from "./components/Exams/NetSecFund.js";
 import CyberCloudEnv from "./components/Exams/CyberCloudEnv.js";
 import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
-import LoginPage from "./components/corporate/login.js"
+import CorporateLoginPage from "./components/corporate/login.js"
 import TeamDashboard from "./components/corporate/ManagerDashboard.js";
 import Dashboard from "./components/corporate/Dashboard.js"
 import MyCourses from "./components/corporate/MyCourse.js"
@@ -56,7 +56,7 @@ const router = createHashRouter([
       { path: "/CyberCloudEnv", element: <CyberCloudEnv />},
       { path: "/AdvPenTesting", element: <AdvPenTesting />},
       { path: "/register", element: <RegisterPage />},
-      { path: "/corporateLogin", element: <LoginPage />},
+      { path: "/corporateLogin", element: <CorporateLoginPage />},
       { path: "/corporateManagerDashboard", element: <TeamDashboard/>}, 
       { path: "/learner", element: <Dashboard/>},   
       { path: "/myCourse", element: <MyCourses/>},   
@@ -77,9 +77,6 @@ const router = createHashRouter([
           { path: "lab", element: <LabPage /> },
         ],
       },
-    ],
-  },
-
   { path: "/buy", element: <IndividualCheckout /> },
   { path: "/payment", element: <Payment /> },
   {

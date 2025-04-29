@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle, FaFacebook, FaLock, FaEnvelope } from 'react-icons/fa';
 import img3 from './../../images/img3.jpeg';
 
-const LoginPage = () => {
+const CorporateLoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -185,4 +185,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default CorporateLoginPage;
