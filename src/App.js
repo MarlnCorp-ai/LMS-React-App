@@ -21,6 +21,7 @@ import AdvPenTesting from "./components/Exams/AdvPenTesting.js";
 import RegisterPage from "./Pages/RegisterPage";
 import AboutUs from "./components/company/aboutUs";
 import TeamProfile from "./components/company/TeamProfile";
+import LoginPage from "./Pages/LoginPage";
 import IndividualCheckout from "./Pages/Checkout/IndividualCheckout";
 import Payment from "./Pages/Checkout/Payment";
 import Certifications from "./Pages/Certifications";
@@ -29,12 +30,11 @@ import LabPage from "./Pages/Lab/LabPage.jsx";
 import SageAIPage from "./Pages/SageAIPage";
 import CoursePage from "./Pages/Course/CoursePage";
 import PrivateRoute from "./components/common/PrivateRoute";
-import LoginPage from "./Pages/LoginPage";
-import AdminDashboardPage from "./components/corporate/AdminDashboard.js"
 import CorporateLoginPage from "./components/corporate/login.js"
 import TeamDashboard from "./components/corporate/ManagerDashboard.js";
 import Dashboard from "./components/corporate/Dashboard.js"
 import MyCourses from "./components/corporate/MyCourse.js"
+import AdminDashboardPage from "./components/corporate/AdminDashboard.js";
 
 const router = createHashRouter([
   {
@@ -54,12 +54,10 @@ const router = createHashRouter([
       { path: "about", element: <AboutUs /> },
       { path: "team", element: <TeamProfile /> },
       { path: "/corporateLogin", element: <CorporateLoginPage />},
-      
       { path: "/corporateManagerDashboard", element: <TeamDashboard/>}, 
       { path: "/learner", element: <Dashboard/>},   
-      { path: "/myCourse", element: <MyCourses/>},
-      { path: "/AdminDashboard", element: <AdminDashboardPage/>},
-
+      { path: "/myCourse", element: <MyCourses/>}, 
+      { path: "/AdminDashboard", element: <AdminDashboardPage/>}, 
       {
         element: <PrivateRoute />,
         children: [
