@@ -151,6 +151,28 @@ function Navbar() {
                       keyboard_arrow_right
                     </span>
                   </p>
+                  <p>
+                    <Link
+                      to="/corporateLogin"
+                      className={styles["dropdown-link"]}
+                    >
+                      <h3>Manager Page</h3>
+                      <span className="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </Link>
+                  </p>
+                  <p>
+                    <Link
+                      to="/corporateLogin"
+                      className={styles["dropdown-link"]}
+                    >
+                      <h3>Learner/Employee</h3>
+                      <span className="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </Link>
+                  </p>
                 </div>
               </div>
             </li>
