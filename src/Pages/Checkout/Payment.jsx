@@ -87,7 +87,7 @@ const PaymentProcessingPage = () => {
   useEffect(() => {
     if (!showProcessing) {
       const timer2 = setTimeout(() => {
-        navigate('/');
+        navigate('/courses');
       }, 5000);
       return () => clearTimeout(timer2);
     }
