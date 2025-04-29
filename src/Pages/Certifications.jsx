@@ -13,6 +13,7 @@ import gcp from "../images/Certifications/gcp.svg";
 import agile from "../images/Certifications/agile.svg";
 import cap from "../images/Certifications/cap.svg";
 import snowflake from "../images/Certifications/snowflake.svg";
+import PeerTracker from "../components/CoursePage/PeerTracker";
 
 function Certifications() {
   const options = [
@@ -120,6 +121,10 @@ function Certifications() {
         <section className="fixed top-0 left-0">
             <SideBar />
         </section>
+
+        <div className="bg-purple-grad h-60 ml-80">
+
+        </div>
       
       <main className="flex flex-col gap-12 justify-start w-full p-24 ml-80">
         <header>
@@ -127,9 +132,9 @@ function Certifications() {
         </header>
         <main className="flex gap-16 w-full">
           <aside className="flex flex-col gap-4 w-1/5">
-            <section className="flex flex-col divide-y gap-4 bg-gray-400/60 w-80 p-6 rounded-xl">
+            <section className="flex flex-col divide-y gap-4 bg-gray-200/60 w-80 p-6 rounded-xl transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-lg">
               <header>
-                <h2 className="font-bold text-">
+                <h2 className="font-bold">
                   Explore Certification Training
                 </h2>
               </header>
@@ -142,33 +147,14 @@ function Certifications() {
               </main>
             </section>
             <section className="w-80">
-              <img
-                src={tracker}
-                alt="Tracker"
-                className="h-[30rem] w-80 rounded-xl"
-              />
+              <PeerTracker />
             </section>
-            <section className="w-80 p-4 flex gap-24 bg-gray-400/60 rounded-xl">
+            <section className="w-80 p-4 flex gap-24 bg-gray-200/60 rounded-xl transition-transform duration-200 ease-out hover:scale-[1.02] hover:shadow-lg">
               <p>Get Support</p>
               <Link to="">Learn more &gt;</Link>
             </section>
           </aside>
           <main className="w-4/5 flex flex-col gap-12">
-            <section className="flex bg-gray-400/60 rounded-xl gap-8 w-3/4">
-              <img src={icon} alt="Certifications" />
-              <div className="flex flex-col gap-4 justify-center">
-                <h2 className="text-lg font-bold">Your One-Stop Shop for Certifications</h2>
-                <section>
-                  <p>
-                    Take our exam prep, complete with Labs and Practice Exams.
-                  </p>
-                  <p>
-                    Improve your score every time and be ready to pass your
-                    certification exam.
-                  </p>
-                </section>
-              </div>
-            </section>
             <section >
               <SearchBar />
             </section>
@@ -180,7 +166,7 @@ function Certifications() {
                         </header>
                         <main className="flex gap-4">
                             {paths.map(({companyLogo, heading}, key) => (
-                                <div key={key} className="w-80 h-48 bg-gray-400/60 p-2 flex flex-col gap-4 rounded shadow-md">
+                                <div key={key} className="w-80 h-48 bg-gray-200/60 p-2 flex flex-col gap-4 rounded shadow-lg">
                                     <header className="flex justify-between">
                                         <img src={companyLogo} alt={category} className="w-14"/>
                                         <img src={icon2} alt="Certification" className="mr-10"/>
