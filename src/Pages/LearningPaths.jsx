@@ -1,8 +1,9 @@
 import React from "react";
 import PathCard from "../components/LearningPath/PathCard";
-import Header from "../components/LearningPath/SearchBar";
 import paths from "../components/LearningPath/Paths";
+import SearchBar from "../components/CourseDashboard/SearchBar";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const container = {
   hidden: {},
@@ -15,10 +16,15 @@ const container = {
 
 const LearningPaths = () => (
   <>
-    <Header />
-    <main className="bg-gray-100/20 py-10 h-screen">
+    <div className="h-80 bg-purple-banner text-white flex items-center justify-center">
+      <h1 className="text-5xl text-center font-bold">Learning Paths</h1>
+    </div>
+    <div className="flex justify-center pt-32 bg-gray-100/20">
+      <SearchBar />
+    </div>
+
+    <main className="bg-gray-100/20 py-28 h-screen ">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-semibold mb-6">Paths</h2>
         <motion.div
           variants={container}
           initial="hidden"
@@ -26,7 +32,9 @@ const LearningPaths = () => (
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {paths.map((path, i) => (
-            <PathCard key={i} {...path} />
+            <Link to={`/courses?search=${path.category}`}>
+              <PathCard key={i} {...path} />
+            </Link>
           ))}
         </motion.div>
       </div>

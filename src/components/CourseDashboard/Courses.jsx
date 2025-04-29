@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 function Courses({courseOptions})
 {
     const courseOptionDesigner = ( {type, topic, author, libraries, stats}, idx) => (
+        <Link to="/courses/1">
         <section key={idx} className="bg-white divide-x divide-gray-200 w-[50rem] h-40 flex mt-4 items-center p-4 text-gray-500 rounded-lg shadow shadow-sm hover:shadow-md cursor-pointer">
             <main className="w-3/4 flex flex-col gap-4 text-xs">
                 <header>
@@ -8,8 +11,8 @@ function Courses({courseOptions})
                     { type==="Lab" && <p className="font-bold">🔬  {type}</p>}
                 </header>
                 <main>
-                    <h2 className="text-base font-bold text-black mb-1">{topic}</h2>
-                    <p className="text-sm">by {author}</p>
+                    <h2 className="text-base font-bold text-black mb-3">{topic}</h2>
+                    {/* <p className="text-sm">by {author}</p> */}
                 </main>
                 <footer className="flex gap-3 items-center">
                     <p className="font-bold">Libraries: ⓘ </p>
@@ -22,12 +25,13 @@ function Courses({courseOptions})
                 <section className="flex">📊 &nbsp;&nbsp;{stats.level}</section>
                 <section>🕓 &nbsp;&nbsp;{stats.duration}</section>
                 <section>🗓️ &nbsp;&nbsp;{stats.publishedDate}</section>
-                <section>{stats.rating}</section>
+                <section><span className="text-yellow-400">{stats.rating.split(" ")[0]}</span> {stats.rating.split(" ")[1]}</section>
             </aside>
         </section>
+        </Link>
     );
 
-    return <div className={`grid grid-cols-1 grid-rows-${courseOptions.length} max-w-[50rem]`}>
+    return <div className={`flex flex-col max-w-[50rem]`}>
         {courseOptions.map(courseOptionDesigner)}
     </div>
 }

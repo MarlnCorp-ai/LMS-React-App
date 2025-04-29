@@ -42,6 +42,8 @@ const router = createHashRouter([
       },
       { path: "register", element: <RegisterPage /> },
       { path: "login", element: <LoginPage /> },
+      { path: "about", element: <AboutUs /> },
+      { path: "team", element: <TeamProfile /> },
       {
         element: <PrivateRoute />,
         children: [
@@ -56,8 +58,6 @@ const router = createHashRouter([
 
   { path: "/buy", element: <IndividualCheckout /> },
   { path: "/payment", element: <Payment /> },
-  { path: "about", element: <AboutUs /> },
-  { path: "team", element: <TeamProfile /> },
   {
     element: <PrivateRoute />,
     children: [

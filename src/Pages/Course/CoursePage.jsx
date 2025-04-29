@@ -2,15 +2,16 @@ import SideBar from "../../components/common/SideBar";
 import SecondarySideBar from "../../components/CoursePage/SecondarySideBar";
 import CourseContent from "../../components/CoursePage/CourseContent";
 import { Link } from "react-router-dom";
+import banner from "../../images/Courses/banner.png";
 
 const CourseBanner = () => {
   const backgroundUrl =
-    "https://lms-frontend-resources.s3.ap-south-1.amazonaws.com/images/Courses/Python/python-programming.png"; // ← replace this
+    "../../images/Courses/banner.png"; // ← replace this
 
   return (
     <section
       className="relative bg-cover bg-center h-64 w-4/5"
-      style={{ backgroundImage: `url('${backgroundUrl}')` }}
+      style={{ backgroundImage: `url('${banner}')` }}
     >
       {/* dark overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50" />

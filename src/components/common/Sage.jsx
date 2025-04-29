@@ -1,6 +1,5 @@
 import { useState } from "react";
 import logo1 from "../../images/Sage/logo-1.png";
-import logo2 from "../../images/Sage/logo-2.png";
 
 import SageChat from "../Sage/SageChat";
 
