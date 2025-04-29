@@ -1,19 +1,20 @@
 import companylogo from "../../images/companylogo.png";
-import companyname from "../../images/companyname.png";
-import companyslogan from "../../images/companyslogan.png";
 import styles from "./styles/NavBar.module.css";
-import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
     <header>
       <nav className={styles.navbar}>
         <div className="flex">
-          <img src={companylogo} alt="Company Logo" className="w-20 h-20"/>
+          <img src={companylogo} alt="Company Logo" className="w-20 h-20" />
           <section className="flex flex-col justify-center ml-2 text-[#4F1869] tracking-wide">
-                <p className="text-4xl font-bold">NexusHive</p>
-                <p className="text-[0.9rem] uppercase font-bold">keep learning, keep buzzing</p>
+            <p className="text-4xl font-bold">NexusHive</p>
+            <p className="text-[0.9rem] uppercase font-bold">
+              keep learning, keep buzzing
+            </p>
           </section>
         </div>
         <div className={styles["nav-options"]}>
@@ -27,7 +28,7 @@ function Navbar() {
               </div>
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
-                  <Link to="/components/Exams/MCQ">
+                  <Link to="/skills-assessment">
                     <p>
                       Assess your skills
                       <span className="material-symbols-outlined">
@@ -35,24 +36,31 @@ function Navbar() {
                       </span>
                     </p>
                   </Link>
-                  <p>
-                    <span>Labs</span>
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>LPath</span>
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>Certification Prep</span>
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                  <Link to="/lab">
+                    <p>
+                      <span>Labs</span>
+
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/learning-paths">
+                    <p>
+                      <span>LPath</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/certifications">
+                    <p>
+                      <span>Certification Prep</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
                 </div>
               </div>
             </li>
@@ -65,7 +73,7 @@ function Navbar() {
               </div>
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
-                  <h3>Industry</h3>
+                  <h3 className="font-semibold">Industry</h3>
                   <p>
                     <span>Healthcare</span>
                     <span class="material-symbols-outlined">
@@ -108,35 +116,44 @@ function Navbar() {
                   </p>
                 </div>
                 <div className={styles.dropdownColumn}>
-                  <h3>Features</h3>
-                  <p>
-                    <span>Assess your Skills</span>
+                  <h3 className="font-semibold">Features</h3>
+                  <Link to="/skills-assessment">
+                    <p>
+                      <span>Assess your Skills</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>Labs</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/lab">
+                    <p>
+                      <span>Labs</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>LPath</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/learning-paths">
+                    <p>
+                      <span>LPath</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>Certification Path</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/certifications">
+                    <p>
+                      <span>Certification Path</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+
                   <p>
                     <span>Instructor-Led Training</span>
 
@@ -164,7 +181,7 @@ function Navbar() {
 
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
-                  <h3>Public Sector</h3>
+                  <h3 className="font-semibold">Public Sector</h3>
                   <p>
                     <span>Higher Education</span>
 
@@ -188,7 +205,7 @@ function Navbar() {
                   </p>
                 </div>
                 <div className={styles.dropdownColumn}>
-                  <h3>Solutions</h3>
+                  <h3 className="font-semibold">Solutions</h3>
                   <p>
                     <span>Cybersecutiry</span>
 
@@ -233,35 +250,43 @@ function Navbar() {
                   </p>
                 </div>
                 <div className={styles.dropdownColumn}>
-                  <h3>Features</h3>
-                  <p>
-                    <span>Assess your Skills</span>
+                  <h3 className="font-semibold">Features</h3>
+                  <Link to="/skills-assessment">
+                    <p>
+                      <span>Assess your Skills</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>Labs</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/lab">
+                    <p>
+                      <span>Labs</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>LPath</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/learning-paths">
+                    <p>
+                      <span>LPath</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
-                  <p>
-                    <span>Certification Path</span>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
+                  <Link to="/certifications">
+                    <p>
+                      <span>Certification Prep</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
                   <p>
                     <span>Instructor-Led Training</span>
 
@@ -290,7 +315,7 @@ function Navbar() {
               <div className={styles.dropdownContent}>
                 {/* Add your Resources dropdown content here */}
                 <div className={styles.dropdownColumn}>
-                  <h3>Software development</h3>
+                  <h3 className="font-semibold">Software development</h3>
                   <p>
                     Databases
                     <span class="material-symbols-outlined">
@@ -323,7 +348,7 @@ function Navbar() {
                   </p>
                 </div>
                 <div className={styles.dropdownColumn}>
-                  <h3>Security</h3>
+                  <h3 className="font-semibold">Security</h3>
                   <p>
                     Certifications
                     <span class="material-symbols-outlined">
@@ -356,7 +381,7 @@ function Navbar() {
                   </p>
                 </div>
                 <div className={styles.dropdownColumn}>
-                  <h3>IT Ops</h3>
+                  <h3 className="font-semibold">IT Ops</h3>
                   <p>
                     Client Operating systems
                     <span class="material-symbols-outlined">
@@ -433,17 +458,6 @@ function Navbar() {
                       keyboard_arrow_right
                     </span>
                   </p>
-                  <p>
-                    <Link
-                      to="/skills-assessment"
-                      className={styles["dropdown-link"]}
-                    >
-                      <h3>Skills Assessment</h3>
-                      <span className="material-symbols-outlined">
-                        keyboard_arrow_right
-                      </span>
-                    </Link>
-                  </p>
                 </div>
               </div>
             </li>
@@ -505,36 +519,74 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div className={styles["other-options"]}>
-          <button className={styles.button}>Login</button>
-          <div>
-            <button className={`${styles.button} ${styles["nav-option"]}`}>
+        <div className="flex gap-4">
+          <button
+            className="flex items-center 
+         px-6 py-3 
+         font-semibold text-white 
+         bg-[linear-gradient(135deg,#E5D1F9,#C4B0F0)] 
+         rounded-lg 
+         shadow-[0_4px_6px_rgba(0,0,0,0.1)] 
+         cursor-pointer 
+         transition-transform transition-shadow duration-200 ease-in-out 
+         hover:-translate-y-[2px] hover:shadow-[0_6px_10px_rgba(0,0,0,0.15)] 
+         active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)]"
+          >
+            Login
+          </button>
+          <div className="relative" onClick={() => setOpen(!open)}>
+            {/* Trigger */}
+
+            <button
+              className="flex items-center 
+         px-6 py-3 
+         text-base font-semibold text-white 
+         bg-[linear-gradient(135deg,#E5D1F9,#C4B0F0)] 
+         rounded-lg 
+         shadow-[0_4px_6px_rgba(0,0,0,0.1)] 
+         cursor-pointer 
+         transition-transform transition-shadow duration-200 ease-in-out 
+         hover:-translate-y-[2px] hover:shadow-[0_6px_10px_rgba(0,0,0,0.15)] 
+         active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)]"
+            >
               <span>View Plans</span>
-              <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              <span className="material-symbols-outlined ml-1">
+                keyboard_arrow_down
+              </span>
             </button>
 
-            <div className={styles.dropdownContent}>
-              <div className={styles.dropdownColumn}>
-                <p>
+            {/* Dropdown */}
+            {open && (
+              <div className="flex flex-col w-60 absolute -left-20 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg py-4">
+                <Link
+                  to="/individuals/pricing"
+                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
                   Individual Plans
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                     keyboard_arrow_right
                   </span>
-                </p>
-                <p>
+                </Link>
+                <Link
+                  to="/businesses/pricing"
+                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
                   Corporate Plans
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                     keyboard_arrow_right
                   </span>
-                </p>
-                <p>
+                </Link>
+                <Link
+                  to="/industries/public-sector/pricing"
+                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
                   Public Sector Plans
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                     keyboard_arrow_right
                   </span>
-                </p>
+                </Link>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </nav>
