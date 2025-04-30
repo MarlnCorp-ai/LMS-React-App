@@ -1,10 +1,6 @@
 import styles from "./styles/PageFooter.module.css";
 import googleplay from "../../images/googleplay.png";
 import applestore from "../../images/applestore.png"
-import factorauth from "../../images/2factorauth.png";
-import cfr21compliant from "../../images/cfr21compliant.jpeg";
-import gdprcertified from "../../images/gdprcertified.png";
-import isocertified from "../../images/isocertified.png";
 
 import {
   FaFacebookF,
@@ -77,14 +73,6 @@ function PageFooter() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.certifications}>
-          <div>
-            <img src={factorauth}/><span>2 - Factor Authentication</span>
-          </div>
-          <div><img src={isocertified}/><span>ISO 27001 certified</span></div>
-          <div><img src={gdprcertified} /><span>GOPR</span></div>
-          <div><img src={cfr21compliant}/><span>CFR21 Part 11</span></div>
-        </div>
         <div className={styles.appStores}>
           <span><img src={googleplay} alt="Get it on Google Play"/></span>
           <span><img src={applestore} alt="Download it on Apple Store" /></span>

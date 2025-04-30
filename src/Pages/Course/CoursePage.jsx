@@ -21,7 +21,7 @@ const CourseBanner = () => {
         {/* left side */}
         <div className="w-full flex flex-col gap-4">
           <h1 className="text-4xl font-bold">Python 3 Fundamentals</h1>
-          <p className="text-lg text-gray-200">by Sarah Holderness</p>
+          <p className="text-lg text-gray-200">by Matthew McPartlon</p>
           <p className="text-base leading-relaxed text-gray-200">
             Python is a great programming language for beginners and experts
             alike. This course will teach you how to program in Python.
@@ -41,7 +41,7 @@ const CourseBanner = () => {
                   <path d="M6 4l10 6-10 6V4z" />
                 </svg>
                 <span className="ml-2 text-white font-medium">
-                  Resume Course
+                  Take Course
                 </span>
               </button>
             </Link>

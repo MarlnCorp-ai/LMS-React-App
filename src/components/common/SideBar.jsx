@@ -5,7 +5,8 @@ import { useState } from "react";
 
 function SideBar() {
     const [currPage, setCurrPage] = useState("home");
-    const { user } = useAuth();
+    const { user, registeredUsers } = useAuth();
+    console.log(user, registeredUsers);
     const userName = user.firstName[0].toUpperCase() + user.firstName.slice(1);
   const sections = [
     [
@@ -14,41 +15,6 @@ function SideBar() {
         icon: "home",
         link: "/courses",
       },
-      {
-        name: "Business",
-        icon: "business",
-        link: "/business"
-    },
-    {
-        name: "Cloud",
-        icon: "cloud",
-        link: ""
-    },
-    {
-        name: "Data",
-        icon: "storage",
-        link: "/data"
-    },
-    {
-        name: "Generative AI",
-        icon: "smart_toy",
-        link: "/genai"
-    },
-    {
-        name: "IT Ops",
-        icon: "settings",
-        link: ""
-    },
-    {
-        name: "Security",
-        icon: "security",
-        link: ""
-    },
-    {
-        name: "Software Dev",
-        icon: "code",
-        link: "/softwaredev"
-    },
       {
         name: "Browse",
         icon: "browse",
@@ -112,7 +78,7 @@ function SideBar() {
     {
         name: "Business",
         icon: "work",
-        link: "",
+        link: "/business",
       },
       {
         name: "Cloud",
@@ -121,13 +87,13 @@ function SideBar() {
       },
       {
         name: "Data",
-        icon: "database",
-        link: "",
+        icon: "storage",
+        link: "/data",
       },
       {
         name: "Generative AI",
-        icon: "robot_2",
-        link: "",
+        icon: "smart_toy",
+        link: "/genai",
       },
       {
         name: "IT Ops",
@@ -142,7 +108,7 @@ function SideBar() {
       {
         name: "Software Dev",
         icon: "code",
-        link: "",
+        link: "/softwaredev",
       }
   ];
 
@@ -170,7 +136,7 @@ function SideBar() {
             <section className="flex flex-col gap-2 pt-2" key={idx}>
               {options.map(({ name, icon, link }, key) => (
                 <Link to={link} key={key} onClick={() => setCurrPage(name)}>
-                  <div className={`flex gap-1 ${currPage === name ? "bg-purple-grad text-white" : "hover:bg-purple-grad hover:text-white"} rounded p-1`}>
+                  <div className={`flex gap-1 ${currPage === name ? "bg-purple-600 text-white" : "hover:bg-purple-600 hover:text-white"} rounded p-1`}>
                     <span class="material-symbols-outlined mr-2">{icon}</span> {name}
                   </div>
                 </Link>

@@ -3,20 +3,16 @@ import { Link } from "react-router-dom";
 import beginner from "../../images/Badges/beginner.png";
 import intermediate from "../../images/Badges/intermediate.png";
 import advanced from "../../images/Badges/advanced.png";
+import banner from "../../images/Banners/Banner.png";
 
 const MainBanner = () => (
-  <div className="bg-purple-grad text-white h-80 flex items-center">
+  <div className=" text-white h-96 flex items-center bg-cover" style={{backgroundImage: `url('${banner}')`}}>
     <div className="container mx-auto px-4 text-center">
       <h1 className="text-4xl font-bold mb-4">Master Cybersecurity Skills</h1>
       <p className="text-xl mb-8">
         Build your cybersecurity expertise with hands-on tests from industry
         experts
       </p>
-      <Link to="/mcq">
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg">
-          Start Learning
-        </button>
-      </Link>
     </div>
   </div>
 );

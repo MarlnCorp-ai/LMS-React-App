@@ -11,18 +11,18 @@ import SecondaryBanner from "../components/LandingPage/SecondaryBanner";
 import GettingStarted from "../components/LandingPage/GettingStarted";
 import FAQ from "../components/LandingPage/FAQ";
 import Posters from "../components/LandingPage/Posters";
-import Sage from "../components/common/Sage";
+import ChatWidget from "../components/common/ChatWidget";
 
 
 function LandingPage() {
   return (
-    <Fragment>
+    <div className="bg-white">
         <section>
           <MainBanner />
         </section>
-        {/* <section>
+        <section>
           <RevolvingPosters />
-        </section> */}
+        </section>
         <section className="mt-40">
           <Tutors />
         </section>
@@ -53,8 +53,8 @@ function LandingPage() {
         <section>
             <FAQ />
         </section>
-        <Sage />
-    </Fragment>
+        <ChatWidget />
+    </div>
   );
 }
 

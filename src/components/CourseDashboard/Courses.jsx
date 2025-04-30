@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Courses({courseOptions})
 {
-    const courseOptionDesigner = ( {type, topic, author, libraries, stats}, idx) => (
-        <Link to="/courses/1">
+    const courseOptionDesigner = ( {type, topic, author, libraries, stats, link}, idx) => (
+        <Link to={link}>
         <section key={idx} className="bg-white divide-x divide-gray-200 w-[50rem] h-40 flex mt-4 items-center p-4 text-gray-500 rounded-lg shadow shadow-sm hover:shadow-md cursor-pointer">
             <main className="w-3/4 flex flex-col gap-4 text-xs">
                 <header>
@@ -32,7 +32,8 @@ function Courses({courseOptions})
     );
 
     return <div className={`flex flex-col max-w-[50rem]`}>
-        {courseOptions.map(courseOptionDesigner)}
+        {courseOptions.length !== 0 && courseOptions.map(courseOptionDesigner)}
+        {courseOptions.length === 0 && <p className="w-[50rem] mt-20 p-4 text-center text-3xl">More Content coming up.</p>}
     </div>
 }
 

@@ -1,45 +1,28 @@
-.revolvingPosters {
-    background: rgba(244,247,250,0.9);
-    padding: 2rem 0;
-    text-align: center;
-    font-family: 'Mulish', sans-serif;
-  }
-  
-  .revolvingPosters header h2 {
-    font-size: 1.125rem;
-    font-weight: 200;
-    margin-bottom: 1.5rem;
-  }
-  
-  .slider {
-    display: flex;
-    gap: clamp(1rem, 5vw, 2rem);
+.image-container {
+    width: 100%;
     overflow: hidden;
-    /* animate the whole strip */
-    animation: scroll 20s linear infinite;
-  }
-  .slider:hover {
-    animation-play-state: paused;
   }
   
-  /* each poster */
-  .slider img {
-    flex: 0 0 auto;
-    max-width: 180px;
-    height: auto;
-    border-radius: 0.5rem;
-    background: #fff;
-    padding: 0.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+  .image-scroll-wrapper {
+    display: flex;                      
+    width: max-content;                 
+    animation: scrollImages 100s linear infinite;
   }
-  .slider img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  .image-scroll-wrapper:hover {
+    animation-play-state: paused;       
   }
   
-  /* keyframes scroll: move exactly one full set's width */
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-100%); }
+  .image-container img {
+    margin-right: 50px;
+    height: 120px;
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+  }
+  
+  @keyframes scrollImages {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
   

@@ -39,6 +39,7 @@ import CourseAdmin from "./components/corporate/CourseAdmin.js";
 import AdminReportCard from "./components/corporate/ReportPage.js";
 import AdminCertificatePage from "./components/corporate/AdminCertificatePage.js";
 import AdminMasterSettingsPage from "./components/corporate/AdminSettings.js";
+import CertificationPath from "./Pages/CertificationPath.jsx";
 
 const router = createHashRouter([
   {
@@ -70,9 +71,7 @@ const router = createHashRouter([
         element: <PrivateRoute />,
         children: [
           { path: "skills-assessment", element: <SkillsAssessmentPage /> },
-          { path: "learning-paths", element: <LearningPaths /> },
           { path: "Search", element: <LabSearch /> },
-          { path: "lab", element: <LabPage /> },
         ],
       },
     ],
@@ -87,6 +86,9 @@ const router = createHashRouter([
       { path: "/courses/1/player", element: <CourseContent /> },
       { path: "/courses/1", element: <CoursePage /> },
       { path: "/certifications", element: <Certifications /> },
+      { path: "/certifications/1/path", element: <CertificationPath />},
+      { path: "lab", element: <LabPage /> },
+      { path: "learning-paths", element: <LearningPaths /> },
       { path: "/lab/workspace", element: <PythonLabPage /> },
       { path: "/sage", element: <SageAIPage /> },
       { path: "mcq", element: <MCQ /> },
