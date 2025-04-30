@@ -30,6 +30,11 @@ import LabPage from "./Pages/Lab/LabPage.jsx";
 import SageAIPage from "./Pages/SageAIPage";
 import CoursePage from "./Pages/Course/CoursePage";
 import PrivateRoute from "./components/common/PrivateRoute";
+import CorporateLoginPage from "./components/corporate/login.js"
+import TeamDashboard from "./components/corporate/ManagerDashboard.js";
+import Dashboard from "./components/corporate/Dashboard.js"
+import MyCourses from "./components/corporate/MyCourse.js"
+import AdminDashboardPage from "./components/corporate/AdminDashboard.js";
 
 const router = createHashRouter([
   {
@@ -48,6 +53,11 @@ const router = createHashRouter([
       { path: "login", element: <LoginPage /> },
       { path: "about", element: <AboutUs /> },
       { path: "team", element: <TeamProfile /> },
+      { path: "/corporateLogin", element: <CorporateLoginPage />},
+      { path: "/corporateManagerDashboard", element: <TeamDashboard/>}, 
+      { path: "/learner", element: <Dashboard/>},   
+      { path: "/myCourse", element: <MyCourses/>}, 
+      { path: "/AdminDashboard", element: <AdminDashboardPage/>}, 
       {
         element: <PrivateRoute />,
         children: [

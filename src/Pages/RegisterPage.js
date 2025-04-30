@@ -7,7 +7,22 @@ import R from "../images/R.jpg";
 
 const CreateAccountPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] via-[#e8ecf4] to-[#dee3ed] text-gray-900 flex flex-col"> 
+
+     <header className="w-full bg-white py-4 px-6 flex justify-between items-center shadow-md">
+     <div className="flex items-center justify-center mb-3">
+          <img
+            src={{nexushive}} // Logo
+            alt="Nexus Hive"
+            className="w-10 h-auto mr-2" // Smaller logo
+          />
+          <h1 className="text-xl font-bold text-purple-700 tracking-wide">Nexus Hive</h1>
+        </div>
+        <Link to="/" className="text-sm text-purple-500 hover:underline">
+          Back to Sign In
+        </Link>
+      </header>
+
 
       <main className="flex-grow flex flex-col items-center justify-center px-4 py-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-purple-800">
