@@ -19,6 +19,7 @@ import {
   Settings,
 } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
 const summaryData = [
   { label: "Total Users", value: 1200, color: "bg-blue-200" },
   { label: "Total Courses", value: 800, color: "bg-orange-300" },
@@ -83,33 +84,31 @@ export default function AdminDashboardPage() {
     setCourses(updated);
   };
 
+  const navigate = useNavigate();
+
   const navItems = [
-    { name: "Dashboard", icon: LayoutDashboard },
-    { name: "Courses Management", icon: BookOpen },
-    { name: "User Management", icon: Users },
-    { name: "Reports", icon: FileText },
-    { name: "Certificates", icon: Award },
-    { name: "Master Settings", icon: Settings },
+    { name: "Dashboard", icon: LayoutDashboard, route: "/" },
+    { name: "User/Courses Management", icon: BookOpen, route: "/coursesAdmin" },
+    { name: "Reports", icon: FileText, route: "/report" },
+    { name: "Certificates", icon: Award, route: "/certificate" },
+    { name: "Master Settings", icon: Settings, route: "/settings" },
   ];
 
   return (
     <div className="flex font-sans min-h-screen bg-white">
       {/* Sidebar */}
-      <aside className="w-64 bg-purple-100 p-6">
-        <h1 className="text-2xl font-bold text-purple-800 mb-6">NexusHive</h1>
-        <nav className="space-y-4 text-gray-800">
-          {navItems.map(({ name, icon: Icon }) => (
-            <div
-              key={name}
-              className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
-              onClick={() => name === "Courses Management" && setViewCoursePage(true)}
-            >
-              <Icon className="w-5 h-5 text-purple-700" />
-              {name}
-            </div>
-          ))}
-        </nav>
-      </aside>
+      <aside className="...">
+      {navItems.map(({ name, icon: Icon, route }) => (
+        <div
+          key={name}
+          className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
+          onClick={() => navigate(route)}
+        >
+          <Icon className="w-5 h-5 text-purple-700" />
+          {name}
+        </div>
+      ))}
+    </aside>
 
       {/* Main Panel */}
       <main className="flex-1 p-6 space-y-8">
