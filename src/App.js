@@ -35,6 +35,10 @@ import TeamDashboard from "./components/corporate/ManagerDashboard.js";
 import Dashboard from "./components/corporate/Dashboard.js"
 import MyCourses from "./components/corporate/MyCourse.js"
 import AdminDashboardPage from "./components/corporate/AdminDashboard.js";
+import CourseAdmin from "./components/corporate/CourseAdmin.js";
+import AdminReportCard from "./components/corporate/ReportPage.js";
+import AdminCertificatePage from "./components/corporate/AdminCertificatePage.js";
+import AdminMasterSettingsPage from "./components/corporate/AdminSettings.js";
 
 const router = createHashRouter([
   {
@@ -58,6 +62,10 @@ const router = createHashRouter([
       { path: "/learner", element: <Dashboard/>},   
       { path: "/myCourse", element: <MyCourses/>}, 
       { path: "/AdminDashboard", element: <AdminDashboardPage/>}, 
+      { path: "/coursesAdmin", element: <CourseAdmin/>}, 
+      { path: "/report", element: <AdminReportCard/>}, 
+      { path: "/certificate", element: <AdminCertificatePage/>},
+      { path: "/setting", element: <AdminMasterSettingsPage/>}, 
       {
         element: <PrivateRoute />,
         children: [

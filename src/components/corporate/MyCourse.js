@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { FaSearch, FaChevronDown, FaBookOpen, FaCheckCircle, FaRegClock, FaCertificate, FaBullhorn } from 'react-icons/fa';
 import './MyCourses.css';
+import { useNavigate } from 'react-router-dom';
 
 const MyCourses = () => {
   const [activeTab, setActiveTab] = useState('in-progress');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCourseIds, setExpandedCourseIds] = useState([]);
-
+  const navigate = useNavigate();
   const toggleShowMore = (id) => {
     setExpandedCourseIds(prev =>
       prev.includes(id) ? prev.filter(cid => cid !== id) : [...prev, id]
@@ -150,6 +151,12 @@ const MyCourses = () => {
 
   return (
     <div className="my-courses-container">
+         <button
+  onClick={() => navigate(-1)}
+  className="px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm flex items-center gap-2 mb-4"
+>
+  <span className="text-lg">←</span> Back
+</button>
       <div className="courses-header">
         <h1>My courses</h1>
         <div className="course-actions">

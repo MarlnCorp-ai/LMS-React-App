@@ -60,7 +60,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="navbar">
         <div className="navbar-brand">
-          <h1>NEXUS HIVE</h1>
+          <h1>NEXUSHIVE</h1>
           <p>Learning Platform</p>
         </div>
         <div className="navbar-links">

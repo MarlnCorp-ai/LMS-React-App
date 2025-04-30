@@ -24,7 +24,7 @@ export default function TeamDashboard() {
     const [sortDirection, setSortDirection] = useState({ field: null, ascending: true });
     const [selectedSkill, setSelectedSkill] = useState('Machine Learning');
     const [selectedLevel, setSelectedLevel] = useState('Level 3');
-
+    const [userName, setUserName] = useState("Alex Johnson"); 
     // Sample data
     const donutData = [
         { title: "Enrollment", value: 330, people: 143, color: "#1E90FF", icon: <FaBook /> },
@@ -114,6 +114,26 @@ export default function TeamDashboard() {
         <div className="flex min-h-screen font-sans bg-gray-50">
             {/* Sidebar */}
             <div className="bg-gray-900 text-white w-64 p-6 flex flex-col">
+            <div className="flex items-center mb-8 p-2 rounded-lg hover:bg-gray-800 transition-colors">
+    <div className="relative w-10 h-10 rounded-full bg-blue-500 flex-shrink-0 mr-3 overflow-hidden">
+      {/* Profile photo - replace with actual user image if available */}
+      <img 
+        src="https://randomuser.me/api/portraits/men/1.jpg" 
+        alt="User profile"
+        className="w-full h-full object-cover"
+        onError={(e) => {
+          e.target.onerror = null; 
+          e.target.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ddd'/%3E%3Ctext x='50%' y='50%' font-size='50' fill='%23666' text-anchor='middle' dy='.3em'%3E" + 
+            (userName ? userName.charAt(0).toUpperCase() : 'U') + 
+          "%3C/text%3E%3C/svg%3E";
+        }}
+      />
+    </div>
+    <div>
+      <p className="font-medium text-sm">{userName || "John Doe"}</p>
+      <p className="text-xs text-gray-400">Manager</p>
+    </div>
+  </div>
                 <h2 className="text-2xl font-bold mb-8 flex items-center">
                     <FaHome className="text-red-500 mr-2" />
                     Dashboard
@@ -149,15 +169,7 @@ export default function TeamDashboard() {
                                 <span>Team Skills</span>
                             </button>
                         </li>
-                        <li>
-                            <button
-                                onClick={() => document.getElementById('certificate-completion')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="flex items-center space-x-2 hover:text-red-400 transition-colors"
-                            >
-                                <FaCertificate className="text-red-500" />
-                                <span>Certificates</span>
-                            </button>
-                        </li>
+                        
                     </ul>
                 </div>
 
@@ -180,9 +192,12 @@ export default function TeamDashboard() {
                             </button>
                         </li>
                         <li>
-                            <button className="flex items-center space-x-2 hover:text-red-400 transition-colors">
+                            <button
+                                onClick={() => document.getElementById('certificate-completion')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="flex items-center space-x-2 hover:text-red-400 transition-colors"
+                            >
                                 <FaCertificate className="text-red-500" />
-                                <span>Certifications</span>
+                                <span>Certificates</span>
                             </button>
                         </li>
                     </ul>
@@ -779,12 +794,260 @@ export default function TeamDashboard() {
     </div>
   </div>
 </div>
+  {/* Certification Tracking Section */}
+<div id="certificate-completion" className="bg-white p-6 rounded-lg shadow mt-8">
+  <div className="flex justify-between items-center mb-6">
+    <h2 className="text-2xl font-semibold">Certification Tracking</h2>
+    <div className="flex gap-3">
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        className="border p-2 rounded-md text-sm"
+        placeholderText="Filter by date"
+      />
+      <button 
+        onClick={downloadReport}
+        className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        <FaDownload /> Export Report
+      </button>
+    </div>
+  </div>
 
-                {/* Certificate Completion */}
-                <div id="certificate-completion" className="bg-white p-6 rounded-lg shadow">
-                    <h2 className="text-2xl font-semibold mb-6">Certificate Completion</h2>
-                    <CertificateCompletionGraph certificateData={certificateData} />
+  {/* Certification Summary Cards */}
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+      <h3 className="text-sm font-medium text-blue-800">Total Certifications</h3>
+      <p className="text-2xl font-bold">18</p>
+      <p className="text-xs text-blue-600 mt-1">+3 this quarter</p>
+    </div>
+    <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+      <h3 className="text-sm font-medium text-green-800">Completed</h3>
+      <p className="text-2xl font-bold">124</p>
+      <p className="text-xs text-green-600 mt-1">78% completion rate</p>
+    </div>
+    <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
+      <h3 className="text-sm font-medium text-amber-800">Expiring Soon</h3>
+      <p className="text-2xl font-bold">9</p>
+      <button className="text-xs text-amber-600 hover:underline mt-1">View list</button>
+    </div>
+    <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+      <h3 className="text-sm font-medium text-purple-800">In Progress</h3>
+      <p className="text-2xl font-bold">32</p>
+      <button className="text-xs text-purple-600 hover:underline mt-1">Send reminders</button>
+    </div>
+  </div>
+
+  {/* Certification Progress Charts */}
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    {/* Certification Status */}
+    <div className="bg-gray-50 p-4 rounded-lg">
+      <h3 className="font-medium mb-3">Certification Status</h3>
+      <div className="h-64">
+        <PieChart width={300} height={300}>
+          <Pie
+            data={[
+              { name: 'Completed', value: 124, color: '#10B981' },
+              { name: 'In Progress', value: 32, color: '#3B82F6' },
+              { name: 'Not Started', value: 45, color: '#F59E0B' },
+              { name: 'Expired', value: 7, color: '#EF4444' },
+            ]}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {['#10B981', '#3B82F6', '#F59E0B', '#EF4444'].map((color, i) => (
+              <Cell key={`cell-${i}`} fill={color} />
+            ))}
+          </Pie>
+          <Tooltip 
+            formatter={(value) => [`${value} certifications`, 'Count']}
+          />
+          <Legend />
+        </PieChart>
+      </div>
+    </div>
+
+    {/* Certification Completion Trend */}
+    <div className="bg-gray-50 p-4 rounded-lg">
+      <h3 className="font-medium mb-3">Completion Trend</h3>
+      <div className="h-64">
+        <Line
+          data={{
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+              {
+                label: 'Completed',
+                data: [12, 19, 15, 28, 24, 26],
+                borderColor: '#10B981',
+                backgroundColor: '#10B981',
+                borderWidth: 2,
+                tension: 0.3,
+              },
+              {
+                label: 'Started',
+                data: [20, 25, 22, 30, 28, 35],
+                borderColor: '#3B82F6',
+                backgroundColor: '#3B82F6',
+                borderWidth: 2,
+                tension: 0.3,
+              },
+            ],
+          }}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom' },
+            },
+          }}
+        />
+      </div>
+    </div>
+  </div>
+
+  {/* Certification Details Table */}
+  <div>
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="text-lg font-medium">Team Certifications</h3>
+      <div className="flex gap-2">
+        <select className="border p-2 rounded-md text-sm">
+          <option>All Certifications</option>
+          <option>Cybersecurity</option>
+          <option>Cloud Computing</option>
+          <option>Data Privacy</option>
+        </select>
+        <button className="text-blue-600 text-sm hover:underline">
+          View All (18)
+        </button>
+      </div>
+    </div>
+
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Team Member
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Certification
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Status
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Enrollment Date
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Completion Date
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Expiry Date
+            </th>
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {[
+            { 
+              name: 'John Doe', 
+              certification: 'AWS Certified Solutions Architect', 
+              status: 'Completed',
+              enrollmentDate: '2024-01-15',
+              completionDate: '2024-03-20',
+              expiryDate: '2026-03-20',
+              score: '92%'
+            },
+            { 
+              name: 'Jane Smith', 
+              certification: 'CISSP', 
+              status: 'In Progress',
+              enrollmentDate: '2024-02-10',
+              completionDate: 'N/A',
+              expiryDate: 'N/A',
+              progress: '65%'
+            },
+            { 
+              name: 'Alex Johnson', 
+              certification: 'GDPR Practitioner', 
+              status: 'Expired',
+              enrollmentDate: '2022-05-01',
+              completionDate: '2022-07-15',
+              expiryDate: '2024-01-15',
+              score: '88%'
+            },
+            { 
+              name: 'Sarah Williams', 
+              certification: 'Google Cloud Architect', 
+              status: 'Not Started',
+              enrollmentDate: '2024-04-01',
+              completionDate: 'N/A',
+              expiryDate: 'N/A',
+              progress: '0%'
+            }
+          ].map((cert, idx) => (
+            <tr key={idx} className="hover:bg-gray-50">
+              <td className="px-4 py-3 whitespace-nowrap font-medium">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-gray-200 overflow-hidden mr-2">
+                    <img 
+                      src={`https://i.pravatar.cc/150?img=${idx+3}`} 
+                      alt={cert.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  {cert.name}
                 </div>
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                {cert.certification}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                <span className={`px-2 py-1 text-xs rounded-full ${
+                  cert.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                  cert.status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
+                  cert.status === 'Expired' ? 'bg-red-100 text-red-800' :
+                  'bg-gray-100 text-gray-800'
+                }`}>
+                  {cert.status}
+                  {cert.status === 'In Progress' && ` (${cert.progress})`}
+                  {cert.status === 'Completed' && ` (${cert.score})`}
+                </span>
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                {new Date(cert.enrollmentDate).toLocaleDateString()}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                {cert.completionDate !== 'N/A' ? new Date(cert.completionDate).toLocaleDateString() : 'N/A'}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                {cert.expiryDate !== 'N/A' ? new Date(cert.expiryDate).toLocaleDateString() : 'N/A'}
+                {cert.status === 'Expired' && <span className="text-red-500 ml-1">(Expired)</span>}
+              </td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                <button 
+                  onClick={() => emailLearner(cert.name)}
+                  className="text-blue-600 hover:underline mr-3"
+                >
+                  <FaEnvelope className="inline mr-1" /> 
+                </button>
+                <button className="text-gray-600 hover:underline">
+                  Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
             </div>
         </div>
     );
