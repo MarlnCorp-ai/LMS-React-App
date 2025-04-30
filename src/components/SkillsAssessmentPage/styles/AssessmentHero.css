@@ -1,8 +1,10 @@
 .assessment-hero {
+    background-image: url("../../../images/Banners/Banner.png");
     color: white;
-    height: 20rem;
+    height: 24rem;
     display: flex;
     align-items: center;
+    background-size: cover;
   }
 
   

@@ -14,6 +14,7 @@ import agile from "../images/Certifications/agile.svg";
 import cap from "../images/Certifications/cap.svg";
 import snowflake from "../images/Certifications/snowflake.svg";
 import PeerTracker from "../components/CoursePage/PeerTracker";
+import banner from "../images/Banners/Banner.png";
 
 function Certifications() {
   const options = [
@@ -121,7 +122,7 @@ function Certifications() {
         <SideBar />
       </section>
 
-      <div className="bg-purple-grad h-80 ml-80 flex justify-center items-center text-white">
+      <div className="bg-cover h-96 ml-80 flex justify-center items-center text-white" style={{ backgroundImage: `url('${banner}')` }}>
         <h1 className="text-5xl font-bold">Certification Prep Center</h1>
       </div>
 
@@ -183,7 +184,7 @@ function Certifications() {
                           <h4 className="text-lg font-semibold">{heading}</h4>
                         </main>
                         <footer>
-                          <Link>
+                          <Link to="/certifications/1/path">
                             <button className="w-full h-9 bg-gray-200 rounded text-sm">
                               See all training plans &gt;
                             </button>

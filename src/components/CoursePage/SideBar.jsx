@@ -187,7 +187,7 @@ function SideBar() {
         </section>
         <section>
           <h1 className="text-xl font-semibold mb-4">Python 3 Fundamentals</h1>
-          <p>by Sarah Holderness</p>
+          <p>by Matthew McPartlon</p>
         </section>
         <section>
           <p className="text-center text-lg font-semibold">Table of Contents</p>

@@ -12,6 +12,8 @@ import {
   Info,
   Star,
 } from "react-feather";
+import { Link } from "react-router-dom";
+import intermediate from "../../images/Badges/intermediate.png"
 
 export default function QuizApplication() {
     const [questions] = useState([
@@ -721,6 +723,26 @@ export default function QuizApplication() {
                   </p>
                 </div>
               ))}
+              <div className="flex flex-col items-center mt-20 gap-4">
+                <section className="mb-8">
+                  <h3 className="text-3xl font-bold text-center mb-4">
+                    You are at Intermediate Level.
+                  </h3>
+                  <img
+                    src={intermediate}
+                    alt="Intermediate Level"
+                    className="h-60 mx-auto"
+                  />
+                </section>
+                <div className="text-xl font-semibold">
+                  Next Step:{" "}
+                  <Link to="/courses?search=python">
+                    <button className="bg-blue-500 p-3 text-white rounded-md active:shadow-lg active:-translate-y-1 active:-translate-x-1">
+                      Python Learning Path
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
         </div>

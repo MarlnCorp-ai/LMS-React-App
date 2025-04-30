@@ -5,19 +5,19 @@ const SecondarySideBar = () => (
     <div className="flex items-center space-x-4">
       <img
         src="https://via.placeholder.com/48"
-        alt="Sarah Holderness"
+        alt="Matthew McPartlon"
         className="w-12 h-12 rounded-full object-cover"
       />
       <h2 className="text-indigo-400 font-semibold text-lg">
-        Sarah Holderness
+      Matthew McPartlon
       </h2>
     </div>
 
     {/* Bio */}
     <p className="text-sm leading-relaxed">
-      Sarah just finished her PhD in Computer Science and in that process
-      found two loves: inventing things and teaching. Working at Pluralsight
-      allows her to do what she loves and work with some…
+      Matthew just finished his PhD in Computer Science and in that process
+      found two loves: inventing things and teaching. Working at MarlnCorp
+      allows him to do what he loves and work with some…
     </p>
     </header>
 

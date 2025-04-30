@@ -1,67 +1,88 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import user1 from "../../images/LandingPage/userGroups/user1.png";
 import user2 from "../../images/LandingPage/userGroups/user2.png";
 import user3 from "../../images/LandingPage/userGroups/user3.png";
 
-function Carousel() {
-    const slides = [
-        <img src={user1} alt="User 1" className="w-[36rem] h-[40rem]" />,
-        <img src={user2} alt="User 2" className="w-[36rem] h-[40rem]" />,
-        <img src={user3} alt="User 3" className="w-[36rem] h-[40rem]" />
-    ];
-  
-    const [current, setCurrent] = useState(0);
-  
-    useEffect(() => {
-      const timer = setInterval(() => {
-        setCurrent(prev => (prev + 1) % slides.length);
-      }, 10000);
-      return () => clearInterval(timer);
-    }, [slides.length]);
-  
-    const goPrev = () => setCurrent(prev => (prev - 1 + slides.length) % slides.length);
-    const goNext = () => setCurrent(prev => (prev + 1) % slides.length);
-  
-    return (
-      <div className="relative w-[37rem] overflow-hidden">
+export default function Carousel() {
+  const slides = [user1, user2, user3];
+  const count = slides.length;
+  // duplicate first so the “wrap” is seamless
+  const loopSlides = [...slides, slides[0]];
+
+  // Each slide container is: image 35rem wide + p-2 on left/right (0.5rem each) = 36rem
+  const SLIDE_WIDTH_REM = 36;
+
+  const [current, setCurrent] = useState(0);
+  const trackRef = useRef(null);
+
+  // auto-advance every 10s
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent((c) => (c + 1) % count);
+    }, 10000);
+    return () => clearInterval(id);
+  }, [count]);
+
+  // pause/resume on hover
+  const pause = () => trackRef.current?.classList.add("paused");
+  const resume = () => trackRef.current?.classList.remove("paused");
+
+  return (
+    <div className="w-full">
+      <header className="text-center flex flex-col gap-8 mb-32">
+        <h2 className="text-5xl font-semibold">Train variety of user groups</h2>
+        <p className="text-2xl">
+          Measure the impact of training your customers, generating revenue, and
+          provide an exceptional brand experience for your end users.
+        </p>
+      </header>
+
+      {/* outer viewport: exactly 2 slides wide, centered */}
+      <div
+        ref={trackRef}
+        onMouseEnter={pause}
+        onMouseLeave={resume}
+        className="relative mx-auto overflow-hidden"
+        style={{ width: `calc(${SLIDE_WIDTH_REM}rem * 2)` }}
+      >
+        {/* strip: width = number_of_loopSlides * SLIDE_WIDTH_REM */}
         <div
           className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
+          style={{
+            width: `${loopSlides.length * SLIDE_WIDTH_REM}rem`,
+            transform: `translateX(-${current * SLIDE_WIDTH_REM}rem)`,
+          }}
         >
-          {slides.map((slide, idx) => (
-            <div key={idx} className="w-full flex-shrink-0">
-              {slide}
+          {loopSlides.map((src, idx) => (
+            <div
+              key={idx}
+              className="flex-shrink-0 p-2"
+              style={{ flex: `0 0 ${SLIDE_WIDTH_REM}rem` }}
+            >
+              <img
+                src={src}
+                alt={`User ${idx + 1}`}
+                className="w-[35rem] h-auto object-cover rounded-lg"
+              />
             </div>
           ))}
         </div>
-        <button
-          onClick={goPrev}
-          className="absolute top-1/2 left-12 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-2 rounded-full"
-        >
-          ‹
-        </button>
-        <button
-          onClick={goNext}
-          className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-75 p-2 rounded-full"
-        >
-          ›
-        </button>
+
+        {/* dots for the 3 “windows”: [0,1], [1,2], [2,0] */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`w-3 h-3 rounded-full transition-colors
+                ${current === idx
+                  ? "bg-purple-500"
+                  : "bg-gray-300 hover:bg-gray-400"
+                }`}
+            />
+          ))}
+        </div>
       </div>
-    );
-  }
-  
-
-function UserGroupsSection()
-{
-    return <div className="flex flex-col items-center gap-32 justify-center w-full">
-        <header className="text-center flex flex-col gap-8">
-            <h2 className="text-3xl font-semibold">Train variety of user groups</h2>
-            <p className="text-">Measure the impact of training your customers, generating revenue, and provide an exceptional brand experience for your end users.</p>
-        </header>
-        <main>
-            <Carousel/>
-        </main>
     </div>
+  );
 }
-
-export default UserGroupsSection;

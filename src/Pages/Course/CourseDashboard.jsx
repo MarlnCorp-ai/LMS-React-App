@@ -16,6 +16,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Essential Data Concepts in Python",
       author: "Jose Paumard",
+      link: "/courses/1",
       libraries: ["Core Tech"],
       stats: {
         level: "Beginner",
@@ -29,6 +30,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Python Data Structures",
       author: "Nigel Brown",
+      link: "/courses/1",
       libraries: ["Core Tech"],
       stats: {
         level: "Intermediate",
@@ -42,6 +44,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Python Programming Fundamentals",
       author: "Janani Ravi",
+      link: "/courses/1",
       libraries: ["Cloud", "Data"],
       stats: {
         level: "Advanced",
@@ -55,6 +58,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Security Monitoring Fundamentals",
       author: "Heather Ackmann",
+      link: "/courses/1",
       libraries: ["Security", "Core Tech"],
       stats: {
         level: "Beginner",
@@ -68,6 +72,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Cisco CyberOps Security Fundamentals",
       author: "Heather Ackmann",
+      link: "/courses/1",
       libraries: ["Security", "Core Tech"],
       stats: {
         level: "Intermediate",
@@ -81,6 +86,7 @@ function CourseDashboard() {
       type: "Course",
       topic: "Cisco CyberOps Network Threat Analysis",
       author: "Heather Ackmann",
+      link: "/courses/1",
       libraries: ["Security", "Core Tech"],
       stats: {
         level: "Advanced",
@@ -94,6 +100,7 @@ function CourseDashboard() {
       type: "Lab",
       topic: "Classify Images of Clouds in the Cloud wiht AutoML Images",
       author: "Google Cloud",
+      link: "/lab/workspace",
       libraries: ["AI", "Cloud"],
       stats: {
         level: "Intermediate",
@@ -107,6 +114,7 @@ function CourseDashboard() {
       type: "Lab",
       topic: "Modularizing LookML Code with Extends",
       author: "Google Cloud",
+      link: "/lab/workspace",
       libraries: ["Cloud"],
       stats: {
         level: "Intermediate",
@@ -121,6 +129,7 @@ function CourseDashboard() {
       topic:
         "Create a Cosmetic Anomaly Detection Model using Visual Inspection AI",
       author: "Google Cloud",
+      link: "/lab/workspace",
       libraries: ["AI", "Cloud"],
       stats: {
         level: "Intermediate",
@@ -135,6 +144,7 @@ function CourseDashboard() {
       topic: "Authentication, Authorization, and identity with Vault",
       author: "Google Cloud",
       libraries: ["Cloud"],
+      link: "/lab/workspace",
       stats: {
         level: "Beginner",
         duration: "30m",
@@ -223,7 +233,7 @@ function CourseDashboard() {
         <div className="flex flex-col gap-8 w-full items-center ml-40">
           <SearchBar handleInputChange={getDelayedInputHandler()} />
           <div className="flex flex-col gap-6 w-full items-center">
-            <Results noOfResults={8} />
+            <Results noOfResults={courseOptions.length} />
             <div className="flex flex-row gap-12">
               <Filters handleFilter={handleFilter} />
               <Courses courseOptions={courseOptions} />

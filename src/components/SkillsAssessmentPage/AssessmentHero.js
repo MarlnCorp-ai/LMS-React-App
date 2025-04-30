@@ -1,24 +1,40 @@
-import React from "react";
-import Button from "../LandingPage/Button";
 import "./styles/AssessmentHero.css";
 import { Link } from "react-router-dom";
+import rightArrow from "../../images/arrow_right_alt.png";
+
+function Button({ children }) {
+  return (
+    <div className="flex gap-8 p-2 justify-center items-center bg-gray-400/80 rounded-full">
+      <span className="pl-2">{children}</span>
+      <div className="flex items-center justify-center bg-white rounded-full">
+        <img src={rightArrow} alt="Right Arrow" className="h-10"/>
+      </div>
+    </div>
+  );
+}
 
 const AssessmentHero = () => {
   return (
-    <section className="assessment-hero bg-purple-banner">
+    <section className="assessment-hero">
       <div className="hero-content">
         <h1 className="text-5xl">Measure tech skills with confidence</h1>
         <p>
           Validate skills for hiring, upskilling and building world-class teams
           with role-based assessments designed by industry experts.
         </p>
-        <Link to="/Search">
-          <div className="hero-buttons">
-            <Button text="Try a free assessment" primary={true}>
-              Test your skills
+
+        <div className="flex gap-16 mt-10">
+          <Link to="/Search">
+            <Button>
+              Start Learning
             </Button>
-          </div>
-        </Link>
+          </Link>
+          <Link to="/mcq">
+            <Button>
+              Take a test
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
