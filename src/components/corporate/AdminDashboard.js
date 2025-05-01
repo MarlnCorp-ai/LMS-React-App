@@ -97,18 +97,35 @@ export default function AdminDashboardPage() {
   return (
     <div className="flex font-sans min-h-screen bg-white">
       {/* Sidebar */}
-      <aside className="...">
-      {navItems.map(({ name, icon: Icon, route }) => (
-        <div
-          key={name}
-          className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
-          onClick={() => navigate(route)}
-        >
-          <Icon className="w-5 h-5 text-purple-700" />
-          {name}
-        </div>
-      ))}
-    </aside>
+      <aside className="w-64 bg-purple-100 p-4 space-y-6">
+  {/* Profile Section */}
+  <div className="flex items-center gap-3 p-2 bg-white rounded shadow">
+    <img
+      src="https://i.pravatar.cc/40" // Replace with actual profile image URL
+      alt="User Profile"
+      className="w-10 h-10 rounded-full"
+    />
+    <div>
+      <p className="font-medium text-purple-800">Admin Name</p>
+      <p className="text-xs text-gray-500">Administrator</p>
+    </div>
+  </div>
+
+  {/* Navigation Items */}
+  <div className="space-y-2">
+    {navItems.map(({ name, icon: Icon, route }) => (
+      <div
+        key={name}
+        className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
+        onClick={() => navigate(route)}
+      >
+        <Icon className="w-5 h-5 text-purple-700" />
+        {name}
+      </div>
+    ))}
+  </div>
+</aside>
+
 
       {/* Main Panel */}
       <main className="flex-1 p-6 space-y-8">
