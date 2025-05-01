@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Line, Bar, Pie } from 'react-chartjs-2';
+import { Line, Bar, Pie,Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 import { useNavigate } from 'react-router-dom';
-
+import { saveAs } from 'file-saver';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend);
 
-// Mock API call for users with roles
 const fetchUsers = async () => {
   return [
     { id: 1, name: 'User 1', role: 'Learner', email: 'user1@example.com', registrationDate: '2025-04-01T10:00:00', lastLogin: '2025-04-28T14:30:00', status: 'active' },
@@ -15,6 +14,18 @@ const fetchUsers = async () => {
     { id: 5, name: 'User 5', role: 'Learner', email: 'user5@example.com', registrationDate: '2025-04-05T08:30:00', lastLogin: '2025-04-30T10:10:00', status: 'active' },
     { id: 6, name: 'User 6', role: 'Manager', email: 'user6@example.com', registrationDate: '2025-04-06T13:20:00', lastLogin: '2025-04-29T17:30:00', status: 'active' },
   ];
+};
+
+
+
+export const exportCSV = (data, filename) => {
+  const csvContent =
+    "data:text/csv;charset=utf-8," +
+    data.map(row => row.join(",")).join("\n");
+  const blob = new Blob([decodeURIComponent(encodeURI(csvContent))], {
+    type: "text/csv;charset=utf-8;",
+  });
+  saveAs(blob, filename);
 };
 
 const AdminReportCard = () => {
@@ -32,7 +43,14 @@ const AdminReportCard = () => {
   const [users, setUsers] = useState([]);
   const [selectedTab, setSelectedTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isExporting, setIsExporting] = useState(false);
+  const [timePeriod, setTimePeriod] = useState('last30');
 
+  const [exportLoading, setExportLoading] = useState({
+    user: false,
+    course: false,
+    all: false
+  });
 
   useEffect(() => {
     const fetchReportData = async () => {
@@ -135,6 +153,100 @@ const AdminReportCard = () => {
       },
     ],
   };
+
+  const completionData = {
+    labels: ['Completed', 'In Progress', 'Not Started'],
+    datasets: [
+      {
+        data: [72, 18, 10],
+        backgroundColor: [
+          '#10B981', // green
+          '#F59E0B', // yellow
+          '#E5E7EB', // gray
+        ],
+        borderWidth: 0,
+      },
+    ],
+  };
+  const activityData = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+      {
+        label: 'Active Users',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        backgroundColor: '#3B82F6',
+        borderRadius: 4,
+      },
+    ],
+  };
+
+  
+
+  const exportReportData = (type) => {
+    // Set loading state for this specific export type
+    setExportLoading(prev => ({ ...prev, [type]: true }));
+    
+    setTimeout(() => {
+      let content, mimeType, fileName;
+      
+      switch(type) {
+        case 'user':
+          content = 'user_id,name,email,last_login\n1,John Doe,john@example.com,2023-01-15\n2,Jane Smith,jane@example.com,2023-01-14';
+          mimeType = 'text/csv';
+          fileName = `user_data_${new Date().toISOString().slice(0,10)}.csv`;
+          break;
+        case 'course':
+          content = 'course_id,title,enrollments,completion_rate\n101,Introduction to React,150,72%\n102,Advanced JavaScript,85,68%';
+          mimeType = 'application/vnd.ms-excel';
+          fileName = `course_data_${new Date().toISOString().slice(0,10)}.xls`;
+          break;
+        case 'all':
+          content = JSON.stringify({
+            users: [
+              { id: 1, name: 'John Doe', email: 'john@example.com' },
+              { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+            ],
+            courses: [
+              { id: 101, title: 'Introduction to React', enrollments: 150 },
+              { id: 102, title: 'Advanced JavaScript', enrollments: 85 }
+            ]
+          }, null, 2);
+          mimeType = 'application/json';
+          fileName = `full_export_${new Date().toISOString().slice(0,10)}.json`;
+          break;
+        default:
+          return;
+      }
+      
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      // Reset loading state for this specific export type
+      setExportLoading(prev => ({ ...prev, [type]: false }));
+    }, 1000);
+  };
+
+
+//   const userData = [
+//     ["User ID", "Name", "Email", "Courses Completed"],
+//     ["1", "Alice", "alice@example.com", "5"],
+//     ["2", "Bob", "bob@example.com", "3"],
+//   ];
+
+//   const courseData = [
+//     ["Course ID", "Course Name", "Enrolled Users", "Completion Rate"],
+//     ["101", "React Basics", "120", "85%"],
+//     ["102", "Python Advanced", "90", "72%"],
+//   ];
+
+//   const allData = [...userData, [], ...courseData];
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -499,50 +611,155 @@ const AdminReportCard = () => {
 
         {selectedTab === 'reports' && (
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold mb-6">Reports & Analytics</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Completion Report */}
-              <div className="border rounded-lg p-4">
-                <h4 className="font-semibold mb-4">Course Completion Report</h4>
-                <div className="h-64 bg-gray-50 rounded flex items-center justify-center">
-                  <p className="text-gray-500">Completion chart will appear here</p>
-                </div>
-              </div>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-bold text-gray-800">Reports & Analytics</h3>
+            <div className="flex space-x-2">
+              <select 
+                value={timePeriod}
+                onChange={(e) => setTimePeriod(e.target.value)}
+                className="border border-gray-200 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="last7">Last 7 days</option>
+                <option value="last30">Last 30 days</option>
+                <option value="last90">Last quarter</option>
+                <option value="last365">Last year</option>
+              </select>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-lg text-sm transition-colors">
+                Refresh
+              </button>
+            </div>
+          </div>
 
-              {/* User Activity */}
-              <div className="border rounded-lg p-4">
-                <h4 className="font-semibold mb-4">User Activity Heatmap</h4>
-                <div className="h-64 bg-gray-50 rounded flex items-center justify-center">
-                  <p className="text-gray-500">Activity heatmap will appear here</p>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Completion Report */}
+            <div className="border border-gray-100 rounded-lg p-5 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-center mb-4">
+                <h4 className="font-semibold text-gray-700">Course Completion Report</h4>
+                <button className="text-blue-600 text-sm font-medium">View Details</button>
               </div>
+              <div className="h-64">
+                <Doughnut 
+                  data={completionData}
+                  options={{
+                    cutout: '70%',
+                    plugins: {
+                      legend: {
+                        position: 'bottom',
+                        labels: {
+                          boxWidth: 12,
+                          padding: 20
+                        }
+                      }
+                    },
+                    maintainAspectRatio: false
+                  }}
+                />
+              </div>
+              <div className="text-center mt-2 text-sm text-gray-500">
+                {timePeriod === 'last7' && '7-day completion rate: 68%'}
+                {timePeriod === 'last30' && '30-day completion rate: 72%'}
+                {timePeriod === 'last90' && 'Quarterly completion rate: 75%'}
+                {timePeriod === 'last365' && 'Annual completion rate: 78%'}
+              </div>
+            </div>
 
-              {/* Export Section */}
-              <div className="border rounded-lg p-4 lg:col-span-2">
-                <h4 className="font-semibold mb-4">Export Data</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <button className="border rounded p-4 hover:bg-gray-50 flex flex-col items-center">
-                    <svg className="h-8 w-8 text-gray-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {/* User Activity */}
+            <div className="border border-gray-100 rounded-lg p-5 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-center mb-4">
+                <h4 className="font-semibold text-gray-700">User Activity</h4>
+                <button className="text-blue-600 text-sm font-medium">View Details</button>
+              </div>
+              <div className="h-64">
+                <Bar
+                  data={activityData}
+                  options={{
+                    responsive: true,
+                    plugins: {
+                      legend: {
+                        display: false
+                      }
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    },
+                    maintainAspectRatio: false
+                  }}
+                />
+              </div>
+              <div className="mt-3 text-right text-xs text-gray-500">
+                Peak activity: {timePeriod === 'last7' ? '10 AM - 12 PM' : '2 PM - 4 PM'}
+              </div>
+            </div>
+
+            <div className="border border-gray-100 rounded-lg p-5 lg:col-span-2 hover:shadow-md transition-shadow">
+              <h4 className="font-semibold text-gray-700 mb-4">Export Data</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button 
+  onClick={() => exportReportData('user')}
+  disabled={exportLoading.user}
+  className="border border-gray-200 rounded-lg p-4 hover:bg-blue-50 hover:border-blue-100 transition-all flex flex-col items-center relative"
+>
+  {exportLoading.user && (
+    <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center rounded-lg">
+      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+    </div>
+  )}
+                  <div className="bg-blue-100 p-3 rounded-full mb-3">
+                    <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>Export User Data</span>
-                  </button>
-                  <button className="border rounded p-4 hover:bg-gray-50 flex flex-col items-center">
-                    <svg className="h-8 w-8 text-gray-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </div>
+                  <span className="font-medium text-gray-700">Export User Data</span>
+                  <span className="text-xs text-gray-500 mt-1">CSV, Excel, JSON</span>
+                </button>
+                
+                <button 
+  onClick={() => exportReportData('course')}
+  disabled={exportLoading.course}
+  className="border border-gray-200 rounded-lg p-4 hover:bg-green-50 hover:border-green-100 transition-all flex flex-col items-center relative"
+>
+  {exportLoading.course && (
+    <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center rounded-lg">
+      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-600"></div>
+    </div>
+  )}
+
+                  <div className="bg-green-100 p-3 rounded-full mb-3">
+                    <svg className="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>Export Course Data</span>
-                  </button>
-                  <button className="border rounded p-4 hover:bg-gray-50 flex flex-col items-center">
-                    <svg className="h-8 w-8 text-gray-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </div>
+                  <span className="font-medium text-gray-700">Export Course Data</span>
+                  <span className="text-xs text-gray-500 mt-1">CSV, Excel, PDF</span>
+                </button>
+                
+                <button 
+  onClick={() => exportReportData('all')}
+  disabled={exportLoading.all}
+  className="border border-gray-200 rounded-lg p-4 hover:bg-purple-50 hover:border-purple-100 transition-all flex flex-col items-center relative"
+>
+  {exportLoading.all && (
+    <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center rounded-lg">
+      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-600"></div>
+    </div>
+  )}
+                  <div className="bg-purple-100 p-3 rounded-full mb-3">
+                    <svg className="h-6 w-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>Export All Data</span>
-                  </button>
-                </div>
+                  </div>
+                  <span className="font-medium text-gray-700">Export All Data</span>
+                  <span className="text-xs text-gray-500 mt-1">Full system archive</span>
+                </button>
+              </div>
+              <div className="mt-4 text-sm text-gray-500 border-t border-gray-100 pt-4">
+                <p>Exports may take several minutes to prepare. You'll receive an email when your download is ready.</p>
               </div>
             </div>
           </div>
+        </div>
         )}
       </div>
     </div>

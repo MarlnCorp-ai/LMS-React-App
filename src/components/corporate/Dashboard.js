@@ -60,7 +60,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="navbar">
         <div className="navbar-brand">
-          <h1>NEXUSHIVE</h1>
+          <h1>NEXUS HIVE</h1>
           <p>Learning Platform</p>
         </div>
         <div className="navbar-links">
@@ -124,28 +124,41 @@ const Dashboard = () => {
 
 
           <div className="stats-section">
-            <div className="compliance-section">
-              <div className="section-header">
-                <h2>Compliance Status</h2>
-                <div className="filter">All compliance-type enrollments</div>
-              </div>
-              <div className="status-container">
-                <div className="donut-chart-container">
-                  <Doughnut data={donutData} />
-                </div>
-                <div className="status-filters">
-                  {complianceFilters.map((filter, index) => (
-                    <button 
-                      key={index}
-                      className={activeFilter === filter.name ? 'active' : ''}
-                      onClick={() => setActiveFilter(filter.name)}
-                    >
-                      {filter.name} ({filter.count})
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="compliance-section">
+  <div className="section-header">
+    <h2>Compliance Status</h2>
+    <div className="filter">All compliance-type enrollments</div>
+  </div>
+  <div className="status-container">
+    <div className="donut-chart-container">
+      <Doughnut data={donutData} />
+      {/* <div className="donut-legend">
+        <p><span className="legend-color" style={{ backgroundColor: '#4CAF50' }}></span> Completed</p>
+        <p><span className="legend-color" style={{ backgroundColor: '#2196F3' }}></span> In Progress</p>
+        <p><span className="legend-color" style={{ backgroundColor: '#F44336' }}></span> Not Started</p>
+      </div> */}
+    </div>
+    <div className="status-filters">
+      {complianceFilters.map((filter, index) => (
+        <button
+          key={index}
+          className={activeFilter === filter.name ? 'active' : ''}
+          onClick={() => setActiveFilter(filter.name)}
+        >
+          {filter.name} ({filter.count})
+        </button>
+      ))}
+    </div>
+    <div className="compliance-metrics">
+      <p><strong>Total Courses:</strong> 40</p>
+      <p><strong>Completed:</strong> 10</p>
+      <p><strong>Overdue:</strong> 8</p>
+      <p><strong>Next Due Date:</strong> May 8, 2025</p>
+      <p><strong>Recommended Path:</strong> Cybersecurity Essentials</p>
+    </div>
+  </div>
+</div>
+
 
             <div className="social-feed">
               <div className="section-header">

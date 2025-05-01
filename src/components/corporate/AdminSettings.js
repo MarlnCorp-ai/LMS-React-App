@@ -1,182 +1,294 @@
-// import React, { useState } from 'react';
-// import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-// import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
+import React, { useState } from 'react';
+import './settings.css';
+import {
+  Box,
+  Tabs,
+  Tab,
+  Card,
+  CardContent,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Switch,
+  FormControlLabel,
+  Button,
+  Typography,
+  Divider,
+  Grid,
+  Paper,
+  Alert
+} from '@mui/material';
+import {
+  Settings as SettingsIcon,
+  School as LearnerIcon,
+  People as ManagerIcon,
+  Notifications as NotificationIcon,
+  Security as SecurityIcon,
+  Save as SaveIcon,
+  Lock as LockIcon,
+  Email as EmailIcon
+} from '@mui/icons-material';
 
-// import { Card, CardContent } from '@/components/ui/card';
-// import { Button } from '@/components/ui/button';
-// import { Input } from '@/components/ui/input';
-// import { Label } from '@/components/ui/label';
-// import { Switch } from '@/components/ui/switch';
-// import { Textarea } from '@/components/ui/textarea';
-// import { toast } from 'react-toastify';
+const AdminSettings = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [settings, setSettings] = useState({
+    siteName: 'Learning Portal',
+    timezone: 'UTC',
+    defaultLanguage: 'en',
+    learnerProfileCompletion: true,
+    maxCoursesPerLearner: 5,
+    managerDashboardAccess: 'advanced',
+    emailNotifications: true
+  });
 
-// const AdminMasterSettingsPage = () => {
-//   const [settings, setSettings] = useState({
-//     siteName: '',
-//     logoUrl: '',
-//     enable2FA: false,
-//     enableEmailVerification: true,
-//     defaultLanguage: 'en',
-//     certificateMessage: '',
-//     enableNotifications: true,
-//   });
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
 
-//   const handleChange = (key, value) => {
-//     setSettings(prev => ({ ...prev, [key]: value }));
-//   };
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    setSettings(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
 
-//   const handleSave = () => {
-//     // Save logic (e.g., API call)
-//     toast.success('Settings saved successfully!');
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Settings saved:', settings);
+    // Add your save logic here
+  };
 
-//   return (
-//     <div className="p-6 space-y-6">
-//       <div className="flex justify-between items-center">
-//         <h1 className="text-2xl font-bold">Admin Master Settings</h1>
-//         <Button onClick={handleSave}>Save Settings</Button>
-//       </div>
+  return (
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" gutterBottom>
+        <SettingsIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+        System Settings
+      </Typography>
+      
+      <Alert severity="info" sx={{ mb: 3 }}>
+        Configure system-wide settings for learners and managers.
+      </Alert>
 
-//       <Tabs defaultValue="general">
-//         <TabsList>
-//           <TabsTrigger value="general">General</TabsTrigger>
-//           <TabsTrigger value="user">User Management</TabsTrigger>
-//           <TabsTrigger value="course">Course</TabsTrigger>
-//           <TabsTrigger value="certificate">Certificate</TabsTrigger>
-//           <TabsTrigger value="notifications">Notifications</TabsTrigger>
-//           <TabsTrigger value="billing">Billing</TabsTrigger>
-//           <TabsTrigger value="appearance">Appearance</TabsTrigger>
-//           <TabsTrigger value="security">Security</TabsTrigger>
-//           <TabsTrigger value="integrations">Integrations</TabsTrigger>
-//           <TabsTrigger value="advanced">Advanced</TabsTrigger>
-//         </TabsList>
+      <Paper elevation={2} sx={{ mb: 3 }}>
+        <Tabs
+          value={activeTab}
+          onChange={handleTabChange}
+          variant="scrollable"
+          scrollButtons="auto"
+        >
+          <Tab label="General" icon={<SettingsIcon />} />
+          <Tab label="Learners" icon={<LearnerIcon />} />
+          <Tab label="Managers" icon={<ManagerIcon />} />
+          <Tab label="Notifications" icon={<NotificationIcon />} />
+          <Tab label="Security" icon={<SecurityIcon />} />
+        </Tabs>
+      </Paper>
 
-//         <TabsContent value="general">
-//           <Card>
-//             <CardContent className="space-y-4 p-6">
-//               <div>
-//                 <Label>Site Name</Label>
-//                 <Input
-//                   value={settings.siteName}
-//                   onChange={e => handleChange('siteName', e.target.value)}
-//                 />
-//               </div>
-//               <div>
-//                 <Label>Logo URL</Label>
-//                 <Input
-//                   value={settings.logoUrl}
-//                   onChange={e => handleChange('logoUrl', e.target.value)}
-//                 />
-//               </div>
-//               <div>
-//                 <Label>Default Language</Label>
-//                 <Input
-//                   value={settings.defaultLanguage}
-//                   onChange={e => handleChange('defaultLanguage', e.target.value)}
-//                 />
-//               </div>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+      <Card component="form" onSubmit={handleSubmit}>
+        <CardContent>
+          {activeTab === 0 && (
+            <GeneralSettings settings={settings} handleChange={handleChange} />
+          )}
+          {activeTab === 1 && (
+            <LearnerSettings settings={settings} handleChange={handleChange} />
+          )}
+          {activeTab === 2 && (
+            <ManagerSettings settings={settings} handleChange={handleChange} />
+          )}
+          {activeTab === 3 && (
+            <NotificationSettings settings={settings} handleChange={handleChange} />
+          )}
+          {activeTab === 4 && (
+            <SecuritySettings settings={settings} handleChange={handleChange} />
+          )}
 
-//         <TabsContent value="user">
-//           <Card>
-//             <CardContent className="space-y-4 p-6">
-//               <div className="flex items-center justify-between">
-//                 <Label>Email Verification</Label>
-//                 <Switch
-//                   checked={settings.enableEmailVerification}
-//                   onCheckedChange={value => handleChange('enableEmailVerification', value)}
-//                 />
-//               </div>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+          <Divider sx={{ my: 3 }} />
 
-//         <TabsContent value="course">
-//           <Card>
-//             <CardContent className="p-6">
-//               <p>Course settings will go here...</p>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              startIcon={<SaveIcon />}
+              size="large"
+            >
+              Save Settings
+            </Button>
+          </Box>
+        </CardContent>
+      </Card>
+    </Box>
+  );
+};
 
-//         <TabsContent value="certificate">
-//           <Card>
-//             <CardContent className="space-y-4 p-6">
-//               <div>
-//                 <Label>Certificate Message</Label>
-//                 <Textarea
-//                   value={settings.certificateMessage}
-//                   onChange={e => handleChange('certificateMessage', e.target.value)}
-//                 />
-//               </div>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+// Sub-components
+const GeneralSettings = ({ settings, handleChange }) => (
+  <Grid container spacing={3}>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Site Name"
+        name="siteName"
+        value={settings.siteName}
+        onChange={handleChange}
+        variant="outlined"
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <FormControl fullWidth variant="outlined">
+        <InputLabel>Timezone</InputLabel>
+        <Select
+          label="Timezone"
+          name="timezone"
+          value={settings.timezone}
+          onChange={handleChange}
+        >
+          <MenuItem value="UTC">UTC</MenuItem>
+          <MenuItem value="EST">Eastern Time (EST)</MenuItem>
+          <MenuItem value="PST">Pacific Time (PST)</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <FormControl fullWidth variant="outlined">
+        <InputLabel>Default Language</InputLabel>
+        <Select
+          label="Default Language"
+          name="defaultLanguage"
+          value={settings.defaultLanguage}
+          onChange={handleChange}
+        >
+          <MenuItem value="en">English</MenuItem>
+          <MenuItem value="es">Spanish</MenuItem>
+          <MenuItem value="fr">French</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+  </Grid>
+);
 
-//         <TabsContent value="notifications">
-//           <Card>
-//             <CardContent className="space-y-4 p-6">
-//               <div className="flex items-center justify-between">
-//                 <Label>Enable Notifications</Label>
-//                 <Switch
-//                   checked={settings.enableNotifications}
-//                   onCheckedChange={value => handleChange('enableNotifications', value)}
-//                 />
-//               </div>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+const LearnerSettings = ({ settings, handleChange }) => (
+  <Grid container spacing={3}>
+    <Grid item xs={12}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={settings.learnerProfileCompletion}
+            onChange={handleChange}
+            name="learnerProfileCompletion"
+            color="primary"
+          />
+        }
+        label="Require Profile Completion"
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Maximum Active Courses"
+        name="maxCoursesPerLearner"
+        type="number"
+        value={settings.maxCoursesPerLearner}
+        onChange={handleChange}
+        variant="outlined"
+        InputProps={{ inputProps: { min: 1, max: 10 } }}
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={settings.allowSelfEnrollment}
+            onChange={handleChange}
+            name="allowSelfEnrollment"
+            color="primary"
+          />
+        }
+        label="Allow Self Enrollment"
+      />
+    </Grid>
+  </Grid>
+);
 
-//         <TabsContent value="billing">
-//           <Card>
-//             <CardContent className="p-6">
-//               <p>Billing settings will go here...</p>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+const ManagerSettings = ({ settings, handleChange }) => (
+  <Grid container spacing={3}>
+    <Grid item xs={12} md={6}>
+      <FormControl fullWidth variant="outlined">
+        <InputLabel>Dashboard Access Level</InputLabel>
+        <Select
+          label="Dashboard Access Level"
+          name="managerDashboardAccess"
+          value={settings.managerDashboardAccess}
+          onChange={handleChange}
+        >
+          <MenuItem value="basic">Basic Reports</MenuItem>
+          <MenuItem value="advanced">Advanced Analytics</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={settings.canCreateCourses}
+            onChange={handleChange}
+            name="canCreateCourses"
+            color="primary"
+          />
+        }
+        label="Allow Course Creation"
+      />
+    </Grid>
+  </Grid>
+);
 
-//         <TabsContent value="appearance">
-//           <Card>
-//             <CardContent className="p-6">
-//               <p>Appearance customization options will go here...</p>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+const NotificationSettings = ({ settings, handleChange }) => (
+  <Grid container spacing={3}>
+    <Grid item xs={12}>
+      <Typography variant="h6" gutterBottom>
+        <EmailIcon color="primary" sx={{ mr: 1, verticalAlign: 'middle' }} />
+        Email Notifications
+      </Typography>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={settings.emailNotifications}
+            onChange={handleChange}
+            name="emailNotifications"
+            color="primary"
+          />
+        }
+        label="Enable Email Notifications"
+      />
+    </Grid>
+  </Grid>
+);
 
-//         <TabsContent value="security">
-//           <Card>
-//             <CardContent className="space-y-4 p-6">
-//               <div className="flex items-center justify-between">
-//                 <Label>Enable 2FA</Label>
-//                 <Switch
-//                   checked={settings.enable2FA}
-//                   onCheckedChange={value => handleChange('enable2FA', value)}
-//                 />
-//               </div>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
+const SecuritySettings = ({ settings, handleChange }) => (
+  <Grid container spacing={3}>
+    <Grid item xs={12}>
+      <Typography variant="h6" gutterBottom>
+        <LockIcon color="primary" sx={{ mr: 1, verticalAlign: 'middle' }} />
+        Authentication
+      </Typography>
+      <FormControl fullWidth variant="outlined" sx={{ mb: 3 }}>
+        <InputLabel>Password Complexity</InputLabel>
+        <Select
+          label="Password Complexity"
+          name="passwordComplexity"
+          value={settings.passwordComplexity || 'medium'}
+          onChange={handleChange}
+        >
+          <MenuItem value="low">Low (6+ characters)</MenuItem>
+          <MenuItem value="medium">Medium (8+ with mix)</MenuItem>
+          <MenuItem value="high">High (12+ with special chars)</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+  </Grid>
+);
 
-//         <TabsContent value="integrations">
-//           <Card>
-//             <CardContent className="p-6">
-//               <p>API keys and integrations config will go here...</p>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
-
-//         <TabsContent value="advanced">
-//           <Card>
-//             <CardContent className="p-6">
-//               <p>Advanced settings and feature toggles will go here...</p>
-//             </CardContent>
-//           </Card>
-//         </TabsContent>
-//       </Tabs>
-//     </div>
-//   );
-// };
-
-// export default AdminMasterSettingsPage;
+export default AdminSettings;

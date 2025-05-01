@@ -698,6 +698,26 @@
   .show-more-btn:focus {
     outline: none;
   }
+
+  .compliance-metrics {
+    margin-top: 1rem;
+    background: #f9f9f9;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .donut-legend {
+    margin-top: 1rem;
+  }
+  .legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+  }
+  
   
 
   
