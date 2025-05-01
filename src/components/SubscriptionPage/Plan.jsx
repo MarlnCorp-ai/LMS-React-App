@@ -36,7 +36,7 @@ function Plan({
             <span className="text-gray-400 text-sm">/year per user</span>
           </section>
           <Link to={`/buy?currency=${symbol}&amount=${price}&role=business`}>
-            <button className="text-white bg-purple-grad rounded-full w-full h-11 font-light text-sm">
+            <button className="text-white bg-purple-400/60 rounded-full w-full h-11 font-light text-sm">
               Buy Now
             </button>
           </Link>

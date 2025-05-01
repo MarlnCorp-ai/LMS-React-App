@@ -14,7 +14,7 @@ function CountryDropdown({ handleCurrencyUpdate }) {
     <select
       name="country"
       onChange={({target}) => handleCurrencyUpdate(currencyOptions, target)}
-      className="border-2 h-12 w-52 rounded-xl bg-purple-100 shadow-md"
+      className="border-2 h-12 w-52 rounded-xl bg-purple-300/50 shadow-md"
     >
       {currencyOptions.map(([code, label], idx) => (
         <option value={code} key={idx}>

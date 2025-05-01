@@ -29,24 +29,19 @@ import langchain from "../../images/CouseImages/langchain.png";
 import openaifordevelopers from "../../images/CouseImages/openaifordevelopers.png";
 import llm from "../../images/CouseImages/llm.png";
 import prompteng from "../../images/CouseImages/prompteng.png";
+import banner from "../../images/Banners/Banner.png";
  
 const GenAI = () => {
   return (
     <div className="flex">
       <SideBar />
       <div className="flex flex-col flex-1">
-        <div className="header p-8">
-            <h1 className="text-4xl font-bold mb-8">Generative AI</h1>
-            <h4 style={{fontWeight: "bold"}}>From Curiosity to Creation — Master Generative AI</h4>
-            <br></br>
-            <p>Whether you're an aspiring innovator or a seasoned AI
-professional, our curated Generative AI learning path
-equips you with the latest tools, techniques, and hands-on
-practice. Learn how to build, fine-tune, and apply
-cutting-edge AI models to real-world challenges — all
-guided by industry experts.</p>
-            <br></br>
-          </div>
+      <div
+          className="h-96 text-white flex flex-col items-center justify-center bg-cover mb-8"
+          style={{ backgroundImage: `url('${banner}')` }}
+        >
+          <h1 className="text-5xl text-center font-bold mb-8">GenAI</h1>
+        </div>
         <div className="p-8 flex-1">
           <h2 className="text-2xl font-semibold mb-4">New Releases</h2>
           <p>Discover our latest and greatest Generative AI content</p>
