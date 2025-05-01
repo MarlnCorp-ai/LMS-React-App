@@ -43,7 +43,9 @@ Known for her empathetic leadership style, strategic vision, and unwavering driv
   {
     name: 'Harini',
     title: 'Director • Marketing',
-    bio: `Shadia Zaineddeen is the Executive Director and Consultant at Marln Corp, offering strategic solutions across the GCC market. With over 20 years of global experience in Education, Government Relations, Aerospace, and Defense, she has held key roles with the U.S. Department of Defense and Raytheon Technologies. Shadia specializes in leadership, operations, and business development, and is known for her results-driven approach. She holds degrees in Social Studies and Organizational Leadership and Management. Her work has earned her multiple Meritorious Honor Awards, reflecting her commitment to excellence and impact.`,
+    bio: `Harini Srinivasan is the author of two historical mysteries set in Ancient India, The Curse of Anuganga & Shadows and Secrets: the Pataliputra Conspiracy; the romantic comedies, the recently released Lovestruck and Confused; and The Ex Factor; novella, Death at Arcade Emporia;  a children’s book, The Wizard Tales- Adventures of Bun-Bun and several short stories.
+She has been associated with Scholastic Writer’s Academy Programme since 2021 as a mentor/ coach  for children and adults and takes workshops about the nuances of creative writing.
+Based on her vast professional experience and as a published author andeditor, Harini Srinivasan offers consultancy services to help individuals and organisations bring out professional and high-quality books (coffee table/ narrative) from concept to execution. The bouquet of services offered under Lekhana Ink Consultancy includes mentoring sessions on the nuances of creative writing, editing, proofreading, design and self-publishing`,
     photo: team4,
   },
 ];
