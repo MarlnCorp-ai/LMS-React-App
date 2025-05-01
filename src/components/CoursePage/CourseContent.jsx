@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Module from "../../components/CoursePage/Module";
+import { useNavigate } from 'react-router-dom';
+
 
 const tabs = [
   { key: "contents", label: "Table of contents", component: TableOfContents },
@@ -52,25 +54,46 @@ export default function CourseNav() {
 /* Example placeholder components */
 /* Replace these with your real content */
 function TableOfContents() {
-
+    const navigate = useNavigate();
+    const clickHandler = () => {
+        navigate("/courses/1/player");
+    }
     const modules = [
         {
           topic: "Course Overview",
           duration: "1m 25s",
           materials: [
             {
-              topic: "Course Overview",
-              duration: "1m 25s",
+                topic: "Course Overview",
+                duration: "2m",
+                type: "pdf",
+              },
+            {
+              topic: "Meet the Instructor",
+              duration: "1m 58s",
+              type: "video",
             },
           ],
         },
         {
-          topic: "Run Python and Explore Data Types",
+          topic: "Python and Data Science",
           duration: "23m 17s",
           materials: [
+            
             {
-              topic: "Introducing Data Types",
-              duration: "4m 30s",
+                topic: "Course Summary",
+                duration: "5m 52s",
+                type: "pdf"
+              },
+              {
+                topic: "Different Python IDE's",
+                duration: "5m",
+                type: "pdf"
+              },
+            {
+              topic: "Essential Data Concepts",
+              duration: "2m 22s",
+              type: "video"
             },
             {
               topic: "Deemo: Install Python",
@@ -246,7 +269,7 @@ function TableOfContents() {
         </div>
         <main className="flex flex-col">
         {modules.map((module, idx) => (
-          <Module {...module} number={idx} />
+          <Module {...module} number={idx} clickHandler={clickHandler}/>
         ))}
       </main>
     </div>

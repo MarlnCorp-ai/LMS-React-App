@@ -1,181 +1,214 @@
 import Module from "./Module";
 import Toggle from "../common/Toggle";
 
-function SideBar() {
-  const modules = [
-    {
-      topic: "Course Overview",
-      duration: "1m 25s",
-      materials: [
+function SideBar({clickHandler}) {
+    const modules = [
         {
           topic: "Course Overview",
           duration: "1m 25s",
-        },
-      ],
-    },
-    {
-      topic: "Run Python and Explore Data Types",
-      duration: "23m 17s",
-      materials: [
-        {
-          topic: "Introducing Data Types",
-          duration: "4m 30s",
-        },
-        {
-          topic: "Deemo: Install Python",
-          duration: "5m 52s",
+          materials: [
+            {
+                topic: "Course Overview",
+                duration: "2m",
+                type: "pdf",
+              },
+            {
+              topic: "Meet the Instructor",
+              duration: "1m 58s",
+              type: "video",
+            },
+          ],
         },
         {
-          topic: "Demo: Create a Tax Calculator",
-          duration: "3m 33s",
+          topic: "Python and Data Science",
+          duration: "23m 17s",
+          materials: [
+            
+            {
+                topic: "Course Summary",
+                duration: "5m 52s",
+                type: "pdf"
+              },
+              {
+                topic: "Different Python IDE's",
+                duration: "5m",
+                type: "pdf"
+              },
+            {
+              topic: "Essential Data Concepts",
+              duration: "2m 22s",
+              type: "video"
+            },
+            {
+                topic: "Different Python Packages",
+                duration: "6m",
+                type: "pdf"
+              },
+              {
+                topic: "Jupyter Notebook",
+                duration: "4m",
+                type: "pdf"
+              },
+              {
+                topic: "Python Data Structures",
+                duration: "8m",
+                type: "pdf"
+              },
+            {
+              topic: "Demo: Install Python",
+              duration: "5m 52s",
+            },
+            {
+              topic: "Demo: Create a Tax Calculator",
+              duration: "3m 33s",
+            },
+            {
+              topic: "Strings and Input and Output",
+              duration: "5m 56s",
+            },
+            {
+              topic: "Demo: Age Calculator",
+              duration: "3m 23s",
+            },
+          ],
         },
         {
-          topic: "Strings and Input and Output",
-          duration: "5m 56s",
+          topic: "Conditions and Imports",
+          duration: "22m 39s",
+          materials: [
+            {
+              topic: "Conditions",
+              duration: "10m 40s",
+            },
+            {
+              topic: "Demo: Rock, Paper, Scissors Game",
+              duration: "3m 48s",
+            },
+            {
+              topic: "Import Python Modules",
+              duration: "5m 34s",
+            },
+            {
+              topic: "Demo: Randomize Rock, Paper, Scissors Game",
+              duration: "2m 36s",
+            },
+          ],
         },
-        {
-          topic: "Demo: Age Calculator",
-          duration: "3m 23s",
-        },
-      ],
-    },
-    {
-      topic: "Conditions and Imports",
-      duration: "22m 39s",
-      materials: [
-        {
-          topic: "Conditions",
-          duration: "10m 40s",
-        },
-        {
-          topic: "Demo: Rock, Paper, Scissors Game",
-          duration: "3m 48s",
-        },
-        {
-          topic: "Import Python Modules",
-          duration: "5m 34s",
-        },
-        {
-          topic: "Demo: Randomize Rock, Paper, Scissors Game",
-          duration: "2m 36s",
-        },
-      ],
-    },
-    {
-      topic: "Lists and Loops",
-      duration: "20m 13s",
-      materials: [
         {
           topic: "Lists and Loops",
-          duration: "5m 54s",
+          duration: "20m 13s",
+          materials: [
+            {
+              topic: "Lists and Loops",
+              duration: "5m 54s",
+            },
+            {
+              topic: "Demo: Sum Expenses",
+              duration: "3m 53s",
+            },
+            {
+              topic: "Loops with range()",
+              duration: "3m 45s",
+            },
+            {
+              topic: "Demo: Loan Payment Calculator",
+              duration: "6m 40s",
+            },
+          ],
         },
         {
-          topic: "Demo: Sum Expenses",
-          duration: "3m 53s",
+          topic: "Dictionaries, JSON, and Pip",
+          duration: "32m 19s",
+          materials: [
+            {
+              topic: "Dictionaries",
+              duration: "5m 41s",
+            },
+            {
+              topic: "Demo: Create a Movie Schedule Dictionary",
+              duration: "3m 8s",
+            },
+            {
+              topic: "Combining Lists and Dictionaries",
+              duration: "3m 55s",
+            },
+            {
+              topic: "Demo: Parse a Nested Contacts Dictionary",
+              duration: "2m 46s",
+            },
+            {
+              topic: "Reading JSON and Installing Packages with Pip",
+              duration: "7m 8s",
+            },
+            {
+              topic: "Demo: Create a Python Virtual Environment",
+              duration: "4m 6s",
+            },
+            {
+              topic: "Demo: Use the Open Weather Map API",
+              duration: "5m 33s",
+            },
+          ],
         },
-        {
-          topic: "Loops with range()",
-          duration: "3m 45s",
-        },
-        {
-          topic: "Demo: Loan Payment Calculator",
-          duration: "6m 40s",
-        },
-      ],
-    },
-    {
-      topic: "Dictionaries, JSON, and Pip",
-      duration: "32m 19s",
-      materials: [
-        {
-          topic: "Dictionaries",
-          duration: "5m 41s",
-        },
-        {
-          topic: "Demo: Create a Movie Schedule Dictionary",
-          duration: "3m 8s",
-        },
-        {
-          topic: "Combining Lists and Dictionaries",
-          duration: "3m 55s",
-        },
-        {
-          topic: "Demo: Parse a Nested Contacts Dictionary",
-          duration: "2m 46s",
-        },
-        {
-          topic: "Reading JSON and Installing Packages with Pip",
-          duration: "7m 8s",
-        },
-        {
-          topic: "Demo: Create a Python Virtual Environment",
-          duration: "4m 6s",
-        },
-        {
-          topic: "Demo: Use the Open Weather Map API",
-          duration: "5m 33s",
-        },
-      ],
-    },
-    {
-      topic: "Functions",
-      duration: "14m 2s",
-      materials: [
         {
           topic: "Functions",
-          duration: "9m 38s",
+          duration: "14m 2s",
+          materials: [
+            {
+              topic: "Functions",
+              duration: "9m 38s",
+            },
+            {
+              topic: "Demo: Create a Dice Rolling Game",
+              duration: "4m 24s",
+            },
+          ],
         },
         {
-          topic: "Demo: Create a Dice Rolling Game",
-          duration: "4m 24s",
-        },
-      ],
-    },
-    {
-      topic: "Classes and Objects",
-      duration: "27m 20s",
-      materials: [
-        {
-          topic: "Classes",
-          duration: "6m 5s",
-        },
-        {
-          topic: "Demo: Company Payroll with Classes",
-          duration: "6m 42s",
-        },
-        {
-          topic: "Class Inheritance",
-          duration: "8m 10s",
-        },
-        {
-          topic: "Demo: Company Payroll with In heritance",
-          duration: "6m 21s",
-        },
-      ],
-    },
-    {
-      topic: "Working with Files",
-      duration: "34m 14s",
-      materials: [
-        {
-          topic: "Reading Files",
-          duration: "6m 43s",
+          topic: "Classes and Objects",
+          duration: "27m 20s",
+          materials: [
+            {
+              topic: "Classes",
+              duration: "6m 5s",
+            },
+            {
+              topic: "Demo: Company Payroll with Classes",
+              duration: "6m 42s",
+            },
+            {
+              topic: "Class Inheritance",
+              duration: "8m 10s",
+            },
+            {
+              topic: "Demo: Company Payroll with In heritance",
+              duration: "6m 21s",
+            },
+          ],
         },
         {
-          topic: "Demo: Writing Files",
-          duration: "7m",
+          topic: "Working with Files",
+          duration: "34m 14s",
+          materials: [
+            {
+              topic: "Reading Files",
+              duration: "6m 43s",
+            },
+            {
+              topic: "Demo: Writing Files",
+              duration: "7m",
+            },
+            {
+              topic: "File Manipulation",
+              duration: "5m 35s",
+            },
+            {
+              topic: "Demo: File Organization",
+              duration: "9m 19s",
+            },
+          ],
         },
-        {
-          topic: "File Manipulation",
-          duration: "5m 35s",
-        },
-        {
-          topic: "Demo: File Organization",
-          duration: "9m 19s",
-        },
-      ],
-    },
-  ];
+      ];
   return (
     <div className="flex flex-col gap-2 fixed right-0 top-0 w-[30rem] h-screen divide-y divide-black bg-white shadow-lg">
       <header className="flex flex-col gap-12 px-8 py-6">
@@ -195,7 +228,7 @@ function SideBar() {
       </header>
       <main className="overflow-scroll h-[40rem]">
         {modules.map((module, idx) => (
-          <Module {...module} number={idx} />
+          <Module {...module} number={idx} clickHandler={clickHandler}/>
         ))}
       </main>
       <footer className="flex gap-8 items-center h-16 pl-8">

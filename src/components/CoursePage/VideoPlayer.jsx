@@ -6,7 +6,7 @@ function formatTime(seconds) {
   return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
 
-function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
+function VideoPlayer({video, playerHeight = "50rem", playerWidth = "88.8rem"}) {
 
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -187,9 +187,8 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
       />
 
       <div
-        className={`w-${
-          isFullscreen ? "full" : `[${playerWidth}]`
-        } p-2 absolute bottom-11 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out`}
+        className={`${isFullscreen ? 'w-full' : ''} p-2 absolute bottom-11 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out bg-200/50`}
+        style={!isFullscreen ? { width: playerWidth } : undefined}
       >
         <div className="relative">
           {isHovering && hoverTime !== null && (
@@ -218,9 +217,8 @@ function VideoPlayer({video, playerHeight = "50rem", playerWidth = "90rem"}) {
       </div>
 
       <div
-        className={`p-4 flex items-center justify-between w-${
-          isFullscreen ? "full" : `[${playerWidth}]`
-        } absolute -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out`}
+        className={`p-4 flex items-center justify-between ${isFullscreen ? 'w-full' : ''} absolute bottom-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out bg-gray-400/40 rounded-lg h-12`}
+        style={!isFullscreen ? { width: playerWidth } : undefined}
       >
         <div className="flex items-center">
           <button

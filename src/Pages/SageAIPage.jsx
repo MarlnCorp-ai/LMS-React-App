@@ -6,7 +6,7 @@ function SageAIPage()
 {
     return <div className="relative">
         <header
-        className="h-80 text-white flex items-center justify-center bg-cover ml-80"
+        className="h-96 text-white flex items-center justify-center bg-cover ml-80"
         style={{ backgroundImage: `url('${banner}')` }}
       >
         <h1 className="text-5xl text-center font-bold">Generative AI</h1>

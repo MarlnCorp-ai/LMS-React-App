@@ -12,8 +12,8 @@ function Navbar() {
 
   const handleAuth = () => {
     if (user) {
-        logout();
-    } 
+      logout();
+    }
   };
 
   return (
@@ -186,10 +186,13 @@ function Navbar() {
                       to="/corporateLogin"
                       className={styles["dropdown-link"]}
                     >
-                      <h3>Manager Page</h3>
-                      <span className="material-symbols-outlined">
-                        keyboard_arrow_right
-                      </span>
+                      <p>
+                        <span>Manager Page</span>
+
+                        <span class="material-symbols-outlined">
+                          keyboard_arrow_right
+                        </span>
+                      </p>
                     </Link>
                   </p>
                   <p>
@@ -197,10 +200,13 @@ function Navbar() {
                       to="/corporateLogin"
                       className={styles["dropdown-link"]}
                     >
-                      <h3>Learner/Employee</h3>
-                      <span className="material-symbols-outlined">
-                        keyboard_arrow_right
-                      </span>
+                      <p>
+                        <span>Learner/Employee Page</span>
+
+                        <span class="material-symbols-outlined">
+                          keyboard_arrow_right
+                        </span>
+                      </p>
                     </Link>
                   </p>
                 </div>
@@ -217,13 +223,15 @@ function Navbar() {
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
                   <h3 className="font-semibold">Public Sector</h3>
-                  <p>
-                    <span>Higher Education</span>
+                  <Link to="https://rupamatmarln.github.io/Marln-University/#/">
+                    <p>
+                      <span>University</span>
 
-                    <span class="material-symbols-outlined">
-                      keyboard_arrow_right
-                    </span>
-                  </p>
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </p>
+                  </Link>
                   <p>
                     <span>Government Contractors</span>
 
@@ -553,9 +561,10 @@ function Navbar() {
           </ul>
         </div>
         <div className="flex">
-          { currPath !== "/login" && <Link to="/login">
-            <button
-              className="flex items-center 
+          {currPath !== "/login" && (
+            <Link to="/login">
+              <button
+                className="flex items-center 
          px-6 py-3 
          font-semibold text-white 
          bg-[linear-gradient(135deg,#E5D1F9,#C4B0F0)] 
@@ -565,16 +574,18 @@ function Navbar() {
          transition-transform transition-shadow duration-200 ease-in-out 
          hover:-translate-y-[2px] hover:shadow-[0_6px_10px_rgba(0,0,0,0.15)] 
          active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)] mr-4"
-              onClick={handleAuth}
-            >
-              {user ? "Logout" : "Login"}
-            </button>
-          </Link>}
-          { !user && <div className="relative" onClick={() => setOpen(!open)}>
-            {/* Trigger */}
+                onClick={handleAuth}
+              >
+                {user ? "Logout" : "Login"}
+              </button>
+            </Link>
+          )}
+          {!user && (
+            <div className="relative" onClick={() => setOpen(!open)}>
+              {/* Trigger */}
 
-            <button
-              className="flex items-center 
+              <button
+                className="flex items-center 
          px-6 py-3 
          text-base font-semibold text-white 
          bg-[linear-gradient(135deg,#E5D1F9,#C4B0F0)] 
@@ -584,46 +595,47 @@ function Navbar() {
          transition-transform transition-shadow duration-200 ease-in-out 
          hover:-translate-y-[2px] hover:shadow-[0_6px_10px_rgba(0,0,0,0.15)] 
          active:translate-y-0 active:shadow-[0_3px_6px_rgba(0,0,0,0.1)]"
-            >
-              <span>View Plans</span>
-              <span className="material-symbols-outlined ml-1">
-                keyboard_arrow_down
-              </span>
-            </button>
+              >
+                <span>View Plans</span>
+                <span className="material-symbols-outlined ml-1">
+                  keyboard_arrow_down
+                </span>
+              </button>
 
-            {/* Dropdown */}
-            {open && (
-              <div className="flex flex-col w-60 absolute -left-20 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg py-4 z-10">
-                <Link
-                  to="/individuals/pricing"
-                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Individual Plans
-                  <span className="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </Link>
-                <Link
-                  to="/businesses/pricing"
-                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Corporate Plans
-                  <span className="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </Link>
-                <Link
-                  to="/industries/public-sector/pricing"
-                  className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Public Sector Plans
-                  <span className="material-symbols-outlined">
-                    keyboard_arrow_right
-                  </span>
-                </Link>
-              </div>
-            )}
-          </div>}
+              {/* Dropdown */}
+              {open && (
+                <div className="flex flex-col w-60 absolute -left-20 mt-4 bg-white border border-gray-200 rounded-lg shadow-lg py-4 z-10">
+                  <Link
+                    to="/individuals/pricing"
+                    className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Individual Plans
+                    <span className="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </Link>
+                  <Link
+                    to="/businesses/pricing"
+                    className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Corporate Plans
+                    <span className="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </Link>
+                  <Link
+                    to="/industries/public-sector/pricing"
+                    className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Public Sector Plans
+                    <span className="material-symbols-outlined">
+                      keyboard_arrow_right
+                    </span>
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </nav>
     </header>

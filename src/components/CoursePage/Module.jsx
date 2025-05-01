@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Module({ topic, duration, materials, number }) {
+function Module({ topic, duration, materials, number, clickHandler }) {
   const [currState, setState] = useState("inactive");
 
   const handleState = () => {
@@ -29,13 +29,20 @@ function Module({ topic, duration, materials, number }) {
           <span class="material-symbols-outlined">keyboard_arrow_down</span>
         )}
       </header>
-      <main className={`${currState === "inactive" ? "hidden" : ""} bg-gray-200/30`}>
-        {materials.map(({topic, duration}, idx) => (
-          <section key={idx} className="flex ml-5 items-center">
-            <span class="material-symbols-outlined">videocam</span>
+      <main
+        className={`${currState === "inactive" ? "hidden" : ""} bg-gray-200/30`}
+      >
+        {materials.map(({ topic, duration, type = "video" }, idx) => (
+          <section key={idx} className="flex ml-5 items-center cursor" onClick={() => clickHandler(topic, type)}>
+            {type === "video" && (
+              <span class="material-symbols-outlined">videocam</span>
+            )}
+            {type === "pdf" && (
+              <span class="material-symbols-outlined">picture_as_pdf</span>
+            )}
             <div className="ml-4 p-2">
-                <h3 className="text-sm">{topic}</h3>
-                <p className="text-sm">{duration}</p>
+              <h3 className="text-sm">{topic}</h3>
+              <p className="text-sm">{duration}</p>
             </div>
           </section>
         ))}

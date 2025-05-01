@@ -69,7 +69,7 @@ const CorporateLoginPage = () => {
         {/* Left Panel - Image Only */}
         <div className="hidden lg:block lg:w-2/3 bg-white rounded-2xl overflow-hidden shadow-xl">
           <img
-            src={{img3}} // Update with your image path
+            src={img3} // Update with your image path
             alt="Login Visual"
             className="h-full w-full object-cover"
           />
@@ -79,7 +79,7 @@ const CorporateLoginPage = () => {
         <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-xl flex items-center justify-center p-6 md:p-10">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-purple-700 mb-2">NEXUS HIVE</h2>
+              <h2 className="text-3xl font-bold text-purple-700 mb-2">NexusHive</h2>
             </div>
 
             <form className="space-y-4" onSubmit={handleLogin}>

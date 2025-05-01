@@ -21,20 +21,19 @@ import istqb from "../../images/CouseImages/istqb.png";
 import beta from "../../images/CouseImages/BETA.png";
 import newmaui from "../../images/CouseImages/newmaui.png";
 import tdd from "../../images/CouseImages/tdd.png";
+import banner from "../../images/Banners/Banner.png";
 
 const SoftwareDev = () => {
   return (
     <div className="flex">
       <SideBar />
       <div className="flex flex-col flex-1">
-        <div className="header p-8">
-            <h1 className="text-4xl font-bold mb-8">Software Development</h1>
-            <h4 style={{fontWeight: "bold"}}>Master the Art of Software Development</h4>
-            <br></br>
-            <p>Strengthen your software development expertise with expertly curated content designed by industry professionals. 
-                From foundational concepts to advanced techniques, explore resources that empower you to build, innovate, and excel.</p>
-            <br></br>
-          </div>
+      <div
+          className="h-96 text-white flex flex-col items-center justify-center bg-cover mb-8"
+          style={{ backgroundImage: `url('${banner}')` }}
+        >
+          <h1 className="text-5xl text-center font-bold mb-8">Software Development</h1>
+        </div>
         <div className="p-8 flex-1">
           <h2 className="text-2xl font-semibold mb-4">New Releases</h2>
           <p>Discover our latest and greatest Software Development content</p>
