@@ -326,7 +326,7 @@ export default function Checkout() {
                       Password
                     </label>
                     <input
-                      type="text"
+                      type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full border border-gray-300 rounded px-3 py-2 text-sm"
