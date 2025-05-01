@@ -46,7 +46,6 @@ Known for her empathetic leadership style, strategic vision, and unwavering driv
     bio: `Shadia Zaineddeen is the Executive Director and Consultant at Marln Corp, offering strategic solutions across the GCC market. With over 20 years of global experience in Education, Government Relations, Aerospace, and Defense, she has held key roles with the U.S. Department of Defense and Raytheon Technologies. Shadia specializes in leadership, operations, and business development, and is known for her results-driven approach. She holds degrees in Social Studies and Organizational Leadership and Management. Her work has earned her multiple Meritorious Honor Awards, reflecting her commitment to excellence and impact.`,
     photo: team4,
   },
-  
 ];
 
 const TeamProfilePage = () => {
@@ -60,8 +59,8 @@ const TeamProfilePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-      <p className="uppercase text-sm tracking-widest text-gray-500 mb-2">Meet</p>
-      <h1 className="text-5xl font-semibold text-gray-800 mb-20">The Team</h1>
+      <p className="uppercase text-base tracking-widest text-gray-500 mb-2">Meet</p>
+      <h1 className="text-6xl font-bold text-gray-800 mb-20">The Team</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 text-left">
         {teamMembers.map((member, index) => {
@@ -75,18 +74,18 @@ const TeamProfilePage = () => {
                 alt={member.name}
                 className="w-full aspect-[3/4] object-cover filter grayscale hover:grayscale-0 transition duration-300 mb-6"
               />
-              <h2 className="text-lg font-semibold uppercase tracking-wide text-gray-900">
+              <h2 className="text-xl font-semibold uppercase tracking-wide text-gray-900">
                 {member.name}
               </h2>
-              <p className="text-sm uppercase tracking-wider text-gray-600 mt-1 mb-4">
+              <p className="text-base uppercase tracking-wider text-gray-600 mt-1 mb-4">
                 {member.title}
               </p>
-              <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line mb-3">
+              <p className="text-gray-700 text-base leading-relaxed whitespace-pre-line mb-3">
                 {isExpanded ? member.bio : preview}
               </p>
               <button
                 onClick={() => toggleBio(index)}
-                className="text-blue-600 text-sm font-medium hover:underline focus:outline-none"
+                className="text-blue-600 text-base font-medium hover:underline focus:outline-none"
               >
                 {isExpanded ? 'Read less' : 'Read more'}
               </button>

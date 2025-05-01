@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
+
 const summaryData = [
   { label: "Total Users", value: 1200, color: "bg-blue-200" },
   { label: "Total Courses", value: 800, color: "bg-orange-300" },
@@ -91,41 +92,55 @@ export default function AdminDashboardPage() {
     { name: "User/Courses Management", icon: BookOpen, route: "/coursesAdmin" },
     { name: "Reports", icon: FileText, route: "/report" },
     { name: "Certificates", icon: Award, route: "/certificate" },
-    { name: "Master Settings", icon: Settings, route: "/settings" },
+    { name: "Master Settings", icon: Settings, route: "/setting" },
   ];
+
+  // Mock user data
+  const user = {
+    name: "Admin User",
+    email: "admin@example.com",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg", // You can replace this with your actual avatar URL
+    role: "Administrator"
+  };
 
   return (
     <div className="flex font-sans min-h-screen bg-white">
       {/* Sidebar */}
-      <aside className="w-64 bg-purple-100 p-4 space-y-6">
-  {/* Profile Section */}
-  <div className="flex items-center gap-3 p-2 bg-white rounded shadow">
-    <img
-      src="https://i.pravatar.cc/40" // Replace with actual profile image URL
-      alt="User Profile"
-      className="w-10 h-10 rounded-full"
-    />
-    <div>
-      <p className="font-medium text-purple-800">Admin Name</p>
-      <p className="text-xs text-gray-500">Administrator</p>
-    </div>
-  </div>
+      <aside className="w-64 bg-white border-r border-gray-200 p-4 flex flex-col">
+        {/* User Profile Section */}
+        <div className="flex items-center space-x-3 p-4 mb-6 border-b border-gray-200">
+          <img 
+            src={user.avatar} 
+            alt={user.name} 
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div>
+            <p className="font-medium text-gray-900">{user.name}</p>
+            <p className="text-xs text-gray-500">{user.role}</p>
+          </div>
+        </div>
 
-  {/* Navigation Items */}
-  <div className="space-y-2">
-    {navItems.map(({ name, icon: Icon, route }) => (
-      <div
-        key={name}
-        className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
-        onClick={() => navigate(route)}
-      >
-        <Icon className="w-5 h-5 text-purple-700" />
-        {name}
-      </div>
-    ))}
-  </div>
-</aside>
+        {/* Navigation Items */}
+        <div className="space-y-2 flex-1">
+          {navItems.map(({ name, icon: Icon, route }) => (
+            <div
+              key={name}
+              className="hover:bg-purple-200 px-3 py-2 rounded cursor-pointer flex items-center gap-2"
+              onClick={() => navigate(route)}
+            >
+              <Icon className="w-5 h-5 text-purple-700" />
+              {name}
+            </div>
+          ))}
+        </div>
 
+        {/* Footer/Logout (optional) */}
+        <div className="mt-auto pt-4 border-t border-gray-200">
+          <button className="text-sm text-gray-500 hover:text-gray-700">
+            Logout
+          </button>
+        </div>
+      </aside>
 
       {/* Main Panel */}
       <main className="flex-1 p-6 space-y-8">
