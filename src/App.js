@@ -40,6 +40,7 @@ import AdminReportCard from "./components/corporate/ReportPage.js";
 import AdminCertificatePage from "./components/corporate/AdminCertificatePage.js";
 import AdminMasterSettingsPage from "./components/corporate/AdminSettings.js";
 import CertificationPath from "./Pages/CertificationPath.jsx";
+import EditorPage from "./Pages/Lab/EditorPage.js";
 
 const router = createHashRouter([
   {
@@ -90,6 +91,7 @@ const router = createHashRouter([
       { path: "lab", element: <LabPage /> },
       { path: "learning-paths", element: <LearningPaths /> },
       { path: "/lab/workspace", element: <PythonLabPage /> },
+      { path: "/editor", element: <EditorPage />},
       { path: "/sage", element: <SageAIPage /> },
       { path: "mcq", element: <MCQ /> },
       { path: "EthicalHacking", element: <EthicalHacking /> },

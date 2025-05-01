@@ -216,7 +216,7 @@ export default function PythonLabPage() {
                       </div>
                     ) : (
                       <h3
-                        onClick={() => navigate(`/editor/${encodeURIComponent(file.name)}`)}
+                        onClick={() => navigate(`/editor`)}
                         className="text-lg font-semibold text-blue-400 hover:underline cursor-pointer"
                       >
                         {file.name}
