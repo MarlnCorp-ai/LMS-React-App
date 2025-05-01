@@ -161,7 +161,6 @@ const AdminReportCard = () => {
         user.id === userId ? { ...user, role: newRole } : user
       )
     );
-  };
 
   const filteredUsers = users.filter(
     (user) =>
@@ -221,10 +220,7 @@ const AdminReportCard = () => {
           "rgba(245, 158, 11, 1)",
           "rgba(16, 185, 129, 1)",
         ],
-        borderWidth: 1,
-      },
-    ],
-  };
+    };
 
   const pieChartData = {
     labels: ["Published Courses", "Draft Courses"],
@@ -622,12 +618,6 @@ const AdminReportCard = () => {
                 <Line data={lineChartData} />
               </div>
 
-              {/* Pie Chart */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold mb-4">Course Status</h3>
-                <Pie data={pieChartData} />
-              </div>
-            </div>
 
             {/* Bar Chart */}
             <div className="bg-white p-6 rounded-lg shadow-md mb-8">
