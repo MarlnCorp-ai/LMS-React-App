@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/LMS-React-App/static/css/main.afe2e8b4.css",
-    "main.js": "/LMS-React-App/static/js/main.22b007f5.js",
+    "main.js": "/LMS-React-App/static/js/main.81b1ee5a.js",
     "static/media/HariniSrinivasan_cover1.jpg": "/LMS-React-App/static/media/HariniSrinivasan_cover1.58786bfec3cb216ef5a8.jpg",
     "static/media/EssentialDataConcepts.mp4": "/LMS-React-App/static/media/EssentialDataConcepts.4857ee3f30ff25e388e0.mp4",
     "static/media/CourseOverview.mp4": "/LMS-React-App/static/media/CourseOverview.5e9fac85778add6fc325.mp4",
@@ -172,10 +172,10 @@
     "static/media/cap.svg": "/LMS-React-App/static/media/cap.d1d18279cc3aa88886e572abaf69e2b8.svg",
     "static/media/microsoft.svg": "/LMS-React-App/static/media/microsoft.4e0c8bfbbaf660df49666c28bc0849db.svg",
     "main.afe2e8b4.css.map": "/LMS-React-App/static/css/main.afe2e8b4.css.map",
-    "main.22b007f5.js.map": "/LMS-React-App/static/js/main.22b007f5.js.map"
+    "main.81b1ee5a.js.map": "/LMS-React-App/static/js/main.81b1ee5a.js.map"
   },
   "entrypoints": [
     "static/css/main.afe2e8b4.css",
-    "static/js/main.22b007f5.js"
+    "static/js/main.81b1ee5a.js"
   ]
 }
