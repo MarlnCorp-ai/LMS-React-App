@@ -6,11 +6,14 @@ import advanced from "../../images/Badges/advanced.png";
 import banner from "../../images/Banners/Banner.png";
 
 const MainBanner = () => (
-  <div className=" text-white h-96 flex items-center bg-cover" style={{backgroundImage: `url('${banner}')`}}>
+  <div
+    className=" text-white h-96 flex items-center bg-cover"
+    style={{ backgroundImage: `url('${banner}')` }}
+  >
     <div className="container mx-auto px-4 text-center">
-      <h1 className="text-4xl font-bold mb-4">Master Cybersecurity Skills</h1>
+      <h1 className="text-4xl font-bold mb-4">Master Tech Skills</h1>
       <p className="text-xl mb-8">
-        Build your cybersecurity expertise with hands-on tests from industry
+        Build your expertise with hands-on tests from industry
         experts
       </p>
     </div>
@@ -38,6 +41,102 @@ const CybersecurityBrowsePage = () => {
     },
     {
       id: 2,
+      title: "Cloud Computing Foundations",
+      author: "Daniel Martinez",
+      level: "Beginner",
+      duration: "4h 40m",
+      rating: 4.7,
+      updated: "Apr 05, 2025",
+      image: beginner,
+      passScore: 80,
+      link: "/tests/cloud-computing",
+    },
+    {
+      id: 3,
+      title: "Software Engineering",
+      author: "Emily Wang",
+      level: "Intermediate",
+      duration: "6h 10m",
+      rating: 4.6,
+      updated: "May 01, 2025",
+      image: intermediate,
+      passScore: 80,
+      link: "/tests/software-engineering",
+    },
+    {
+      id: 4,
+      title: "Full-Stack Software Development",
+      author: "Miguel Fernandez",
+      level: "Intermediate",
+      duration: "5h 55m",
+      rating: 4.5,
+      updated: "Apr 22, 2025",
+      image: intermediate,
+      passScore: 80,
+      link: "/tests/software-development",
+    },
+    {
+      id: 5,
+      title: "Software Delivery & DevOps",
+      author: "Priya Gupta",
+      level: "Advanced",
+      duration: "7h 30m",
+      rating: 4.7,
+      updated: "May 10, 2025",
+      image: advanced,
+      passScore: 80,
+      link: "/tests/software-delivery",
+    },
+    {
+      id: 6,
+      title: "Secure Coding & App-Sec Evaluation",
+      author: "Robert Thompson",
+      level: "Advanced",
+      duration: "6h 00m",
+      rating: 4.8,
+      updated: "Apr 28, 2025",
+      image: advanced,
+      passScore: 80,
+      link: "/tests/software-security",
+    },
+    {
+      id: 7,
+      title: "Python",
+      author: "Aisha Khan",
+      level: "Intermediate",
+      duration: "5h 20m",
+      rating: 4.9,
+      updated: "May 06, 2025",
+      image: intermediate,
+      passScore: 80,
+      link: "/tests/python",
+    },
+    {
+      id: 8,
+      title: "Data-Engineering",
+      author: "Chen Li",
+      level: "Advanced",
+      duration: "6h 45m",
+      rating: 4.6,
+      updated: "Apr 30, 2025",
+      image: advanced,
+      passScore: 80,
+      link: "/tests/data-engineering",
+    },
+    {
+      id: 9,
+      title: "Generative AI Practitioner Exam",
+      author: "Laura Mendes",
+      level: "Advanced",
+      duration: "5h 50m",
+      rating: 4.7,
+      updated: "May 12, 2025",
+      image: advanced,
+      passScore: 80,
+      link: "/tests/generative-ai",
+    },
+    {
+      id: 10,
       title: "Network Security Fundamentals",
       author: "Michael Chen",
       level: "Intermediate",
@@ -49,7 +148,7 @@ const CybersecurityBrowsePage = () => {
       link: "/NetworkSecurityFundamentals",
     },
     {
-      id: 3,
+      id: 11,
       title: "Security Incident Response",
       author: "David Brown",
       level: "Advanced",
@@ -61,7 +160,7 @@ const CybersecurityBrowsePage = () => {
       link: "/NetworkSecurityFundamentals",
     },
     {
-      id: 4,
+      id: 12,
       title: "Cybersecurity for Cloud Environments",
       author: "Samantha Lee",
       level: "Intermediate",
@@ -73,7 +172,7 @@ const CybersecurityBrowsePage = () => {
       link: "/CyberCloudEnv",
     },
     {
-      id: 5,
+      id: 13,
       title: "Advanced Penetration Testing",
       author: "Robert Wilson",
       level: "Advanced",
@@ -85,7 +184,7 @@ const CybersecurityBrowsePage = () => {
       link: "/AdvPenTesting",
     },
     {
-      id: 6,
+      id: 14,
       title: "Security Risk Assessment",
       author: "Jennifer Martinez",
       level: "Intermediate",
@@ -132,7 +231,7 @@ const CybersecurityBrowsePage = () => {
 
         {/* Results Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Cybersecurity tests</h1>
+          <h1 className="text-3xl font-bold mb-2">Skill Nexus</h1>
           <p className="text-gray-600">{tests.length} results</p>
         </div>
 
