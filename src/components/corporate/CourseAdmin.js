@@ -153,7 +153,7 @@ export default function CourseAdmin() {
           <div className="flex items-center mb-4 sm:mb-0">
             <button
               className="flex items-center text-blue-600 hover:text-blue-800 mr-4"
-              onClick={() => navigate('/AdminDashboard')}
+              onClick={() => navigate('/dashboards/admin')}
             >
               <FiArrowLeft className="mr-1" />
               Back to Dashboard

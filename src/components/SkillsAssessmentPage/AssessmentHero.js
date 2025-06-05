@@ -26,12 +26,12 @@ const AssessmentHero = () => {
         <div className="flex gap-16 mt-10">
           <Link to="/Search">
             <Button>
-              Start Learning
+              Explore Skill Tests
             </Button>
           </Link>
           <Link to="/mcq">
             <Button>
-              Take a test
+               Instant Test
             </Button>
           </Link>
         </div>

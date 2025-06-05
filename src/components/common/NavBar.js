@@ -181,34 +181,54 @@ function Navbar() {
                       keyboard_arrow_right
                     </span>
                   </p>
-                  <p>
-                    <Link
-                      to="/corporateLogin"
-                      className={styles["dropdown-link"]}
-                    >
-                      <p>
-                        <span>Manager Page</span>
+                  {user && user.role === "business" && (
+                    <p>
+                      <Link
+                        to="/dashboards/admin"
+                        className={styles["dropdown-link"]}
+                      >
+                        <p>
+                          <span>Admin Page</span>
 
-                        <span class="material-symbols-outlined">
-                          keyboard_arrow_right
-                        </span>
-                      </p>
-                    </Link>
-                  </p>
-                  <p>
-                    <Link
-                      to="/corporateLogin"
-                      className={styles["dropdown-link"]}
-                    >
-                      <p>
-                        <span>Learner/Employee Page</span>
+                          <span class="material-symbols-outlined">
+                            keyboard_arrow_right
+                          </span>
+                        </p>
+                      </Link>
+                    </p>
+                  )}
+                  { user && (user.role === "individual" || user.role === "employee") && (
+                    <p>
+                      <Link
+                        to="/learner"
+                        className={styles["dropdown-link"]}
+                      >
+                        <p>
+                          <span>Learner Page</span>
 
-                        <span class="material-symbols-outlined">
-                          keyboard_arrow_right
-                        </span>
-                      </p>
-                    </Link>
-                  </p>
+                          <span class="material-symbols-outlined">
+                            keyboard_arrow_right
+                          </span>
+                        </p>
+                      </Link>
+                    </p>
+                  )}
+                  {user && user.role === "manager" && (
+                    <p>
+                      <Link
+                        to="/corporateManagerDashboard"
+                        className={styles["dropdown-link"]}
+                      >
+                        <p>
+                          <span>Manager Page</span>
+
+                          <span class="material-symbols-outlined">
+                            keyboard_arrow_right
+                          </span>
+                        </p>
+                      </Link>
+                    </p>
+                  )}
                 </div>
               </div>
             </li>
