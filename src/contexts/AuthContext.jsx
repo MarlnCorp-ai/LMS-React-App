@@ -48,10 +48,10 @@ export function AuthProvider({ children }) {
     const found = registeredUsers.find(
       u => u.email.toLowerCase() === email && u.password === password
     );
-    if (!found) return false;
+    if (!found) return null;
     
     setUser({ ...found });
-    return true;
+    return found;
   };
 
   const logout = () => setUser(null);

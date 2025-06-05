@@ -32,10 +32,18 @@ const LoginPage = () => {
     e.preventDefault();
     if (validate()) {
       // TODO: Handle successful sign-in
-      if (!login({ email, password })){
+      const user = login({ email, password });
+      if (!user){
         setErrors(prev => ({ ...prev, login: "Invalid email or password!" }));
       }else {
-        navigate("/courses");
+        if (user.role === "business" || user.role === "admin") {
+          navigate("/dashboards/admin");
+        }
+        else if (user.role === "manager") {
+          navigate("/dashboards/manager");
+        } else {
+          navigate("/dashboards/learner");
+        }
       }
 
     }

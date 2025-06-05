@@ -51,7 +51,7 @@ const CorporateLoginPage = () => {
         if (rememberMe) {
           localStorage.setItem('rememberedEmail', email);
         }
-        navigate('/AdminDashboard');
+        navigate('/dashboards/admin');
       }
       else {
         setError('Invalid email or password');

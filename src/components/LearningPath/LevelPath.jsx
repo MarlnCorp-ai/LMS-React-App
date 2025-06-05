@@ -18,9 +18,6 @@ import {
   Hammer,
 } from "lucide-react";
 
-/* ------------------------------------------------------------------ */
-/*  GLOBAL TWEAK POINTS                                               */
-/* ------------------------------------------------------------------ */
 const NODE_REM = 5;           // node diameter
 const STEP_Y   = 7;           // vertical distance between successive nodes
 const STEP_X   = NODE_REM;    // horizontal unit shift
@@ -28,13 +25,9 @@ const PATH_CLR = "#cbd5e1";   // spiral colour  (slate-300)
 
 const r2px = (r) => r * 16;   // helper: rem → px for SVG only
 
-/* ------------------------------------------------------------------ */
-/*  SpiralConnector – dashed cubic-bezier “swirl” between two nodes   */
-/* ------------------------------------------------------------------ */
 function SpiralConnector({ fromXRem, toXRem }) {
   if (toXRem === null || toXRem === undefined) return null;
 
-  /* geometry in *rem* first --------------------------------------- */
   const dxRem = toXRem - fromXRem;          // horizontal delta
   const sign  = dxRem >= 0 ? 1 : -1;        // left / right
   const sweep = Math.abs(dxRem) + NODE_REM; // width so the arc clears nodes
@@ -42,17 +35,13 @@ function SpiralConnector({ fromXRem, toXRem }) {
   const w = r2px(sweep);                    // SVG width  (px)
   const h = r2px(STEP_Y);                   // SVG height (px)
 
-  /* convert node radius once (px) --------------------------------- */
   const R = r2px(NODE_REM * 0.5);
 
-  /* start  : bottom-centre of current node (offset inside SVG)      */
-  /* end    : top-centre of next node                                */
   const startX = sign === 1 ? R : w - R;
   const endX   = sign === 1 ? w - R : R;
   const startY = 0;
   const endY   = h;
 
-  /* two control points create a nice ‘S’ swirl                      */
   const cp1x = startX + sign * w * 0.25;
   const cp1y = h * 0.15;
   const cp2x = endX   - sign * w * 0.25;
@@ -81,13 +70,10 @@ function SpiralConnector({ fromXRem, toXRem }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  AnimatedDashedBorder – spins slowly for a subtle motion cue       */
-/* ------------------------------------------------------------------ */
 function AnimatedDashedBorder() {
-  /* a circle that just fits inside the button */
+  
   const sizePx = r2px(NODE_REM) - 3;
-  const r = sizePx / 2 - 8;   // minus stroke width
+  const r = sizePx / 2 - 8;   
 
   return (
     <motion.div
@@ -111,9 +97,6 @@ function AnimatedDashedBorder() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  ProgressRing – green progress arc for the *current* node          */
-/* ------------------------------------------------------------------ */
 function ProgressRing({ pct = 0 }) {
   const r = r2px(NODE_REM * 0.5 - 0.35);
   const stroke = 4;
@@ -147,16 +130,13 @@ function ProgressRing({ pct = 0 }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  LevelNode – icon, spinning dashed ring, progress & states         */
-/* ------------------------------------------------------------------ */
 const IconMap = {
   star: Star,
   book: BookOpen,
   dumbbell: Dumbbell,
   trophy: Trophy,
-  chest: Lock,          // visualised with the “Lock” glyph
-  /* new additions ⬇︎ */
+  chest: Lock,          
+  
   shield: Shield,
   brain: Brain,
   heart: Heart,
@@ -190,25 +170,22 @@ function LevelNode({ lvl, onClick }) {
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       className={`relative flex items-center justify-center rounded-full w-[${NODE_REM}rem] h-[${NODE_REM}rem] ${bg} shadow-xl`}
     >
-      {/* spinning dashed border */}
+      
       {isLocked && <AnimatedDashedBorder />}
 
-      {/* progress arc */}
+      
       {isCurrent && (
         <div className="absolute inset-0 flex items-center justify-center">
           <ProgressRing pct={lvl.progress ?? 0} />
         </div>
       )}
 
-      {/* icon */}
+      
       <Icon size={32} color={fg} className="z-10" />
     </motion.button>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  JumpNode – coloured fast-forward                                 */
-/* ------------------------------------------------------------------ */
 function JumpNode({ color = "#15803d" /* emerald-700 */ }) {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -226,10 +203,6 @@ function JumpNode({ color = "#15803d" /* emerald-700 */ }) {
   );
 }
 
-/* ------------------------------------------------------------- */
-/*  NodeConnector – draws a spiral-ish dashed path from          */
-/*  current node’s bottom-centre to the next node’s top-centre   */
-/* ------------------------------------------------------------- */
 function NodeConnector({ fromXRem, toXRem }) {
   const dxRem = toXRem - fromXRem;
   if (Number.isNaN(dxRem)) return null;
@@ -239,7 +212,7 @@ function NodeConnector({ fromXRem, toXRem }) {
   const w = r2px(widthRem);
   const h = r2px(heightRem);
 
-  // SVG origin sits at the *min* x so we shift start/end accordingly
+  
   const startX = dxRem > 0 ? 0 : w;
   const endX   = dxRem > 0 ? w : 0;
   const midX   = (startX + endX) / 2;
@@ -270,9 +243,6 @@ function NodeConnector({ fromXRem, toXRem }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  SegmentFigure – decorative mascot beside a segment                */
-/* ------------------------------------------------------------------ */
 function SegmentFigure({ src, side }) {
   return (
     <img
@@ -286,9 +256,6 @@ function SegmentFigure({ src, side }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  MultiSegmentPath – orchestrates it all                            */
-/* ------------------------------------------------------------------ */
 export default function MultiSegmentPath({ segments }) {
   /* Offset pattern for a tighter “spiral” feel                      */
   const base = [2.5, 1.5, 0, -1.5, -2.5];
@@ -304,13 +271,13 @@ export default function MultiSegmentPath({ segments }) {
           <div key={seg.id} className="relative">
             {seg.figure && <SegmentFigure src={seg.figure} side={figSide} />}
 
-            {/* STACK OF NODES IN THIS SEGMENT ----------------------- */}
+            
             <div
               className="flex flex-col items-center"
               style={{ gap: `${STEP_Y}rem` }}
             >
               {seg.levels.map((node, i) => {
-                /* jump-ahead button --------------------------------- */
+                
                 if (node.type === "jump") {
                   return (
                     <JumpNode
@@ -320,7 +287,7 @@ export default function MultiSegmentPath({ segments }) {
                   );
                 }
 
-                /* regular level node -------------------------------- */
+                
                 const lvl   = node;
                 const xRem  = offsets[i % offsets.length];
                 const next  = seg.levels[i + 1];
