@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, use, Fragment } from "react";
 import { Line, Bar, Pie, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -97,7 +97,7 @@ export const exportCSV = (data, filename) => {
   saveAs(blob, filename);
 };
 
-const AdminReportCard = () => {
+export default function AdminReportCard() {
   const navigate = useNavigate();
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -161,6 +161,7 @@ const AdminReportCard = () => {
         user.id === userId ? { ...user, role: newRole } : user
       )
     );
+  };
 
   const filteredUsers = users.filter(
     (user) =>
@@ -220,7 +221,9 @@ const AdminReportCard = () => {
           "rgba(245, 158, 11, 1)",
           "rgba(16, 185, 129, 1)",
         ],
-    };
+    }
+],
+  };
 
   const pieChartData = {
     labels: ["Published Courses", "Draft Courses"],
@@ -716,6 +719,7 @@ const AdminReportCard = () => {
                 </table>
               </div>
             </div>
+            </div>
           </>
         )}
 
@@ -1129,8 +1133,5 @@ const AdminReportCard = () => {
           </div>
         )}
       </div>
-    </div>
-  );
-};
-
-export default AdminReportCard;
+    </div>);
+  }
